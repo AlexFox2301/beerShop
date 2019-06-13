@@ -8,7 +8,17 @@
 <!--    </script>-->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Бутыль</a>
+
+      <router-link
+        class="nav-link"
+        tag="li"
+        exact
+        active-class="active"
+        to="/"
+      >
+        Бутыль
+        <span class="sr-only">(current)</span>
+      </router-link>
 
       <button
         class="navbar-toggler"
@@ -24,18 +34,45 @@
 
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Продажа<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Поставка</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Отчет</a>
-          </li>
+
+            <router-link
+              class="nav-link"
+              tag="li"
+              exact
+              active-class="active"
+              to="/sale"
+            >
+              Продажа
+              <span class="sr-only">(current)</span>
+            </router-link>
+
+            <router-link
+              class="nav-link"
+              tag="li"
+              exact
+              active-class="active"
+              to="/supply"
+            >
+              Поставка
+              <span class="sr-only">(current)</span>
+            </router-link>
+
+          <router-link
+            class="nav-link"
+            tag="li"
+            exact
+            active-class="active"
+            to="/report"
+          >
+            Отчет
+            <span class="sr-only">(current)</span>
+          </router-link>
+
         </ul>
       </div>
     </nav>
+    <hr>
+
     <router-view/>
   </div>
 </template>
