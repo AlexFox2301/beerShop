@@ -1,41 +1,49 @@
 <template>
     <div>
       <div id="position" style="border: blue solid 1px">
-        <select id="sort" v-model="sortSelected">
-          <option
-            v-for="sort in beerSorts"
-          >
-            {{sort.sortName}}
-          </option>
-        </select>
-        <h6>{{sortSelected}} // {{indexBeer}}</h6>
+        <div class="row ">
 
-        <select id="volume" v-model="volumeSelected">
-          <option
-            v-for="pr in beerSorts[0].price"
-          >
-            {{pr.volume}}
-          </option>
-        </select>
+          <div class="col-sm-3 mt-1">
+              <select id="sort" v-model="sortSelected" >
+                <option disabled value="">Выберите сорт</option>
+                <option
+                  v-for="sort in beerSorts"
+                  @input="indexBeerFind(sortSelected)"
+                >
+                  {{sort.sortName}}
+                </option>
+              </select>
+              <span>{{sortSelected}} // {{indexBeer}}</span>
+          </div>
 
-<!--        <i style="border: black solid 1px "> {{beerSorts[indexBeer].price[indexPrice].cost}} </i> грн.-->
+<!--          <div class="col-sm-2 m-1">-->
+<!--            <select id="vol" placeholder="Выбрать Объем">-->
+<!--              <option disabled value="">Выбрать объем</option>-->
+<!--              <option v-for="vol in beerSorts[indexBeer].price">{{vol.volume}}</option>-->
+<!--            </select>-->
+<!--          </div>-->
 
-<!--        <input id="quantity" style="width: 50px; height: 20px" type="number" v-model="quantity">шт.-->
+          <div class="col-sm-2 m-1">
+            <span style="border: black solid 1px "> {{100}} грн.</span>
+          </div>
 
-<!--        <b style="border: black solid 2px ">{{this.sumBottles}}</b>-->
+          <div class="col-sm-2 m-1">
+            <input id="quantity" style="width: 50px; height: 20px" type="number" v-model="quantity">шт.
+          </div>
 
+          <div class="col-sm-2 m-1">
+            <b style="border: black solid 2px ">{{100}} грн.</b>
+          </div>
 <!--        <button id="delletPosition" @click="deletePosition"></button>-->
+
+
       </div>
 
 
 
 
+    </div>
 
-<!--      <div id="total">-->
-<!--        <button id="addPosition" @click="addPosition">Добавить</button>-->
-
-<!--&lt;!&ndash;              <strong>{{sum()}}</strong>&ndash;&gt;-->
-<!--      </div>-->
     </div>
 </template>
 
@@ -43,10 +51,10 @@
     export default {
       data() {
         return {
-          sortSelected: {},
+          sortSelected: '',
           volumeSelected: null,
-          // indexBeer: indexBeerFind(this.beerSorts, this.sortSelected),
-          // indexPrice: this.indexVolumeFind(this.beerSorts[this.indexBeer].price, this.volumeSelected),
+          indexBeer: null,
+          indexPrice: null,
           quantity: 0,
           sum: 0,
           beerSorts:[
@@ -118,7 +126,7 @@
             },
 
             {
-              sortName: 'Black Eyed King Imp Vietnamese Coffee Edition',
+              sortName: 'Black Eyed King',
               origin: 'Aberdeenshire, Scotland',
               alcohol: '12.7%',
               price: [
@@ -157,12 +165,7 @@
 
       watch: {
 
-        indexBeerFind(mas, value) {
-          for (var i=0; i<mas.length; i++){
-            console.log(mas[i], this.sortSelected)
-            if(mas[i].name === value) {return i;}
-          }
-        },
+
         //
         // indexVolumeFind(mas, value) {
         //   for (var i=0; i<mas.length; i++){
@@ -176,7 +179,18 @@
       },
 
       methods: {
-
+        indexBeerFind(s) {
+          var sortNames
+          for (var i=0; i<beerSorts.length; i++){
+            sortNames[i] = beerSorts[i].name
+          }
+          console.log(s)
+          return indexBeer = sortNames.indexOf(s)
+          //   if(beerSorts[i].name === sortSelected)
+          //   {return indexBeer = i;}
+          // }
+          // return indexBeer = 'Не найдено'
+        },
 
       }
     }

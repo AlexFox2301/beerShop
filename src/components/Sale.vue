@@ -11,6 +11,7 @@
               class="nav-link ml-2 mr-2"
               tag="button"
               to="/sale/order"
+              @click="newOrder"
             >
               Добавить заказ
               <span class="sr-only">(current)</span>
@@ -38,7 +39,15 @@
       </nav>
 
       <hr>
-      <router-view></router-view>
+      <router-view v-for="j in quantityPosition"></router-view>
+
+      <hr>
+      <div id="total">
+        <button id="addPosition" @click="quantityPosition++">Добавить</button>
+        <button id="delPosition" @click="quantityPosition--">Удалить</button>
+
+        <!--              <strong>{{sum()}}</strong>-->
+      </div>
 
 
     </div>
@@ -48,11 +57,21 @@
     import index from "../router";
 
     export default {
-        name: "Sale",
+        // name: "Sale",
 
-
+      data () {
+        return {
+          quantityPosition: 1,
+        }
+      },
 
       methods: {
+
+          newOrder() {
+            var order
+
+          },
+
          addToDB(){},
       }
     }
