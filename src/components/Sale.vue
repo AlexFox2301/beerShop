@@ -1,144 +1,59 @@
 <template>
     <div class="container">
-      <h1>ПРОДАНО</h1>
+      <h1>ПРОДАЖИ</h1>
 
-<!--      <label for="sort">Сорт пива</label>-->
-      <select id="sort" content="Сорт пива">
-        <option
-          v-for="sort in beerSorts"
-          v-model="sortSelected=sort"
-          >
-          {{sort.sortName}}
-        </option>
-      </select>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-     <i> {{sortSelected.alcohol}} </i>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
 
-<!--      <label for="volum">Объем</label>-->
-      <select id="volume">
-        <option
-        v-for="pr in sortSelected.price"
-        v-model="volumeSelected = pr.volume">
-          {{pr.volume}}
-        </option>
-      </select>
+            <router-link
+              class="nav-link ml-2 mr-2"
+              tag="button"
+              to="/sale/order"
+            >
+              Добавить заказ
+              <span class="sr-only">(current)</span>
+            </router-link>
 
-      <i> {{sortSelected.price.}} </i>
+            <button
+              class="nav-link ml-2 mr-2"
+              active-class="active"
+              @click="addToDB"
+            >
+              Оформить заказ
+              <span class="sr-only">(current)</span>
+            </button>
+
+            <button
+              class="nav-link ml-2 mr-2"
+              active-class="active"
+            >
+              Закрыть
+              <span class="sr-only">(current)</span>
+            </button>
+
+          </ul>
+        </div>
+      </nav>
+
+      <hr>
+      <router-view></router-view>
+
 
     </div>
 </template>
 
 <script>
+    import index from "../router";
+
     export default {
         name: "Sale",
 
-      data() {
-          return {
-            sortSelected: {},
-            volumeSelected: 0,
-            beerSorts:[
-              {
-                sortName: 'Papaya Rye',
-                origin: 'Spain, Barselona',
-                alcohol: '9%',
-                price: [
-                  {volume: '0.25 L', cost: 50},
-                  {volume: '0.33 L', cost: 75},
-                  {volume: '0.5 L', cost: 100}
-                ]
-              },
-
-              {
-                sortName: 'Viaemilia',
-                origin: 'Italia, Parma',
-                alcohol: '5%',
-                price: [
-                  {volume: '0.25 L', cost: 50},
-                  {volume: '0.33 L', cost: 75},
-                  {volume: '0.5 L', cost: 100}
-                ]
-              },
-
-              {
-                sortName: 'Brio',
-                origin: 'Iceland, Reykjavik',
-                alcohol: '4.5%',
-                price: [
-                  {volume: '0.25 L', cost: 50},
-                  {volume: '0.33 L', cost: 75},
-                  {volume: '0.5 L', cost: 100}
-                ]
-              },
-
-              {
-                sortName: 'Galaxy IPA',
-                origin: 'Brooklyn',
-                alcohol: '6.5%',
-                price: [
-                  {volume: '0.25 L', cost: 50},
-                  {volume: '0.33 L', cost: 75},
-                  {volume: '0.5 L', cost: 100}
-                ]
-              },
-
-              {
-                sortName: 'Nøgne Ø Porter',
-                origin: 'Norway, Grimstad',
-                alcohol: '7%',
-                price: [
-                  {volume: '0.25 L', cost: 50},
-                  {volume: '0.33 L', cost: 75},
-                  {volume: '0.5 L', cost: 100}
-                ]
-              },
-
-              {
-                sortName: 'ManBearPig',
-                origin: 'Meadville, PA',
-                alcohol: '14.1%',
-                price: [
-                  {volume: '0.25 L', cost: 50},
-                  {volume: '0.33 L', cost: 75},
-                  {volume: '0.5 L', cost: 100}
-                ]
-              },
-
-              {
-                sortName: 'Black Eyed King Imp Vietnamese Coffee Edition',
-                origin: 'Aberdeenshire, Scotland',
-                alcohol: '12.7%',
-                price: [
-                  {volume: '0.25 L', cost: 50},
-                  {volume: '0.33 L', cost: 75},
-                  {volume: '0.5 L', cost: 100}
-                ]
-              },
-
-              {
-                sortName: 'Breakside IPA',
-                origin: 'Portland, Oregon',
-                alcohol: '6.4%',
-                price: [
-                  {volume: '0.25 L', cost: 50},
-                  {volume: '0.33 L', cost: 75},
-                  {volume: '0.5 L', cost: 100}
-                ]
-              },
-
-              {
-                sortName: 'Lambo Door',
-                origin: 'Brooklyn',
-                alcohol: '8%',
-                price: [
-                  {volume: '0.25 L', cost: 50},
-                  {volume: '0.33 L', cost: 75},
-                  {volume: '0.5 L', cost: 100}
-                ]
-              },
 
 
-            ]
-          }
+      methods: {
+         addToDB(){},
       }
     }
 </script>

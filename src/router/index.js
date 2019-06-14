@@ -5,6 +5,7 @@ import Bottle from '../components/Bottle'
 import Sale from "../components/Sale";
 import Supply from "../components/Supply";
 import Report from "../components/Report";
+import Order from "../components/Order";
 
 Vue.use(VueRouter)
 
@@ -18,7 +19,13 @@ export default new Router({
     {
       path: '/sale',
       name: 'Sale',
-      component: Sale
+      component: Sale,
+      children:[
+        {
+          path:'order',
+          component: Order
+        }
+      ]
     },
     {
       path: '/supply',
