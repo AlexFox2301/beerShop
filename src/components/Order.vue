@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
       <div id="position" style="border: blue solid 1px">
         <div class="row ">
 
@@ -8,12 +8,13 @@
                 <option disabled value="">Выберите сорт</option>
                 <option
                   v-for="sort in beerSorts"
-                  @input="indexBeerFind(sortSelected)"
+                  v-bind:key="sort.id"
+
                 >
                   {{sort.sortName}}
                 </option>
               </select>
-              <span>{{sortSelected}} // {{indexBeer}}</span>
+              <span>{{sortSelected}} // {{id}}</span>
           </div>
 
 <!--          <div class="col-sm-2 m-1">-->
@@ -58,40 +59,6 @@
           quantity: 0,
           sum: 0,
           beerSorts:[
-            {
-              sortName: 'Papaya Rye',
-              origin: 'Spain, Barselona',
-              alcohol: '9%',
-              price: [
-                {volume: '0.25 L', cost: 50},
-                {volume: '0.33 L', cost: 75},
-                {volume: '0.5 L', cost: 100}
-              ]
-            },
-
-            {
-              sortName: 'Viaemilia',
-              origin: 'Italia, Parma',
-              alcohol: '5%',
-              price: [
-                {volume: '0.25 L', cost: 50},
-                {volume: '0.33 L', cost: 75},
-                {volume: '0.5 L', cost: 100},
-                {volume: '1 L', cost: 200},
-              ]
-            },
-
-            {
-              sortName: 'Brio',
-              origin: 'Iceland, Reykjavik',
-              alcohol: '4.5%',
-              price: [
-                {volume: '0.25 L', cost: 50},
-                {volume: '0.33 L', cost: 75},
-                {volume: '0.5 L', cost: 100}
-              ]
-            },
-
             {
               sortName: 'Galaxy IPA',
               origin: 'Brooklyn',
@@ -164,6 +131,14 @@
       },
 
       watch: {
+        beerSort: function () {
+          var sortNames
+          for (var i=0; i<this.beerSorts.length; i++){
+            sortNames[i] = this.beerSorts[i].name
+          }
+          console.log(s)
+          return this.indexBeer = sortNames.indexOf(s)
+        }
 
 
         //
@@ -180,12 +155,7 @@
 
       methods: {
         indexBeerFind(s) {
-          var sortNames
-          for (var i=0; i<beerSorts.length; i++){
-            sortNames[i] = beerSorts[i].name
-          }
-          console.log(s)
-          return indexBeer = sortNames.indexOf(s)
+
           //   if(beerSorts[i].name === sortSelected)
           //   {return indexBeer = i;}
           // }

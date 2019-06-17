@@ -1,0 +1,73 @@
+{
+  "beers": [
+    {
+      "sortName": "Papaya Rye",
+      "origin": "Spain, Barselona",
+      "alcohol": "9%",
+      "price": [
+        {
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 0
+        },
+        {
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": 0
+        }
+      ],
+      "id": 1
+    },
+    {
+      "sortName": "Viaemilia",
+      "origin": "Italia, Parma",
+      "alcohol": "5%",
+      "price": [
+        {
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 0
+        },
+        {
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": 0
+        },
+        {
+          "volume": 0.5,
+          "cost": 100,
+          "quantity": 0
+        },
+        {
+          "volume": 1,
+          "cost": 200,
+          "quantity": 0
+        }
+      ],
+      "id": 2
+    },
+    {
+      "sortName": "Brio",
+      "origin": "Iceland, Reykjavik",
+      "alcohol": "4.5%",
+      "price": [
+        {
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 0
+        },
+        {
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": 0
+        },
+        {
+          "volume": 0.5,
+          "cost": 100,
+          "quantity": 0
+        }
+      ],
+      "id": 3
+    }
+  ]
+}

@@ -10,6 +10,7 @@
             <router-link
               class="nav-link ml-2 mr-2"
               tag="button"
+              active-class="active"
               to="/sale/order"
               @click="newOrder"
             >
@@ -54,8 +55,6 @@
 </template>
 
 <script>
-    import index from "../router";
-
     export default {
         // name: "Sale",
 

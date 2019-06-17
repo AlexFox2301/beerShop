@@ -6,6 +6,9 @@ import Sale from "../components/Sale";
 import Supply from "../components/Supply";
 import Report from "../components/Report";
 import Order from "../components/Order";
+import ListBeers from "../components/ListBeers"
+import AddNewSort from "../components/AddNewSort"
+import SupplyBeer from "../components/SupplyBeer"
 
 Vue.use(VueRouter)
 
@@ -30,7 +33,21 @@ export default new Router({
     {
       path: '/supply',
       name: 'Supply',
-      component: Supply
+      component: Supply,
+      children:[
+        {
+          path: 'list_beers',
+          component: ListBeers
+        },
+        {
+          path: 'add_new_sort',
+          component: AddNewSort
+        },
+        {
+          path: 'supply_beer',
+          component: SupplyBeer
+        }
+      ]
     },
     {
       path: '/report',
