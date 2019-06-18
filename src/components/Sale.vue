@@ -40,15 +40,10 @@
       </nav>
 
       <hr>
-      <router-view v-for="j in quantityPosition"></router-view>
+      <router-view></router-view>
 
       <hr>
-      <div id="total">
-        <button id="addPosition" @click="quantityPosition++">Добавить</button>
-        <button id="delPosition" @click="quantityPosition--">Удалить</button>
 
-        <!--              <strong>{{sum()}}</strong>-->
-      </div>
 
 
     </div>
@@ -60,7 +55,7 @@
 
       data () {
         return {
-          quantityPosition: 1,
+
         }
       },
 

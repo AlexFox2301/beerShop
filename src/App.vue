@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="row float-right">
-      <div class="col-sm-3 mr-5" style="color: darkgray">{{'user'}}</div>
+      <div class="col-sm-3 mr-5" style="color: darkgray">{{user.name}}</div>
     </div>
 
     <h1>Бутыль пива</h1>
@@ -11,7 +11,7 @@
 <!--      clock();-->
 <!--    </script>-->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" v-if="activeNav">
 
       <router-link
         class="nav-link"
@@ -83,31 +83,25 @@
 
 <script>
 export default {
-  // clock() {
-  //   var d = new Date();
-  //   var month_num = d.getMonth()
-  //   var day = d.getDate();
-  //   var hours = d.getHours();
-  //   var minutes = d.getMinutes();
-  //   var seconds = d.getSeconds();
-  //
-  //   month=new Array("января", "февраля", "марта", "апреля", "мая", "июня",
-  //     "июля", "августа", "сентября", "октября", "ноября", "декабря");
-  //
-  //   if (day <= 9) day = "0" + day;
-  //   if (hours <= 9) hours = "0" + hours;
-  //   if (minutes <= 9) minutes = "0" + minutes;
-  //   if (seconds <= 9) seconds = "0" + seconds;
-  //
-  //   date_time = "Сегодня - " + day + " " + month[month_num] + " " + d.getFullYear() +
-  //     " г.&nbsp;&nbsp;&nbsp;Текущее время - "+ hours + ":" + minutes + ":" + seconds;
-  //   if (document.layers) {
-  //     document.layers.doc_time.document.write(date_time);
-  //     document.layers.doc_time.document.close();
-  //   }
-  //   else document.getElementById("doc_time").innerHTML = date_time;
-  //   setTimeout("clock()", 1000);
-  // }
+  // props: ['user', 'activeNav'],
+
+  data(){
+    return{
+      user: {},
+      activeNav: false
+    }
+},
+
+  created() {
+    this.$root.$on('user', (user) =>
+    {
+      this.user = user
+    })
+    this.$root.$on('activeNav', (activeNav) => {
+      this.activeNav = activeNav
+  })
+}
+
 }
 </script>
 

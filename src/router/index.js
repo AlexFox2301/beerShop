@@ -19,7 +19,8 @@ export default new Router({
     {
       path: '/',
       name: 'Entry',
-      component: Entry
+      component: Entry,
+      props: true
     },
 
     {

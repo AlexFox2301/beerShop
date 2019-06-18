@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="col-1">
-        <button class="btn btn-success btn-sm" @click="deletePosition(beer)">Удалить</button>
+        <button class="btn btn-success btn-sm" @click="deletePosition(beer, key)">Удалить</button>
         {{beer.id}}
       </div>
 
@@ -61,8 +61,8 @@
 
       methods:{
 
-          deletePosition(beer){
-            this.resource.remove(beer.id).then(responce => responce.json())
+          deletePosition(beer, id){
+            this.resource.remove(beer, id).then(responce => responce.json())
               .then(console.log('end'))
           }
       },

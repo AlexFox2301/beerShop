@@ -39,21 +39,37 @@
             login: '',
             password: '',
 
+            user: {},
+
+            activeNav: false,
+
             workers: []
           }
       },
 
       methods:{
-          loginCheck(){
+
+          loginCheck () {
             this.resource.get().then(responce => responce.json())
               .then(workers => this.workers = workers)
-            
-            if (this.workers.login !== this.login) 
-              {
-                alert('Данный логин не зарегистрирован в системе')
-              }
-            if (this) 
 
+            for (var i=0; i<this.workers.length; ++i) {
+              console.log(this.workers[i].login + ' ' + this.workers[i].password + ' ' + this.workers[i].name + ' ' + this.workers[i].phone)
+              console.log(this.login + ' ' + this.password)
+            if (this.workers[i].login !== this.login)
+              {
+                continue
+              }
+            if (this.workers[i].password === this.password)
+              {console.log('dont exit')
+                this.activeNav = true
+                this.user = this.workers[i]
+                this.$root.$emit('user', null)
+                this.$root.$emit('activeNav', false)
+                return this.workers[i]
+              }
+          }
+            // alert('Неверно введенный логин или пароль')
           }
       },
 
