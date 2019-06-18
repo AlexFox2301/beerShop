@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="col-1">
-        <button class="btn btn-success btn-sm" @click="deletePosition(beer.id)">Удалить</button>
+        <button class="btn btn-success btn-sm" @click="deletePosition(beer)">Удалить</button>
         {{beer.id}}
       </div>
 
@@ -53,21 +53,20 @@
       },
 
       watch:{
-
+        beers: function () {
+          // this.resource.get().then(responce => responce.json())
+          //   .then(beers => this.beers = beers)
+        }
       },
 
       methods:{
 
-          // loadBeers(){
-          //   this.resource.get().then(responce => responce.json())
-          //     .then(beers => this.beers = beers)
-          // },
-
-          deletePosition(id){
-            this.resource.remove({id: id}).then(responce => responce.json())
-              .then(console.log(id))
+          deletePosition(beer){
+            this.resource.remove(beer.id).then(responce => responce.json())
+              .then(console.log('end'))
           }
       },
+
       created() {
         this.resource = this.$resource('beers'),
           this.resource.get().then(responce => responce.json())

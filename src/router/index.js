@@ -9,13 +9,21 @@ import Order from "../components/Order";
 import ListBeers from "../components/ListBeers"
 import AddNewSort from "../components/AddNewSort"
 import SupplyBeer from "../components/SupplyBeer"
+import Entry from "../components/Entry";
 
 Vue.use(VueRouter)
 
 export default new Router({
   routes: [
+
     {
       path: '/',
+      name: 'Entry',
+      component: Entry
+    },
+
+    {
+      path: '/bottle',
       name: 'Bottle',
       component: Bottle
     },

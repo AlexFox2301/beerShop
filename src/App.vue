@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <div class="row float-right">
+      <div class="col-sm-3 mr-5" style="color: darkgray">{{'user'}}</div>
+    </div>
+
     <h1>Бутыль пива</h1>
 
 <!--    <span id="doc_time"></span>-->
@@ -14,7 +18,7 @@
         tag="li"
         exact
         active-class="active"
-        to="/"
+        to="/bottle"
       >
         Бутыль
         <span class="sr-only">(current)</span>
