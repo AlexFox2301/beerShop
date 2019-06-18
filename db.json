@@ -68,6 +68,88 @@
         }
       ],
       "id": 3
+    },
+    {
+      "sortName": "Galaxy IPA",
+      "origin": "Brooklyn",
+      "alcohol": "6.5%",
+      "price": [
+        {
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 0
+        },
+        {
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": 0
+        },
+        {
+          "volume": 0.5,
+          "cost": 100,
+          "quantity": 0
+        }
+      ],
+      "id": 4
+    },
+    {
+      "sortName": "Nøgne Ø Porter",
+      "origin": "Norway, Grimstad",
+      "alcohol": "7%",
+      "price": [
+        {
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 0
+        },
+        {
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": 0
+        },
+        {
+          "volume": 0.5,
+          "cost": 100,
+          "quantity": 0
+        }
+      ],
+      "id": 5
+    },
+    {
+      "sortName": "ManBearPig",
+      "origin": "Meadville, PA",
+      "alcohol": "14.1%",
+      "price": [
+        {
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 0
+        },
+        {
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": 0
+        },
+        {
+          "volume": 0.5,
+          "cost": 100,
+          "quantity": 0
+        }
+      ],
+      "id": 6
+    },
+    {
+      "sortName": "gxgfh",
+      "origin": "fgxh",
+      "alcohol": "xfgh",
+      "price": [
+        {
+          "volume": 6554,
+          "cost": 6546,
+          "quantity": 0
+        }
+      ],
+      "id": 7
     }
   ]
 }

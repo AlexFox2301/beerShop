@@ -60,39 +60,6 @@
           sum: 0,
           beerSorts:[
             {
-              sortName: 'Galaxy IPA',
-              origin: 'Brooklyn',
-              alcohol: '6.5%',
-              price: [
-                {volume: '0.25 L', cost: 50},
-                {volume: '0.33 L', cost: 75},
-                {volume: '0.5 L', cost: 100}
-              ]
-            },
-
-            {
-              sortName: 'Nøgne Ø Porter',
-              origin: 'Norway, Grimstad',
-              alcohol: '7%',
-              price: [
-                {volume: '0.25 L', cost: 50},
-                {volume: '0.33 L', cost: 75},
-                {volume: '0.5 L', cost: 100}
-              ]
-            },
-
-            {
-              sortName: 'ManBearPig',
-              origin: 'Meadville, PA',
-              alcohol: '14.1%',
-              price: [
-                {volume: '0.25 L', cost: 50},
-                {volume: '0.33 L', cost: 75},
-                {volume: '0.5 L', cost: 100}
-              ]
-            },
-
-            {
               sortName: 'Black Eyed King',
               origin: 'Aberdeenshire, Scotland',
               alcohol: '12.7%',
@@ -154,15 +121,13 @@
       },
 
       methods: {
-        indexBeerFind(s) {
+        // indexBeerFind(s) {
 
           //   if(beerSorts[i].name === sortSelected)
           //   {return indexBeer = i;}
           // }
           // return indexBeer = 'Не найдено'
         },
-
-      }
     }
 </script>
 

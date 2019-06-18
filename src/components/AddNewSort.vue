@@ -128,15 +128,16 @@
 
       methods:{
           addPricePosition(){
-            const pricePositions = {
+            var pricePositions = {
             volume: this.volume,
             cost: this.cost,
-              quantity: this.quantity
+              quantity: this.quantity,
             }
             this.price.push(pricePositions),
 
               this.volume = null,
               this.cost = null
+              // не срабатывает второй раз подряд
           },
 
         addToDB(){

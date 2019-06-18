@@ -18,7 +18,7 @@
 
   </div>
 
-    <div class="row" v-for="beer in beers" :key="beer.id">
+    <div class="row" v-for="beer in beers" :key="beer.id" v-model="beers">
 
       <div class="col-1>">{{beer.id}}</div>
       <div class="col-3 m-1>">{{beer.sortName}}</div>
@@ -32,7 +32,8 @@
         </div>
       </div>
       <div class="col-1">
-        <button class="btn btn-success btn-sm" @click="deletePosition">Удалить</button>
+        <button class="btn btn-success btn-sm" @click="deletePosition(beer.id)">Удалить</button>
+        {{beer.id}}
       </div>
 
     </div>
@@ -46,8 +47,13 @@
 
       data(){
           return{
+            resource: null,
             beers: [],
           }
+      },
+
+      watch:{
+
       },
 
       methods:{
@@ -57,8 +63,9 @@
           //     .then(beers => this.beers = beers)
           // },
 
-          deletePosition(){
-
+          deletePosition(id){
+            this.resource.remove({id: id}).then(responce => responce.json())
+              .then(console.log(id))
           }
       },
       created() {
