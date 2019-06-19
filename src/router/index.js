@@ -1,27 +1,30 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import VueRouter from 'vue-router'
-import Bottle from '../components/Bottle'
+import Vue from 'vue';
+import Router from 'vue-router';
+import VueRouter from 'vue-router';
+import Bottle from '../components/Bottle';
 import Sale from "../components/Sale";
 import Supply from "../components/Supply";
 import Report from "../components/Report";
 import Order from "../components/Order";
-import ListBeers from "../components/ListBeers"
-import AddNewSort from "../components/AddNewSort"
-import SupplyBeer from "../components/SupplyBeer"
+import ListBeers from "../components/ListBeers";
+import AddNewSort from "../components/AddNewSort";
+import SupplyBeer from "../components/SupplyBeer";
 import Entry from "../components/Entry";
 
 Vue.use(VueRouter)
 
+
+
+
 export default new Router({
   routes: [
 
-    {
-      path: '/',
-      name: 'Entry',
-      component: Entry,
-      props: true
-    },
+    // {
+    //   path: '/',
+    //   name: 'Entry',
+    //   component: Entry,
+    //   props: true
+    // },
 
     {
       path: '/bottle',

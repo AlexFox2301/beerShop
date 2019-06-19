@@ -10,13 +10,26 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 Vue.use(VueResource)
 Vue.http.options.root = 'http://localhost:3000/'
-
+// Vue.use(Entry)
+var en = Vue.Entry;
 // Vue.config.productionTip = false
 
 /* eslint-disable no-new */
+
+var eventHub = new Vue ();
+eventHub.$on('activeNav', function (activeNav) {
+
+})
+
 new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+
+  data(){
+    return{
+      eventHub: eventHub
+    }
+  }
 })

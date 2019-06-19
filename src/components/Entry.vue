@@ -1,51 +1,51 @@
 <template>
-    <div class="container">
+<!--    <div class="container">-->
 
-      <div class="form-group">
-        <div class="row justify-content-center align-items-center">
-          <div class="col-sm-2">
-            <label for="login">Логин</label>
-          </div>
+<!--      <div class="form-group">-->
+<!--        <div class="row justify-content-center align-items-center">-->
+<!--          <div class="col-sm-2">-->
+<!--            <label for="login">Логин</label>-->
+<!--          </div>-->
 
-          <div class="col-sm-3">
-            <input id="login" type="text" class="form-control" v-model="login">
-          </div>
-        </div>
-      </div>
+<!--          <div class="col-sm-3">-->
+<!--            <input id="login" type="text" class="form-control" v-model="login">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
 
-      <div class="form-group">
-        <div class="row justify-content-center align-items-center">
-          <div class="col-sm-2">
-            <label for="password">Пароль</label>
-          </div>
+<!--      <div class="form-group">-->
+<!--        <div class="row justify-content-center align-items-center">-->
+<!--          <div class="col-sm-2">-->
+<!--            <label for="password">Пароль</label>-->
+<!--          </div>-->
 
-          <div class="col-sm-3">
-            <input id="password" class="form-control" type="password" v-model="password">
-          </div>
-        </div>
-      </div>
+<!--          <div class="col-sm-3">-->
+<!--            <input id="password" class="form-control" type="password" v-model="password">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
 
-      <button class="btn btn-primary" @click="loginCheck">Войти</button>
+<!--      <button class="btn btn-primary" @click="loginCheck">Войти</button>-->
 
-    </div>
+<!--    </div>-->
 </template>
 
 <script>
     export default {
         name: "Entry",
 
-      data(){
-          return{
-            login: '',
-            password: '',
-
-            user: {},
-
-            activeNav: false,
-
-            workers: []
-          }
-      },
+      // data(){
+      //     return{
+      //       login: '',
+      //       password: '',
+      //
+      //       user: {},
+      //
+      //       activeNav: false,
+      //
+      //       workers: []
+      //     }
+      // },
 
       methods:{
 
@@ -62,16 +62,18 @@
               }
             if (this.workers[i].password === this.password)
               {console.log('dont exit')
-                this.activeNav = true
-                this.user = this.workers[i]
-                this.$root.$emit('user', null)
-                this.$root.$emit('activeNav', false)
-                return this.workers[i]
+                this.activeNav = true;
+                this.user = this.workers[i];
+                alert('Вход выполнен!');
+                this.$router.push('/bottle');
+                return this.workers[i];
               }
           }
             // alert('Неверно введенный логин или пароль')
           }
       },
+
+
 
       created() {
         this.resource = this.$resource('workers')

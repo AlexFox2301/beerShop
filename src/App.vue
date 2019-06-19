@@ -1,17 +1,14 @@
 <template>
   <div id="app">
+
     <div class="row float-right">
-      <div class="col-sm-3 mr-5" style="color: darkgray">{{user.name}}</div>
+      <div class="col-sm-5 mr-5" style="color: darkgray">{{user.name}}</div>
     </div>
 
     <h1>Бутыль пива</h1>
 
-<!--    <span id="doc_time"></span>-->
-<!--    <script type="text/javascript">-->
-<!--      clock();-->
-<!--    </script>-->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" v-if="activeNav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" v-if="!activeNav">
 
       <router-link
         class="nav-link"
@@ -77,30 +74,90 @@
     </nav>
     <hr>
 
+    <div class="container" v-if="activeNav">
+
+      <div class="form-group">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-sm-2">
+            <label for="login">Логин</label>
+          </div>
+
+          <div class="col-sm-3">
+            <input id="login" type="text" class="form-control" v-model="login">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-sm-2">
+            <label for="password">Пароль</label>
+          </div>
+
+          <div class="col-sm-3">
+            <input id="password" class="form-control" type="password" v-model="password">
+          </div>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" @click="loginCheck">Войти</button>
+
+    </div>
+
     <router-view/>
   </div>
 </template>
 
 <script>
 export default {
-  // props: ['user', 'activeNav'],
 
   data(){
     return{
-      user: {},
-      activeNav: false
+      login: '',
+      password: '',
+
+      user: {name:'Гость'},
+
+      activeNav: true,
+
+      workers: []
+
     }
 },
 
+  methods:{
+
+    loginCheck () {
+      this.resource.get().then(responce => responce.json())
+        .then(workers => this.workers = workers)
+
+      for (var i=0; i<this.workers.length; ++i) {
+
+        if (this.workers[i].login !== this.login)
+        {
+          continue;
+        }
+        if (this.workers[i].password === this.password)
+        {
+          this.activeNav = !this.activeNav;
+          this.user = this.workers[i];
+          this.$router.push('/bottle');
+          return this.workers[i];
+        }
+      }
+      // alert('Неверно введенный логин или пароль')
+    }
+  },
+
+
+
   created() {
-    this.$root.$on('user', (user) =>
-    {
-      this.user = user
-    })
-    this.$root.$on('activeNav', (activeNav) => {
-      this.activeNav = activeNav
-  })
-}
+    this.resource = this.$resource('workers')
+  },
+
+
+
+
 
 }
 </script>
