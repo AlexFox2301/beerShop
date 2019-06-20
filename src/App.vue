@@ -1,8 +1,8 @@
 <template>
   <div id="app">
 
-    <div class="row float-right">
-      <div class="col-sm-5 mr-5" style="color: darkgray">{{user.name}}</div>
+    <div class="row">
+      <div class="col-sm-5" style="color: darkgray">{{user.name}}</div>
     </div>
 
     <h1>Бутыль пива</h1>
@@ -163,12 +163,15 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 30px;
-}
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 30px;
+  }
+
+
+
 </style>

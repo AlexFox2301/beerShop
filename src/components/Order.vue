@@ -1,7 +1,7 @@
 <template>
     <div class="container">
 
-      <div style="border: blue solid 1px">
+      <div style="border: gray solid 1px">
         <div class="row ">
 
           <div class="col-sm-3 mt-1">Сорт пива</div>
@@ -13,8 +13,6 @@
           <div class="col-sm-2 m-1">Количество</div>
 
           <div class="col-sm-2 m-1">Сумма</div>
-          <!--        <button id="delletPosition" @click="deletePosition"></button>-->
-
 
         </div>
 
@@ -23,7 +21,7 @@
 
       </div>
 
-      <div id="position" style="border: blue solid 1px" v-for="item in quantityPosition">
+      <div id="position" style="border: gray solid 1px" v-for="item in quantityPosition">
         <div class="row ">
 
           <div class="col-sm-3 mt-1">
@@ -48,7 +46,7 @@
           </div>
 
           <div class="col-sm-2 m-1">
-            <span style="border: black solid 1px "> {{100}} грн.</span>
+            <span> {{100}} грн.</span>
           </div>
 
           <div class="col-sm-2 m-1">
@@ -56,9 +54,9 @@
           </div>
 
           <div class="col-sm-2 m-1">
-            <b style="border: black solid 2px ">{{100}} грн.</b>
+            <strong>{{100}} грн.</strong>
           </div>
-<!--        <button id="delletPosition" @click="deletePosition"></button>-->
+        <button id="deletPosition" class="btn btn-success btn-sm" @click="quantityPosition--">-</button>
 
 
       </div>
@@ -70,8 +68,10 @@
 
       <hr>
       <div id="total">
-        <button id="addPosition" @click="quantityPosition++">Добавить</button>
-        <button id="delPosition" @click="quantityPosition--">Удалить</button>
+<!--        <button id="addPosition" class="btn btn-info" @click="addPositionToOrder">Добавить</button>-->
+        <button id="addPosition" class="btn btn-info" @click="quantityPosition++">Добавить</button>
+        <button id="checkout" class="btn btn-warning" @click="checkout">Оформить</button>
+        <button id="closeOrder" class="btn btn-danger" @click="closeOrder">Закрыть</button>
 
         <!--              <strong>{{sum()}}</strong>-->
       </div>
@@ -129,35 +129,17 @@
       },
 
       watch: {
-        // beerSort: function () {
-        //   var sortNames
-        //   for (var i=0; i<this.beerSorts.length; ++i){
-        //     sortNames[i] = this.beerSorts[i].name
-        //   }
-        //   console.log(s)
-        //   return this.indexBeer = sortNames.indexOf(s)
-        // }
 
-
-        //
-        // indexVolumeFind(mas, value) {
-        //   for (var i=0; i<mas.length; i++){
-        //     if(mas[i] === value) {return i;}
-        //   }
-        // },
-
-        // sumbottles () {
-        //   return  this.sum = this.quantity * this.beerSorts[this.indexBeer].price[indexPrice].cost
-        // }
       },
 
       methods: {
-        // indexBeerFind(s) {
 
-          //   if(beerSorts[i].name === sortSelected)
-          //   {return indexBeer = i;}
-          // }
-          // return indexBeer = 'Не найдено'
+        addPositionToOrder() {},
+
+        checkout(){},
+
+        closeOrder() {}
+
         },
 
       created() {
