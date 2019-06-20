@@ -9,7 +9,9 @@ import Order from "../components/Order";
 import ListBeers from "../components/ListBeers";
 import AddNewSort from "../components/AddNewSort";
 import SupplyBeer from "../components/SupplyBeer";
+import Workers from  '../components/Workers';
 import Entry from "../components/Entry";
+import NewWorker from "../components/NewWorker";
 
 Vue.use(VueRouter)
 
@@ -65,6 +67,17 @@ export default new Router({
       path: '/report',
       name: 'Report',
       component: Report
+    },
+    {
+      path: '/workers',
+      name: 'Workers',
+      component: Workers,
+      children:[
+        {
+          path: '/new_worker',
+          component: NewWorker
+        }
+      ]
     }
 
   ],

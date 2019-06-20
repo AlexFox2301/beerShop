@@ -1,8 +1,8 @@
 <template>
   <div id="app">
 
-    <div class="row">
-      <div class="col-sm-5" style="color: darkgray">{{user.name}}</div>
+    <div class="row float-right">
+      <div class="col-sm-5 mr-5" style="color: darkgray">{{user.name}}</div>
     </div>
 
     <h1>Бутыль пива</h1>
@@ -69,6 +69,17 @@
             <span class="sr-only">(current)</span>
           </router-link>
 
+          <router-link
+            class="nav-link"
+            tag="li"
+            exact
+            active-class="active"
+            to="/workers"
+          >
+            Сотрудники
+            <span class="sr-only">(current)</span>
+          </router-link>
+
         </ul>
       </div>
     </nav>
@@ -104,7 +115,7 @@
 
     </div>
 
-    <router-view/>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -163,15 +174,12 @@ export default {
 </script>
 
 <style>
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 30px;
-  }
-
-
-
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 30px;
+}
 </style>
