@@ -26,7 +26,7 @@
 
     <router-view></router-view>
 
-          <div class="row">
+          <div class="row justify-content-center align-items-center">
 
             <div class="col-1>">ID</div>
             <div class="col-2 m-1>">Имя</div>
@@ -37,12 +37,10 @@
             <div class="col-1 m-1>">Статус</div>
             <div class="col-2 m-1>">Примечание</div>
 
-
-
           </div>
 
-          <div class="row" v-for="worker in workers" :key="worker.id">
-
+          <div class="row justify-content-center align-items-center"
+               v-for="worker in workers" :key="worker.id">
             <div class="col-1>">{{worker.id}}</div>
             <div class="col-2 m-1>">{{worker.name}}</div>
             <div class="col-2 m-1>">{{worker.login}}</div>

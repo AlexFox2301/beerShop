@@ -157,10 +157,10 @@
     {
       "login": "barakuda",
       "password": "123456",
-      "name": "Не пойми кто",
+      "name": "Барак",
       "workerPosition": "Директор",
       "phone": "+38 093 1234567",
-      "address": "-"
+      "address": "Дом"
 
     }
   ]

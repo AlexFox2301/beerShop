@@ -32,7 +32,7 @@
 
 <script>
     export default {
-        name: "Entry",
+        // name: "Entry",
 
       // data(){
       //     return{
@@ -47,37 +47,37 @@
       //     }
       // },
 
-      methods:{
+      // methods:{
+      //
+      //     loginCheck () {
+      //       this.resource.get().then(responce => responce.json())
+      //         .then(workers => this.workers = workers)
+      //
+      //       for (var i=0; i<this.workers.length; ++i) {
+      //         console.log(this.workers[i].login + ' ' + this.workers[i].password + ' ' + this.workers[i].name + ' ' + this.workers[i].phone)
+      //         console.log(this.login + ' ' + this.password)
+      //       if (this.workers[i].login !== this.login)
+      //         {
+      //           continue
+      //         }
+      //       if (this.workers[i].password === this.password)
+      //         {console.log('dont exit')
+      //           this.activeNav = true;
+      //           this.user = this.workers[i];
+      //           alert('Вход выполнен!');
+      //           this.$router.push('/bottle');
+      //           return this.workers[i];
+      //         }
+      //     }
+      //       // alert('Неверно введенный логин или пароль')
+      //     }
+      // },
 
-          loginCheck () {
-            this.resource.get().then(responce => responce.json())
-              .then(workers => this.workers = workers)
-
-            for (var i=0; i<this.workers.length; ++i) {
-              console.log(this.workers[i].login + ' ' + this.workers[i].password + ' ' + this.workers[i].name + ' ' + this.workers[i].phone)
-              console.log(this.login + ' ' + this.password)
-            if (this.workers[i].login !== this.login)
-              {
-                continue
-              }
-            if (this.workers[i].password === this.password)
-              {console.log('dont exit')
-                this.activeNav = true;
-                this.user = this.workers[i];
-                alert('Вход выполнен!');
-                this.$router.push('/bottle');
-                return this.workers[i];
-              }
-          }
-            // alert('Неверно введенный логин или пароль')
-          }
-      },
 
 
-
-      created() {
-        this.resource = this.$resource('workers')
-      },
+      // created() {
+      //   this.resource = this.$resource('workers')
+      // },
     }
 </script>
 

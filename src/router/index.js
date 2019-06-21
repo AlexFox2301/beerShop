@@ -74,7 +74,7 @@ export default new Router({
       component: Workers,
       children:[
         {
-          path: '/new_worker',
+          path: 'new_worker',
           component: NewWorker
         }
       ]

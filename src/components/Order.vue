@@ -2,7 +2,7 @@
     <div class="container">
 
       <div style="border: gray solid 1px">
-        <div class="row ">
+        <div class="row justify-content-center align-items-center">
 
           <div class="col-sm-3 mt-1">Сорт пива</div>
 
