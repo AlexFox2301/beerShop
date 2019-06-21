@@ -11,6 +11,7 @@
           <router-link
             class="nav-link ml-2 mr-2"
             tag="button"
+            exact
             active-class="active"
             to="/workers/new_worker"
           >
@@ -26,29 +27,41 @@
 
     <router-view></router-view>
 
-          <div class="row justify-content-center align-items-center">
+          <div class="row justify-content-center align-items-center" style="background-color: lavender">
 
-            <div class="col-1>">ID</div>
-            <div class="col-2 m-1>">Имя</div>
-            <div class="col-2 m-1>">Login</div>
-            <div class="col-1 m-1>">Должность</div>
-            <div class="col-2 m-1>">Адресс</div>
-            <div class="col-1 m-1>">Телефон</div>
-            <div class="col-1 m-1>">Статус</div>
-            <div class="col-2 m-1>">Примечание</div>
+            <div class="col-1 tab>">ID</div>
+            <div class="col-2 tab">Имя</div>
+            <div class="col-1 tab">Login</div>
+            <div class="col-1 tab">Должность</div>
+            <div class="col-2 tab">Адресс</div>
+            <div class="col-2 tab">Телефон</div>
+            <div class="col-1 tab">Статус</div>
+            <div class="col-2 tab">Примечание</div>
 
           </div>
 
           <div class="row justify-content-center align-items-center"
                v-for="worker in workers" :key="worker.id">
-            <div class="col-1>">{{worker.id}}</div>
-            <div class="col-2 m-1>">{{worker.name}}</div>
-            <div class="col-2 m-1>">{{worker.login}}</div>
-            <div class="col-1 m-1>">{{worker.workerPosition}}</div>
-            <div class="col-2 m-1>">{{worker.address}}</div>
-            <div class="col-1 m-1>">{{worker.phone}}</div>
-            <div class="col-1 m-1>">{{worker.status}}</div>
-            <div class="col-2 m-1>">{{worker.note}}</div>
+            <div class="col-1 tab">{{worker.id}}</div>
+            <div class="col-2 tab ">{{worker.name}}</div>
+            <div class="col-1 tab">{{worker.login}}</div>
+            <div class="col-1 tab ">{{worker.workerPosition}}</div>
+            <div class="col-2 tab ">{{worker.address}}</div>
+            <div class="col-2 tab">{{worker.phone}}</div>
+            <div class="col-1 tab">{{worker.status}}</div>
+            <div class="col-1 tab">{{worker.note}}</div>
+            <div class="col-1">
+              <router-link
+              class="btn btn-success btn-sm"
+              tag="button"
+              exact
+              active-class="active"
+              to="/workers/edit_worker"
+              >
+              Править
+              <span class="sr-only">(current)</span>
+              </router-link>
+            </div>
           </div>
 
 
@@ -80,5 +93,8 @@
 </script>
 
 <style scoped>
-
+.tab {
+  border: solid grey 1px;
+  font-size: 14px;
+}
 </style>

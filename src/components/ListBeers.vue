@@ -32,10 +32,9 @@
         </div>
       </div>
       <div class="col-1">
-        <button class="btn btn-success btn-sm" @click="deletePosition(beer, key)">Удалить</button>
-        {{beer.id}}
+        <button class="btn btn-success btn-sm" @click="deletePosition(beer.id)">Удалить</button>
       </div>
-
+      {{beer.id}}
     </div>
 
   </div>
@@ -61,9 +60,16 @@
 
       methods:{
 
-          deletePosition(beer, id){
-            this.resource.remove(beer, id).then(responce => responce.json())
-              .then(console.log('end'))
+          deletePosition(id){
+            try {
+            this.resource.delete(id).then(responce => responce.json())
+              .then(alert('Прошло'))
+              // this.resource.get().then(responce => responce.json())
+              //   .then(beers => this.beers = beers)
+          }
+          catch (e) {
+            alert('Херня Малята')
+          }
           }
       },
 

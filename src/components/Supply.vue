@@ -11,6 +11,7 @@
             <router-link
               class="nav-link ml-2 mr-2"
               tag="button"
+              exact
               active-class="active"
               to="/supply/list_beers"
             >
@@ -21,6 +22,7 @@
             <router-link
               class="nav-link ml-2 mr-2"
               tag="button"
+              exact
               active-class="active"
               to="/supply/add_new_sort"
             >
@@ -31,6 +33,7 @@
             <router-link
               class="nav-link ml-2 mr-2"
               tag="button"
+              exact
               active-class="active"
               to="/supply/supply_beer"
             >

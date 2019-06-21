@@ -152,16 +152,50 @@
       "id": 7
     }
   ],
-
   "workers": [
     {
+      "name": "Artem",
+      "login": "AlexFox2301",
+      "password": "1425",
+      "workerPosition": "boss",
+      "address": "yavor 24a",
+      "phone": "+380 93 354 0206",
+      "status": "-",
+      "note": "-",
+      "id": 1
+    },
+    {
+      "name": "barka",
       "login": "barakuda",
       "password": "123456",
-      "name": "Барак",
-      "workerPosition": "Директор",
-      "phone": "+38 093 1234567",
-      "address": "Дом"
-
+      "workerPosition": "saler",
+      "address": "home",
+      "phone": "+380931234567",
+      "status": "Работает",
+      "note": "-",
+      "id": 2
+    },
+    {
+      "name": "krill",
+      "login": "gladiy",
+      "password": "123",
+      "workerPosition": "security",
+      "address": "sportsal",
+      "phone": "+38 095 12 54 567",
+      "status": "Работает",
+      "note": "-",
+      "id": 3
+    },
+    {
+      "name": "talanov",
+      "login": "artem",
+      "password": "123",
+      "workerPosition": "boss",
+      "address": "yavor 24a",
+      "phone": "+380 93 354 0206",
+      "status": "Работает",
+      "note": "Учредитель",
+      "id": 4
     }
   ]
 }

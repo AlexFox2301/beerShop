@@ -12,6 +12,7 @@ import SupplyBeer from "../components/SupplyBeer";
 import Workers from  '../components/Workers';
 import Entry from "../components/Entry";
 import NewWorker from "../components/NewWorker";
+import EditWorker from "../components/EditWorker";
 
 Vue.use(VueRouter)
 
@@ -76,6 +77,10 @@ export default new Router({
         {
           path: 'new_worker',
           component: NewWorker
+        },
+        {
+          path: 'edit_worker',
+          component: EditWorker
         }
       ]
     }

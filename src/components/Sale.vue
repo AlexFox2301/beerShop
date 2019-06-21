@@ -10,6 +10,7 @@
             <router-link
               class="nav-link ml-2 mr-2"
               tag="button"
+              exact
               active-class="active"
               to="/sale/order"
               @click="newOrder"
@@ -21,6 +22,7 @@
             <button
               class="nav-link ml-2 mr-2"
               active-class="active"
+              exact
               @click="addToDB"
             >
               Оформить заказ
@@ -29,6 +31,7 @@
 
             <button
               class="nav-link ml-2 mr-2"
+              exact
               active-class="active"
             >
               Закрыть

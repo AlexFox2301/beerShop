@@ -20,8 +20,8 @@
                   <label for="login">login</label>
                 </div>
                 <div class="col-6">
-                  <input id="login" class="form-control" type="text" v-model="login" @input="checkLogin">
-                  <span>{{msgLogin}}</span>
+                  <input id="login" class="form-control" type="text" v-model="login" @change="checkLogin">
+                  <span style="color: red; font-size: 10px">{{msgLog}}</span>
                 </div>
               </div>
             </div>
@@ -43,7 +43,8 @@
                   <label for="confirmPassword">Подтвердить пароль</label>
                 </div>
                 <div class="col-6">
-                  <input id="confirmPassword" class="form-control" type="password" @input="checkConfirmation" v-model="confirmPassword">
+                  <input id="confirmPassword" class="form-control" type="password" @input="checkConfirmationPassword" v-model="confirmPassword">
+                  <span style="color: red; font-size: 10px">{{msgPas}}</span>
                 </div>
               </div>
             </div>
@@ -76,7 +77,7 @@
                   <label for="phone">Телефон</label>
                 </div>
                 <div class="col-6">
-                  <input id="phone" class="form-control" type="tel" v-model="phone">
+                  <input id="phone" class="form-control" type="text" v-model="phone">
                 </div>
               </div>
             </div>
@@ -89,8 +90,8 @@
                 <div class="col-6">
 <!--                  <input id="status" class="form-control" type="tel" v-model="status">-->
                   <select id="status" v-model="status">
-                    <option>Работает</option>
-                    <option>Уволен</option>
+                    <option v-for="stat in statusArrey">{{stat}}</option>
+
                   </select>
                 </div>
               </div>
@@ -113,6 +114,8 @@
           <div class="col-2">
             <button id="addToDB" class="btn btn-primary" @click="addWorkerToDB" ref="/workers">Внести в базу</button>
 
+            <strong style="color: red; font-size: 14px">{{msgTotal}}</strong>
+
 <!--            <router-link-->
 <!--              tag="button"-->
 <!--              class="btn btn-primary"-->
@@ -133,6 +136,11 @@
       data() {
           return{
             resource: null,
+            statusArrey: [
+              'Стажировка',
+              'Работает',
+              'уволен'
+            ],
 
             name: '',
             login: '',
@@ -140,24 +148,52 @@
             workerPosition: '',
             address: '',
             phone: '',
-            status: '',
-            note: '',
+            status: '-',
+            note: '-',
 
             msgLogin: '',
-            confirmPassword: ''
+            confirmPassword: '',
+            workers:[],
+            checkedLogin: false,
+            checkedPassword: false,
+            msgLog: '',
+            msgPas: '',
+            msgTotal: ''
           }
       },
 
       methods: {
 
         checkLogin() {
+
+          for (var i=0; i<this.workers.length; i++) {
+            if (this.workers[i].login === this.login) {
+              this.checkedLogin = false;
+              this.msgLog = 'Данный Логин уже зарегестрирован в системе. Выберите другой.';
+              return;
+            } else {
+              this.checkedLogin = true;
+              this.msgLog = '';
+              this.msgTotal = ''
+            }
+          }
+
+
         },
 
-        checkConfirmation() {
+        checkConfirmationPassword() {
+          if (this.password === this.confirmPassword) {
+            this.checkedPassword = true;
+            this.msgPas = '';
+            this.msgTotal = ''
+          } else {
+            this.checkedPassword = false;
+            this.msgPas = 'Пароли не совпадают.'
+          }
         },
 
         addWorkerToDB() {
-          const worker = {
+          var worker = {
             name: this.name,
             login: this.login,
             password: this.password,
@@ -168,25 +204,41 @@
             note: this.note
           }
 
-          this.resource = this.$resource('workers'),
-          // this.resource.get().then(responce => responce.json())
-          //   .then(workers => this.workers = workers)
+          if (this.checkedLogin & this.checkedPassword){
+            this.resource = this.$resource('workers'),
+              // this.resource.get().then(responce => responce.json())
+              //   .then(workers => this.workers = workers)
 
-          this.resource.save({}, worker)
+              this.resource.save({}, worker)
 
-          this.name = '',
-          this.login = '',
-          this.password = '',
-          this.workerPosition = '',
-          this.address = '',
-          this.phone = '',
-          this.status = '',
-          this.note = '',
+            this.name = '',
+              this.login = '',
+              this.password = '',
+              this.workerPosition = '',
+              this.address = '',
+              this.phone = '',
+              this.status = '-',
+              this.note = '-',
 
-            this.confirmPassword = ''
+              this.msgTotal = '',
+
+              this.confirmPassword = ''
+
+            this.$router.push('/workers')
+          } else {
+            this.msgTotal = ' Для окончания регистрации нового сотрудника необходимо исправить замечания!'
+          }
+
+
 
 
         }
+      },
+
+      created() {
+        this.resource = this.$resource('workers'),
+          this.resource.get().then(responce => responce.json())
+            .then(workers => this.workers = workers)
       }
 
 
