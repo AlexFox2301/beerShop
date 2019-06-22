@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-      <h1>ПРОДАЖИ</h1>
+      <h3>ПРОДАЖИ</h3>
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
@@ -15,28 +15,28 @@
               to="/sale/order"
               @click="newOrder"
             >
-              Добавить заказ
+              Создать заказ
               <span class="sr-only">(current)</span>
             </router-link>
 
-            <button
-              class="nav-link ml-2 mr-2"
-              active-class="active"
-              exact
-              @click="addToDB"
-            >
-              Оформить заказ
-              <span class="sr-only">(current)</span>
-            </button>
+<!--            <button-->
+<!--              class="nav-link ml-2 mr-2"-->
+<!--              active-class="active"-->
+<!--              exact-->
+<!--              @click="addToDB"-->
+<!--            >-->
+<!--              Оформить заказ-->
+<!--              <span class="sr-only">(current)</span>-->
+<!--            </button>-->
 
-            <button
-              class="nav-link ml-2 mr-2"
-              exact
-              active-class="active"
-            >
-              Закрыть
-              <span class="sr-only">(current)</span>
-            </button>
+<!--            <button-->
+<!--              class="nav-link ml-2 mr-2"-->
+<!--              exact-->
+<!--              active-class="active"-->
+<!--            >-->
+<!--              Закрыть-->
+<!--              <span class="sr-only">(current)</span>-->
+<!--            </button>-->
 
           </ul>
         </div>

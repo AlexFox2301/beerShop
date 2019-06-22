@@ -197,5 +197,31 @@
       "note": "Учредитель",
       "id": 4
     }
+  ],
+  "orders": [
+    {
+      "beerOrder": [
+        {
+          "idSort": 2,
+          "beerSort": "Viaemilia",
+          "volume": 1,
+          "cost": 200,
+          "quantity": "2",
+          "sumPosition": 400
+        },
+        {
+          "idSort": 4,
+          "beerSort": "Galaxy IPA",
+          "volume": 0.5,
+          "cost": 100,
+          "quantity": "3",
+          "sumPosition": 300
+        }
+      ],
+      "sumOrder": 700,
+      "dateOrder": "Sun Jun 23 2019 00:16:00 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": null,
+      "id": 1
+    }
   ]
 }
