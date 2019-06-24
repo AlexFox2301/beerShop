@@ -137,22 +137,6 @@
 
           sortSelected: {},
           volumeSelected: {},
-
-          // count: 0,
-
-          // beers:[
-            // {
-            // {
-            //   sortName: 'Lambo Door',
-            //   origin: 'Brooklyn',
-            //   alcohol: '8%',
-            //   price: [
-            //     {volume: '0.25 L', cost: 50},
-            //     {volume: '0.33 L', cost: 75},
-            //     {volume: '0.5 L', cost: 100}
-            //   ]
-            // },
-          // ]
         }
       },
 
@@ -236,7 +220,9 @@
         // this.resource = this.$resource('orders')
         this.resource = this.$resource('beers'),
           this.resource.get().then(responce => responce.json())
-            .then(beers => this.beers = beers)
+            .then(beers => this.beers = beers);
+
+
       },
     }
 </script>

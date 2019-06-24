@@ -111,7 +111,13 @@
         </div>
       </div>
 
-      <button class="btn btn-primary" @click="loginCheck">Войти</button>
+      <div class="error">
+        <span>{{msgErorLogin}}</span>
+      </div>
+
+      <div>
+        <button class="btn btn-primary" @click="loginCheck">Войти</button>
+      </div>
 
     </div>
 
@@ -131,7 +137,9 @@ export default {
 
       activeNav: true,
 
-      workers: []
+      workers: [],
+
+      msgErorLogin: ''
 
     }
 },
@@ -140,7 +148,7 @@ export default {
 
     loginCheck () {
       this.resource.get().then(responce => responce.json())
-        .then(workers => this.workers = workers)
+        .then(workers => this.workers = workers);
 
       for (var i=0; i<this.workers.length; ++i) {
 
@@ -156,7 +164,8 @@ export default {
           return this.workers[i];
         }
       }
-      // alert('Неверно введенный логин или пароль')
+      this.msgErorLogin = 'Неверно введенный логин или пароль'
+      // alert()
     }
   },
 
@@ -182,4 +191,11 @@ export default {
   color: #2c3e50;
   margin-top: 30px;
 }
+
+  .error {
+    color: red;
+    font-size: 12px;
+    margin: 5px;
+
+  }
 </style>
