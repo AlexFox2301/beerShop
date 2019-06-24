@@ -139,17 +139,70 @@
       "id": 6
     },
     {
-      "sortName": "gxgfh",
-      "origin": "fgxh",
-      "alcohol": "xfgh",
+      "sortName": "Black Eyed King",
+      "origin": "Aberdeenshire, Scotland",
+      "alcohol": "12.7%",
       "price": [
         {
-          "volume": 6554,
-          "cost": 6546,
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 0
+        },
+        {
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": 0
+        },
+        {
+          "volume": 0.5,
+          "cost": 100,
           "quantity": 0
         }
       ],
-      "id": 7
+      "id": 8
+    },
+    {
+      "sortName": "Breakside IPA",
+      "origin": "Portland, Oregon",
+      "alcohol": "6.4%",
+      "price": [
+        {
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 0
+        },
+        {
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": 0
+        },
+        {
+          "volume": 0.5,
+          "cost": 100,
+          "quantity": 0
+        }
+      ],
+      "id": 9
+    },
+    {
+      "sortName": "Lambo Door",
+      "origin": "Brooklyn",
+      "alcohol": "8%",
+      "price": [
+        {
+          "volume": 0.25,
+          "cost": 50
+        },
+        {
+          "volume": 0.33,
+          "cost": 75
+        },
+        {
+          "volume": 0.5,
+          "cost": 100
+        }
+      ],
+      "id": 10
     }
   ],
   "workers": [

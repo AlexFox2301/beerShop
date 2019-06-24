@@ -126,17 +126,31 @@
           }
       },
 
+      watch: {
+
+      },
+
       methods:{
           addPricePosition(){
-            var pricePositions = {
-            volume: this.volume,
-            cost: this.cost,
-              quantity: this.quantity,
+            try {
+              var pricePositions = {
+                volume: this.volume,
+                cost: this.cost,
+                quantity: this.quantity,
+              }
+            } catch (e) {
+              alert('ошибка сoздания позиции');
             }
-            this.price.push(pricePositions),
 
-              this.volume = null,
-              this.cost = null
+            try {
+              this.price.push(pricePositions);
+            }
+            catch (e) {
+              alert('ошибка вставки в массив');
+            }
+
+              this.volume = null;
+              this.cost = null;
               // не срабатывает второй раз подряд
           },
 
@@ -149,10 +163,10 @@
           }
           this.resource.save({}, beer)
 
-            this.sortName = null,
-            this.origin = null,
-            this.alcohol = null,
-            this.price = null
+            this.sortName = null;
+            this.origin = null;
+            this.alcohol = null;
+            this.price = [];
         }
       },
 

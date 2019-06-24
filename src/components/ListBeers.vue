@@ -32,9 +32,9 @@
         </div>
       </div>
       <div class="col-1">
-        <button class="btn btn-success btn-sm" @click="deletePosition(beer.id)">Удалить</button>
+        <button class="btn btn-success btn-sm" @click="deletePosition(beer)">Удалить</button>
       </div>
-      {{beer.id}}
+
     </div>
 
   </div>
@@ -53,24 +53,23 @@
 
       watch:{
         beers: function () {
-          // this.resource.get().then(responce => responce.json())
-          //   .then(beers => this.beers = beers)
+          this.resource.get().then(responce => responce.json())
+            .then(beers => this.beers = beers)
         }
       },
 
       methods:{
 
-          deletePosition(id){
-            try {
-            this.resource.delete(id).then(responce => responce.json())
-              .then(alert('Прошло'))
-              // this.resource.get().then(responce => responce.json())
-              //   .then(beers => this.beers = beers)
+          deletePosition(beer){
+
+              this.$http.delete('http://localhost:3000/beers/' + beer.id)
+                .then(response => {return response.json()}).then(
+                // this.resource.get().then(responce => responce.json())
+                //   .then(beers => this.beers = beers)
+              )
           }
-          catch (e) {
-            alert('Херня Малята')
-          }
-          }
+
+
       },
 
       created() {

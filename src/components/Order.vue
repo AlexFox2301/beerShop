@@ -67,8 +67,8 @@
       </div>
     </div>
 
-      <div id="order" style="border: gray solid 1px" v-for="order in beerOrder" >
-        <div class="row " @load="count++">
+      <div id="order" style="border: gray solid 1px" v-for="(order, count) in beerOrder" >
+        <div class="row ">
 
           <div class="col-sm-3 mt-1">
             <span id="sortInOrder">{{order.beerSort}}</span>
@@ -90,6 +90,7 @@
             <strong>{{order.sumPosition}}</strong><b>грн.</b>
           </div>
           <button id="deletPositionFromOrder" class="btn btn-success btn-sm" @click="deletePosition(count)">-</button>
+          {{count}}
         </div>
 
       </div>
@@ -111,7 +112,7 @@
         <button id="closeOrder" class="btn btn-danger" @click="closeOrder">Закрыть</button>
 
       </div><hr>
-      {{sortSelected.id}} / {{sortSelected.sortName}} / {{volumeSelected.volume}} / {{volumeSelected.cost}} / {{quantity}}<hr>
+      {{sortSelected.id}} / {{sortSelected.sortName}} / {{volumeSelected.volume}} / {{volumeSelected.cost}} / {{quantity}}
 {{beerOrder}}
     </div>
 </template>
@@ -137,31 +138,10 @@
           sortSelected: {},
           volumeSelected: {},
 
-          count: 0,
+          // count: 0,
 
           // beers:[
             // {
-            //   sortName: 'Black Eyed King',
-            //   origin: 'Aberdeenshire, Scotland',
-            //   alcohol: '12.7%',
-            //   price: [
-            //     {volume: '0.25 L', cost: 50},
-            //     {volume: '0.33 L', cost: 75},
-            //     {volume: '0.5 L', cost: 100}
-            //   ]
-            // },
-            //
-            // {
-            //   sortName: 'Breakside IPA',
-            //   origin: 'Portland, Oregon',
-            //   alcohol: '6.4%',
-            //   price: [
-            //     {volume: '0.25 L', cost: 50},
-            //     {volume: '0.33 L', cost: 75},
-            //     {volume: '0.5 L', cost: 100}
-            //   ]
-            // },
-            //
             // {
             //   sortName: 'Lambo Door',
             //   origin: 'Brooklyn',
@@ -245,7 +225,10 @@
 
         },
 
-        closeOrder() {}
+        closeOrder() {
+          this.beerOrder = [];
+          this.sumOrder = 0;
+        }
 
         },
 
