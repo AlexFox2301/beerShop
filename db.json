@@ -275,9 +275,115 @@
       "dateOrder": "Sun Jun 23 2019 00:16:00 GMT+0300 (Восточная Европа, летнее время)",
       "worker": null,
       "id": 1
+    },
+    {
+      "beerOrder": [
+        {
+          "idSort": 2,
+          "beerSort": "Viaemilia",
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": "2",
+          "sumPosition": 150
+        }
+      ],
+      "sumOrder": 150,
+      "dateOrder": "Tue Jun 25 2019 10:52:13 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": null,
+      "id": 2
+    },
+    {
+      "beerOrder": [
+        {
+          "idSort": 2,
+          "beerSort": "Viaemilia",
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": "2",
+          "sumPosition": 150
+        }
+      ],
+      "sumOrder": 150,
+      "dateOrder": "Tue Jun 25 2019 10:53:13 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": null,
+      "id": 3
     }
   ],
-  "supplus": [
-    {}
+  "supplies": [
+    {
+      "supplySort": [
+        {
+          "idSort": null,
+          "sortName": "-",
+          "price": {
+            "volume": "-",
+            "cost": null,
+            "quantity": null
+          }
+        }
+      ],
+      "dateSupply": null,
+      "worker": "-",
+      "provider": "-",
+      "id": 1
+    },
+    {
+      "supply": [
+        {
+          "idSort": 1,
+          "sortName": "Papaya Rye",
+          "price": {
+            "volume": 0.25,
+            "cost": 50,
+            "quantity": 0
+          }
+        }
+      ],
+      "dateSupply": "Tue Jun 25 2019 12:44:25 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": null,
+      "provider": null,
+      "id": 2
+    },
+    {
+      "supply": [],
+      "dateSupply": "Tue Jun 25 2019 12:44:32 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": null,
+      "provider": null,
+      "id": 3
+    },
+    {
+      "supply": [
+        {
+          "idSort": 2,
+          "sortName": "Viaemilia",
+          "price": {
+            "volume": 0.33,
+            "cost": 75,
+            "quantity": 0
+          }
+        }
+      ],
+      "dateSupply": "Tue Jun 25 2019 12:47:43 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": null,
+      "provider": null,
+      "id": 4
+    },
+    {
+      "supply": [
+        {
+          "idSort": 2,
+          "sortName": "Viaemilia",
+          "price": {
+            "volume": 0.33,
+            "cost": 75,
+            "quantity": 0
+          }
+        }
+      ],
+      "dateSupply": "Tue Jun 25 2019 12:48:29 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": null,
+      "provider": null,
+      "id": 5
+    }
   ]
 }

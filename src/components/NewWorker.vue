@@ -115,14 +115,6 @@
             <button id="addToDB" class="btn btn-primary" @click="addWorkerToDB" ref="/workers">Внести в базу</button>
 
             <strong style="color: red; font-size: 14px">{{msgTotal}}</strong>
-
-<!--            <router-link-->
-<!--              tag="button"-->
-<!--              class="btn btn-primary"-->
-<!--              @click="addWorkerToDB"-->
-<!--            >-->
-<!--              Внести в базу-->
-<!--            </router-link>-->
           </div>
         </div>
 

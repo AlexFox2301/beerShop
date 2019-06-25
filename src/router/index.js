@@ -67,7 +67,8 @@ export default new Router({
     {
       path: '/report',
       name: 'Report',
-      component: Report
+      component: Report,
+      children: []
     },
     {
       path: '/workers',

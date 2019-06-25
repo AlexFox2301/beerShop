@@ -1,7 +1,7 @@
 <template>
   <div class="container">
 
-    <div class="row position">
+    <div id="head" class="row position">
 
       <div class="col-sm-0.5">
         <button class="bat btn-sm" disabled>+</button>
@@ -30,7 +30,7 @@
 
     </div>
 
-    <div class="row position">
+    <div id="position" class="row position">
 
       <div class="col-sm-0.5">
         <button class="bat btn-sm btn-success" @click="addNewPosition">+</button>
@@ -75,7 +75,7 @@
 
     </div>
 
-    <div class="row position" v-for="(sup, count) in supply">
+    <div id="supply" class="row position" v-for="(sup, count) in supply">
 
       <div class="col-sm-0.5">
         <button class="bat btn-sm btn-danger" @click="deletePosition(count)">-</button>
@@ -113,7 +113,7 @@
       <button class="bat btn-info" style="margin: 10px" @click="addSupplyToDB">Внести в БД</button>
     </div>
     <hr>
-    {{supply}} / {{supplys}}
+    {{supply}} / {{supplies}}
   </div>
 </template>
 
@@ -123,7 +123,12 @@
 
       data() {
         return{
+          resource: null,
+
           beers: [],
+          supplies: [],
+
+          supplyToDB: {},
 
           // supplyPosition:
           supplySort: {},//Позиция сорта пива и номинал бутылки текущей поставки
@@ -135,10 +140,17 @@
           idSort: 0,
 
           supply: [],//текущая поставка, состоящая из массива объектов supplySort
-          supplys: []
+
 
 
         }
+      },
+
+      watch: {
+        // supplies(){
+        //   this.$http.get('http://localhost:3000/supplies')
+        //     .then(response => {return response.json()}).then(supplies => this.supplies = supplies)
+        // }
       },
 
       methods: {
@@ -152,6 +164,7 @@
           }
 
           const supplyPosition = {
+            idSort: this.supplySort.id,
             sortName: this.supplySort.sortName,
             price: this.supplyPrice,
           }
@@ -168,23 +181,37 @@
         },
 
         addSupplyToDB(){
-          this.supplyToDB = {
-            supply: this.supply,
-            dateSupply: Date(),
-            worker: this.worker
-          }
+            const supplyToDB = {
+              supply: this.supply,
+              dateSupply: Date(),
+              worker: null,
+              provider: null
+            };
+          // try {
+            // this.$http.post('http://localhost:3000/supplies', supplyToDB)
+            //   .then(response => {return response.json()}).then(supplies => this.supplies = supplies)
+            this.resource = this.$resource('supplies')
+            this.resource.save({}, supplyToDB);
+          // }catch (e) {
+          //   alert('ошибка вставки в базу');
+          // }
 
-          this.$http.post('http://localhost:3000/supplys', this.supply)
-            .then(response => {return response.json()}).then()
-
-          this.supply = []
+          // this.supplyToDB = [];
+          this.supply = [];
         },
       },
 
       created() {
-        this.resource = this.$resource('supplys'),
+        // this.resource = this.$resource('beers'),
+        this.resource = this.$resource('supplies'),
+          // this.resource.get().then(responce => responce.json())
+          //   .then(beers => this.beers = beers);
+
           this.resource.get().then(responce => responce.json())
-            .then(supplys => this.supplys = supplys)
+            .then(supplies => this.supplies = supplies)
+
+        // this.$http.get('http://localhost:3000/supplies')
+        //   .then(response => {return response.json()}).then(supplies => this.supplies = supplies)
 
         this.$http.get('http://localhost:3000/beers')
           .then(response => {return response.json()}).then(beers => this.beers = beers)

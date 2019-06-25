@@ -111,9 +111,10 @@
         <button id="checkout" class="btn btn-warning" @click="checkout">Оформить</button>
         <button id="closeOrder" class="btn btn-danger" @click="closeOrder">Закрыть</button>
 
-      </div><hr>
-      {{sortSelected.id}} / {{sortSelected.sortName}} / {{volumeSelected.volume}} / {{volumeSelected.cost}} / {{quantity}}
-{{beerOrder}}
+      </div>
+      <hr>
+<!--      {{sortSelected.id}} / {{sortSelected.sortName}} / {{volumeSelected.volume}} / {{volumeSelected.cost}} / {{quantity}}-->
+<!--{{beerOrder}}-->
     </div>
 </template>
 
@@ -121,6 +122,7 @@
     export default {
       data() {
         return {
+          // resource: null,
 
           beerOrder: [],//массив заказаных позиций пива
             beerSort: '',//выбранный сорт пива в массиве beerOrder
@@ -188,7 +190,7 @@
 
         },
 
-        addPositionToOrder() {},
+        // addPositionToOrder() {},
 
         checkout(){
           const order = {
