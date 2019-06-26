@@ -112,7 +112,7 @@
         <button id="closeOrder" class="btn btn-danger" @click="closeOrder">Закрыть</button>
 
       </div>
-      <hr>
+
 <!--      {{sortSelected.id}} / {{sortSelected.sortName}} / {{volumeSelected.volume}} / {{volumeSelected.cost}} / {{quantity}}-->
 <!--{{beerOrder}}-->
     </div>

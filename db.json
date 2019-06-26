@@ -249,6 +249,17 @@
       "status": "Работает",
       "note": "Учредитель",
       "id": 4
+    },
+    {
+      "name": "Хрыч",
+      "login": "hrych",
+      "password": "12",
+      "workerPosition": "грузчик",
+      "address": "улица",
+      "phone": "-",
+      "status": "уволен",
+      "note": "забухал",
+      "id": 5
     }
   ],
   "orders": [
@@ -311,23 +322,6 @@
   ],
   "supplies": [
     {
-      "supplySort": [
-        {
-          "idSort": null,
-          "sortName": "-",
-          "price": {
-            "volume": "-",
-            "cost": null,
-            "quantity": null
-          }
-        }
-      ],
-      "dateSupply": null,
-      "worker": "-",
-      "provider": "-",
-      "id": 1
-    },
-    {
       "supply": [
         {
           "idSort": 1,
@@ -343,13 +337,6 @@
       "worker": null,
       "provider": null,
       "id": 2
-    },
-    {
-      "supply": [],
-      "dateSupply": "Tue Jun 25 2019 12:44:32 GMT+0300 (Восточная Европа, летнее время)",
-      "worker": null,
-      "provider": null,
-      "id": 3
     },
     {
       "supply": [
@@ -384,6 +371,36 @@
       "worker": null,
       "provider": null,
       "id": 5
+    }
+  ],
+  "providers": [
+    {
+      "name": "Гараж",
+      "address": "кооператив",
+      "phones": [
+        "+380931234567"
+      ],
+      "emails": [
+        "konura@vogorode"
+      ],
+      "doc": "-",
+      "invoice": "123456478965",
+      "id": 2
+    },
+    {
+      "name": "Гараж",
+      "address": "yavor 24a",
+      "phones": [
+        "+38 095 12 54 567",
+        "+380 93 354 0206"
+      ],
+      "emails": [
+        "konura@vogorode",
+        "talanov_artem@ukr.net"
+      ],
+      "doc": "-",
+      "invoice": "456",
+      "id": 3
     }
   ]
 }

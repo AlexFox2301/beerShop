@@ -84,6 +84,13 @@
           }
       },
 
+      watch:{
+          workers(){
+            this.resource.get().then(responce => responce.json())
+              .then(workers => this.workers = workers)
+          }
+      },
+
       created() {
         this.resource = this.$resource('workers'),
           this.resource.get().then(responce => responce.json())

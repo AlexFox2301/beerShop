@@ -80,6 +80,17 @@
             <span class="sr-only">(current)</span>
           </router-link>
 
+          <router-link
+            class="nav-link"
+            tag="li"
+            exact
+            active-class="active"
+            to="/providers"
+          >
+            Поставщики
+            <span class="sr-only">(current)</span>
+          </router-link>
+
         </ul>
       </div>
     </nav>

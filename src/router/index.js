@@ -2,20 +2,22 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import VueRouter from 'vue-router';
 import Bottle from '../components/Bottle';
-import Sale from "../components/Sale";
-import Supply from "../components/Supply";
-import Report from "../components/Report";
-import Order from "../components/Order";
-import ListBeers from "../components/ListBeers";
-import AddNewSort from "../components/AddNewSort";
-import SupplyBeer from "../components/SupplyBeer";
-import Workers from  '../components/Workers';
+import Sale from "../components/sale/Sale";
+import Supply from "../components/supply/Supply";
+import Report from "../components/report/Report";
+import Order from "../components/sale/Order";
+import ListBeers from "../components/supply/ListBeers";
+import AddNewSort from "../components/supply/AddNewSort";
+import SupplyBeer from "../components/supply/SupplyBeer";
+import Workers from '../components/worker/Workers';
 import Entry from "../components/Entry";
-import NewWorker from "../components/NewWorker";
-import EditWorker from "../components/EditWorker";
-import SupplyReport from "../components/SupplyReport";
-import SaleReport from "../components/SaleReport";
-import GeneralReport from "../components/GeneralReport";
+import NewWorker from "../components/worker/NewWorker";
+import EditWorker from "../components/worker/EditWorker";
+import SupplyReport from "../components/report/SupplyReport";
+import SaleReport from "../components/report/SaleReport";
+import GeneralReport from "../components/report/GeneralReport";
+import AddNewProvider from "../components/provider/AddNewProvider";
+import Providers from "../components/provider/Providers";
 
 Vue.use(VueRouter)
 
@@ -98,6 +100,17 @@ export default new Router({
         {
           path: 'edit_worker',
           component: EditWorker
+        }
+      ]
+    },
+    {
+      path: '/providers',
+      name: 'Providers',
+      component: Providers,
+      children: [
+        {
+          path: 'add_new_provider',
+          component: AddNewProvider
         }
       ]
     }

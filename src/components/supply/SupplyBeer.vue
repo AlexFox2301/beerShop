@@ -113,7 +113,7 @@
       <button class="bat btn-info" style="margin: 10px" @click="addSupplyToDB">Внести в БД</button>
     </div>
     <hr>
-    {{supply}} / {{supplies}}
+<!--    {{supply}} / {{supplies}}-->
   </div>
 </template>
 
