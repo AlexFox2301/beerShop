@@ -1,9 +1,9 @@
 <template>
-  <div class="container">
+  <div class="container position">
 
-    <button class="btn btn-primary" @click="addToDB">Добавить новый сорт в базу</button>
+    <button class="btn btn-primary bat" @click="addToDB">Добавить новый сорт в базу</button>
 
-    <div class="form-group" style="border: solid darkgray 0.5px">
+    <div class="form-group">
       <div class="row">
         <div class="col-3">
           <label for="sortName">Сорт пива</label>
@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <div class="form-group" style="border: solid darkgray 0.5px">
+    <div class="form-group" >
       <div class="row">
         <div class="col-3">
           <label for="origin">Происхождение</label>
@@ -25,7 +25,7 @@
       </div>
     </div>
 
-    <div class="form-group" style="border: solid darkgray 0.5px">
+    <div class="form-group">
       <div class="row">
         <div class="col-3">
           <label for="alcohol">Количество алкоголя</label>
@@ -36,7 +36,7 @@
       </div>
     </div>
 
-    <div style="border: solid darkgray 0.5px" v-for="pr in price">
+    <div v-for="pr in price">
       <div class="form-group">
         <div class="row">
           <div class="col-3">
@@ -65,7 +65,7 @@
       </div>
     </div>
 
-    <div style="border: solid darkgray 0.5px">
+    <div>
       <div class="form-group">
         <div class="row">
           <div class="col-3">
@@ -84,7 +84,7 @@
             <input id="cost" type="text" class="form-control" v-model.number="cost">
           </div>
           <div class="col-3">
-            <button class="btn btn-success" @click="addPricePosition">Добавить еденицу товара</button>
+            <button class="btn btn-success bat" @click="addPricePosition">Добавить еденицу товара</button>
           </div>
         </div>
 
@@ -177,5 +177,29 @@
 </script>
 
 <style scoped>
+  .position {
+    margin-top: 15px;
+    border: darkgray solid 0.5px;
+    padding: 5px;
+    border-radius: 15px;
+    background-color: #FBCEB1;
+  }
 
+  input {
+    width: 90%;
+    border-radius: 10px;
+    padding-left: 20px;
+  }
+
+  select {
+    width: 95%;
+    border-radius: 10px;
+    padding: 2%;
+
+  }
+
+  .bat{
+    border-radius: 15px;
+
+  }
 </style>

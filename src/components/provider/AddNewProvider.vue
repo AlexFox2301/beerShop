@@ -173,6 +173,7 @@
 <style scoped>
 
   .position {
+    margin-top: 15px;
     border: darkgray solid 0.5px;
     padding: 5px;
     border-radius: 15px;

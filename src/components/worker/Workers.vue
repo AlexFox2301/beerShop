@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-fluid">
     <h2>Сотрудники</h2>
     <hr>
 
@@ -26,8 +26,9 @@
 
 
     <router-view></router-view>
+    <hr>
 
-          <div class="row justify-content-center align-items-center" style="background-color: lavender">
+          <div class="row justify-content-center align-items-center position">
 
             <div class="col-1 tab>">ID</div>
             <div class="col-2 tab">Имя</div>
@@ -40,16 +41,16 @@
 
           </div>
 
-          <div class="row justify-content-center align-items-center"
+          <div class="row justify-content-center align-items-center positionWorker"
                v-for="worker in workers" :key="worker.id">
-            <div class="col-1 tab">{{worker.id}}</div>
-            <div class="col-2 tab ">{{worker.name}}</div>
-            <div class="col-1 tab">{{worker.login}}</div>
-            <div class="col-1 tab ">{{worker.workerPosition}}</div>
-            <div class="col-2 tab ">{{worker.address}}</div>
-            <div class="col-2 tab">{{worker.phone}}</div>
-            <div class="col-1 tab">{{worker.status}}</div>
-            <div class="col-1 tab">{{worker.note}}</div>
+            <div class="col-1">{{worker.id}}</div>
+            <div class="col-2">{{worker.name}}</div>
+            <div class="col-1">{{worker.login}}</div>
+            <div class="col-1">{{worker.workerPosition}}</div>
+            <div class="col-2">{{worker.address}}</div>
+            <div class="col-2">{{worker.phone}}</div>
+            <div class="col-1">{{worker.status}}</div>
+            <div class="col-1">{{worker.note}}</div>
             <div class="col-1">
               <router-link
               class="btn btn-success btn-sm"
@@ -103,5 +104,48 @@
 .tab {
   border: solid grey 1px;
   font-size: 14px;
+}
+
+.col-1 {
+  border-right: solid grey 1px;
+}.col-2 {
+  border-right: solid grey 1px;
+}
+
+.position {
+  border: darkgray solid 0.5px;
+  padding: 5px;
+  border-radius: 15px;
+  background-color: #FFDB8B;
+}
+
+.positionWorker {
+  border: darkgray solid 0.5px;
+  padding: 5px;
+  border-radius: 15px;
+  background-color: #EEE8AA;
+}
+
+/*div {*/
+/*  border: darkgray solid 0.5px;*/
+
+/*  border-radius: 15px;*/
+/*}*/
+
+input {
+  width: 95%;
+  border-radius: 10px;
+  padding-left: 20px;
+}
+
+select {
+  width: 95%;
+  border-radius: 10px;
+  padding: 2%;
+
+}
+
+.bat{
+  border-radius: 15px;
 }
 </style>

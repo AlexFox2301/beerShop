@@ -30,7 +30,7 @@
 
     </div>
 
-    <div id="position" class="row position">
+    <div id="position" class="row positionSupply">
 
       <div class="col-sm-0.5">
         <button class="bat btn-sm btn-success" @click="addNewPosition">+</button>
@@ -66,16 +66,12 @@
           <div class="col-sm-4">
             <input v-model.number="supplyVolume.quantity" placeholder="Количество">
           </div>
-
-<!--          <div class="col-sm-0.5">-->
-<!--            <button class="btn btn-sm btn-primary" @click="addVol">add</button>-->
-<!--          </div>-->
         </div>
       </div>
 
     </div>
 
-    <div id="supply" class="row position" v-for="(sup, count) in supply">
+    <div id="supply" class="row positionSupplys" v-for="(sup, count) in supply">
 
       <div class="col-sm-0.5">
         <button class="bat btn-sm btn-danger" @click="deletePosition(count)">-</button>
@@ -226,6 +222,21 @@
   border: darkgray solid 0.5px;
   padding: 5px;
   border-radius: 15px;
+  background-color: #FADFAD;
+}
+
+.positionSupply {
+  border: darkgray solid 0.5px;
+  padding: 5px;
+  border-radius: 15px;
+  background-color: #FFFF99;
+}
+
+.positionSupplys {
+  border: darkgray solid 0.5px;
+  padding: 5px;
+  border-radius: 15px;
+  background-color: #F2DDC6;
 }
 
 .col-sm-0.5 {

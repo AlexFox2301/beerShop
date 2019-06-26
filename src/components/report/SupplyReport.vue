@@ -8,7 +8,6 @@
           v-model="search"
           @change="scan"
           placeholder="ПОИСК">
-        <!--        <button class="btn btn-sm" ></button>-->
       </div>
       <div class="row mb-3">
         <div class="col-sm-2">
@@ -32,26 +31,35 @@
           <span>ID</span>
         </div>
 
-        <div class="col-sm-3">
-          <span>Сорт пива</span>
-        </div>
+        <div class="col-sm-11">
+          <div class="row">
 
-        <div class="col-sm-2">
-          <span>объём бутылки</span>
-        </div>
+            <div class="col-sm-1">
+              <span>ID пива</span>
+            </div>
 
-        <div class="col-sm-2">
-          <span>Цена</span>
-        </div>
+            <div class="col-sm-3">
+              <span>Сорт пива</span>
+            </div>
 
-        <div class="col-sm-2">
-          <span>Количество</span>
-        </div>
+            <div class="col-sm-2">
+              <span>объём бутылки</span>
+            </div>
 
-        <div class="col-sm-2">
-          <span>Сумма</span>
-        </div>
+            <div class="col-sm-2">
+              <span>Цена</span>
+            </div>
 
+            <div class="col-sm-2">
+              <span>Количество</span>
+            </div>
+
+            <div class="col-sm-2">
+              <span>Сумма</span>
+            </div>
+          </div>
+
+        </div>
       </div>
 
       <div class="row positionSupply" v-for="supply in supplies">
@@ -64,27 +72,27 @@
               <span>{{item.idSort}}</span>
             </div>
 
-            <div class="col-1">
+            <div class="col-3">
               <span>{{item.sortName}}</span>
             </div>
 
-            <div class="col-1">
+            <div class="col-2">
               <span>{{item.price.volume}}</span>
             </div>
 
-            <div class="col-1">
+            <div class="col-2">
               <span>{{item.price.cost}}</span>
             </div>
 
-            <div class="col-1">
+            <div class="col-2">
               <span>{{item.price.quantity}}</span>
             </div>
 
-            <div class="col-1">
+            <div class="col-2">
               <span>{{item.sumPosition}}</span>
             </div>
           </div>
-          <div class="row position">
+          <div class="row">
 <!--            <div class="col-sm-1">-->
 <!--              <span>{{supply.worker.name}}</span>-->
 <!--            </div>-->

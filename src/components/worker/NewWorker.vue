@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container position">
 
         <div class="row justify-content-center align-items-center">
           <div class="col-10">
@@ -238,10 +238,29 @@
 </script>
 
 <style scoped>
-.container {
-  border: solid 0.5px darkgray;
-  border-radius: 10px;
-  background-color: lightblue;
+
+.position {
+  margin-top: 15px;
+  border: darkgray solid 0.5px;
   padding: 5px;
+  border-radius: 15px;
+  background-color: #FFDB8B;
+}
+
+input {
+  width: 95%;
+  border-radius: 10px;
+  padding-left: 20px;
+}
+
+select {
+  width: 95%;
+  border-radius: 10px;
+  padding: 2%;
+  padding-left: 20px;
+}
+
+.bat{
+  border-radius: 15px;
 }
 </style>

@@ -165,12 +165,6 @@
     background-color: #ECE0F8;
   }
 
-  /*div {*/
-  /*  border: darkgray solid 0.5px;*/
-
-  /*  border-radius: 15px;*/
-  /*}*/
-
   input {
     width: 95%;
     border-radius: 10px;
