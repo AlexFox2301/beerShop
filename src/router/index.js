@@ -13,6 +13,9 @@ import Workers from  '../components/Workers';
 import Entry from "../components/Entry";
 import NewWorker from "../components/NewWorker";
 import EditWorker from "../components/EditWorker";
+import SupplyReport from "../components/SupplyReport";
+import SaleReport from "../components/SaleReport";
+import GeneralReport from "../components/GeneralReport";
 
 Vue.use(VueRouter)
 
@@ -68,7 +71,20 @@ export default new Router({
       path: '/report',
       name: 'Report',
       component: Report,
-      children: []
+      children: [
+        {
+          path: 'sale_report',
+          component: SaleReport
+        },
+        {
+          path: 'supply_report',
+          component: SupplyReport
+        },
+        {
+          path: 'general_report',
+          component: GeneralReport
+        }
+      ]
     },
     {
       path: '/workers',
