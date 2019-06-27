@@ -122,12 +122,12 @@
         </div>
       </div>
 
-      <div class="error">
-        <span>{{msgErorLogin}}</span>
-      </div>
-
       <div>
         <button class="btn btn-primary" @click="loginCheck">Войти</button>
+      </div>
+
+      <div class="error">
+        <span>{{msgErorLogin}}</span>
       </div>
 
     </div>
@@ -172,7 +172,8 @@ export default {
           this.activeNav = !this.activeNav;
           this.user = this.workers[i];
           this.$router.push('/bottle');
-          return this.workers[i];
+          this.workers = [];
+          return;
         }
       }
       this.msgErorLogin = 'Неверно введенный логин или пароль'

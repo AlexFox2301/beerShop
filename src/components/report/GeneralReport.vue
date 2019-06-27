@@ -20,10 +20,12 @@
         <input type="date" v-model="endDate">
       </div>
       <div class="col-sm-1">
-        <button class="btn btn-sm btn-info bat" @click="collectionPeriod">Вывести</button>
+        <button class="btn btn-sm btn-info" @click="collectionPeriod">Вывести</button>
       </div>
 
     </div>
+
+
 
     <div id="head" class="row position">
 
@@ -93,14 +95,61 @@
           <!--              <span>{{order.worker.name}}</span>-->
           <!--            </div>-->
           <div class="col-sm-8">
-            <span>{{order.dateOrder}}</span>
+            <span>{{order.date}}</span>
           </div>
           <div class="col-sm-2">
-            <span>{{order.sumOrder}}</span>
+            <span>{{order.sum}}</span>
           </div>
         </div>
       </div>
 
+    </div>
+
+    <div class="row positionSupply" v-for="supply in supplies">
+      <div class="col-sm-1">
+        <span>{{supply.id}}</span>
+      </div>
+      <div class="col-11">
+        <div class="row position" v-for="item in supply.supply">
+          <div class="col-1">
+            <span>{{item.idSort}}</span>
+          </div>
+
+          <div class="col-3">
+            <span>{{item.sortName}}</span>
+          </div>
+
+          <div class="col-2">
+            <span>{{item.price.volume}}</span>
+          </div>
+
+          <div class="col-2">
+            <span>{{item.price.cost}}</span>
+          </div>
+
+          <div class="col-2">
+            <span>{{item.price.quantity}}</span>
+          </div>
+
+          <div class="col-2">
+            <span>{{item.sumPosition}}</span>
+          </div>
+        </div>
+        <div class="row">
+          <!--            <div class="col-sm-1">-->
+          <!--              <span>{{supply.worker.name}}</span>-->
+          <!--            </div>-->
+          <div class="col-sm-10">
+            <span>{{supply.date}}</span>
+          </div>
+          <!--            <div class="col-sm-1">-->
+          <!--              <span>{{supply.sumSupply}}</span>-->
+          <!--            </div>-->
+        </div>
+        <!--          <div class="row">-->
+        <!--            <span>{{supply.provider.name}}</span>-->
+        <!--          </div>-->
+      </div>
     </div>
 
   </div>
@@ -108,40 +157,53 @@
 
 <script>
     export default {
+
       data(){
         return{
           resourceSale: null,
           resourceSupply: null,
 
+          // beers: [],
           orders: [],
           supplies: [],
+          general: [],
 
-          general: []
+          search: '',
+          startDate: null,
+          endDate: null
         }
       },
 
+      methods:{
+
+        scan(){},
+
+        collectionPeriod(){}
+
+
+      },
+
+    // watch:{
+    //         general(){
+    //           this.general = this.supplies.concat(this.orders);
+    //         }
+    // },
 
 
       created() {
-        // this.resource = this.$resource('beers'),
-        this.resourceSale = this.$resource('orders'),
-        this.resourceSupply = this.$resource('supplies'),
-          // this.resource.get().then(responce => responce.json())
-          //   .then(beers => this.beers = beers);
+
+        let i;
+        this.resourceSale = this.$resource('orders');
 
           this.resourceSale.get().then(responce => responce.json())
-            .then(orders => this.orders = orders)
+            .then(orders => this.orders = orders);
+
+        this.resourceSupply = this.$resource('supplies');
 
           this.resourceSupply.get().then(responce => responce.json())
-            .then(supplies => this.supplies = supplies)
+            .then(supplies => this.supplies = supplies);
 
-        // this.$http.get('http://localhost:3000/supplies')
-        //   .then(response => {return response.json()}).then(supplies => this.supplies = supplies)
-
-        // this.$http.get('http://localhost:3000/beers')
-        //   .then(response => {return response.json()}).then(beers => this.beers = beers)
-
-        this.general.concat(this.orders, this.supplies)
+        this.general = this.order.push(this.supplies);
       },
     }
 </script>

@@ -179,7 +179,7 @@
         addSupplyToDB(){
             const supplyToDB = {
               supply: this.supply,
-              dateSupply: Date(),
+              date: new Date(),
               worker: null,
               provider: null
             };

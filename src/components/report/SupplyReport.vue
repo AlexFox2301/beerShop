@@ -97,7 +97,7 @@
 <!--              <span>{{supply.worker.name}}</span>-->
 <!--            </div>-->
             <div class="col-sm-10">
-              <span>{{supply.dateSupply}}</span>
+              <span>{{supply.date}}</span>
             </div>
 <!--            <div class="col-sm-1">-->
 <!--              <span>{{supply.sumSupply}}</span>-->

@@ -1,7 +1,6 @@
 <template>
     <div class="container">
 
-<!--      <div>-->
         <div class="row justify-content-center align-items-center position">
 
           <div class="col-sm-3 mt-1">Сорт пива</div>
@@ -17,9 +16,7 @@
           <div>Del</div>
 
         </div>
-<!--      </div>-->
 
-<!--      <div id="newPosition">-->
         <div class="row positionOrder">
 
           <div class="col-sm-3 mt-1">
@@ -58,9 +55,7 @@
           </div>
         <button class="btn btn-sm">-</button>
       </div>
-<!--    </div>-->
 
-<!--      <div id="order" class=""  >-->
         <div class="row positionOrders" v-for="(order, count) in beerOrder">
 
           <div class="col-sm-3 mt-1">
@@ -86,14 +81,14 @@
 
         </div>
 
-<!--      </div>-->
+
 
       <div class="row">
         <div class="col-sm-10" style="text-align: right">
           <strong>Итого:</strong>
         </div>
         <div class="col-sm-2" style="text-align: left">
-          <strong>{{sumOrder}}грн.</strong>
+          <strong>{{sum}}грн.</strong>
         </div>
       </div>
 
@@ -121,8 +116,8 @@
                 cost: 0,//Стоимость выбранной бутылки пива
                 quantity: 0,//Количество заказых бутылок пива выбраного сорта
                 sumPosition: 0,//Сумма заказаных бутылок одного сорта и одного объема
-          sumOrder: 0,//Сумма всего заказа
-          dateOrder: null,//дата заказа и время
+          sum: 0,//Сумма всего заказа
+          date: null,//дата заказа и время
 
           quantityPosition: 1,
 
@@ -158,11 +153,11 @@
           this.quantity = 0;
           this.sumPosition = 0;
 
-          this.sumOrder = 0;
+          this.sum = 0;
 
           for (var i=0; i<this.beerOrder.length; i++)
           {
-            this.sumOrder = this.sumOrder + this.beerOrder[i].sumPosition;
+            this.sum = this.sumOrder + this.beerOrder[i].sumPosition;
           }
 
           // this.quantityPosition++;
@@ -171,10 +166,10 @@
 
         deletePosition(count) {
           this.beerOrder.splice(count, 1);
-          this.sumOrder = 0;
+          this.sum = 0;
           for (var i=0; i<this.beerOrder.length; i++)
           {
-            this.sumOrder = this.sumOrder + this.beerOrder[i].sumPosition;
+            this.sum = this.sum + this.beerOrder[i].sumPosition;
           }
 
         },
@@ -182,8 +177,8 @@
         checkout(){
           const order = {
             beerOrder: this.beerOrder,
-            sumOrder: this.sumOrder,
-            dateOrder: Date(),
+            sum: this.sum,
+            date: new Date(),
             worker: null
           }
 
@@ -194,13 +189,13 @@
           alert(order)
 
           this.beerOrder = [];
-          this.sumOrder = 0;
+          this.sum = 0;
 
         },
 
         closeOrder() {
           this.beerOrder = [];
-          this.sumOrder = 0;
+          this.sum = 0;
         }
 
         },

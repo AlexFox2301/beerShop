@@ -25,6 +25,8 @@
 
       </div>
 
+      {{startDate}} // {{endDate}} //{{orders}}
+
       <div id="head" class="row position">
 
         <div class="col-sm-1">
@@ -93,10 +95,10 @@
 <!--              <span>{{order.worker.name}}</span>-->
 <!--            </div>-->
             <div class="col-sm-8">
-              <span>{{order.dateOrder}}</span>
+              <span>{{order.date}}</span>
             </div>
             <div class="col-sm-2">
-              <span>{{order.sumOrder}}</span>
+              <span>{{order.sum}}</span>
             </div>
           </div>
         </div>
@@ -122,18 +124,39 @@
         }
       },
 
-      watch:{
-        orders: function () {
-          this.resource.get().then(responce => responce.json())
-            .then(orders => this.orders = orders)
-        }
-      },
+      // watch:{
+      //   orders: function () {
+      //     this.resource.get().then(responce => responce.json())
+      //       .then(orders => this.orders = orders)
+      //   }
+      // },
 
       methods:{
 
         scan(){},
 
-        collectionPeriod(){}
+        collectionPeriod(){
+          const collection = [];
+
+          let start = new Date(this.startDate);
+          let end = new Date(this.endDate);
+          // let now = new Date()
+
+            for (let i=0; i<this.orders.length; i+=2)
+            {
+              if (new Date(this.orders[i].date) > start)
+              {
+                console.log(this.orders[i].date)
+                collection.push(this.orders[i]);
+              }
+
+          }
+
+
+
+          this.orders = collection;
+
+        }
 
       },
 
