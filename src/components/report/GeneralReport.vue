@@ -25,9 +25,6 @@
 
     </div>
 
-<!--{{general}} / {{ra}}-->
-<!--    <button class="btn" @click="update">xx</button>-->
-
     <div id="head" class="row position">
 
       <div class="col-sm-1">
@@ -60,113 +57,59 @@
          class="row position"
          v-for="(gen, index) in general"
          :key="index"
+         :class="{'positionSale': gen.sale, 'positionSupply': !gen.sale}"
     >
 
       <div class="col-sm-1">
         <span>{{gen.id}}</span>
       </div>
 
-      <div class="col-sm-1">
-        <span>{{gen.id}}</span>
+      <div class="col-sm-11">
+        <div class="row" v-for="pos in gen.positions">
+
+          <div class="col-sm-1">
+            <span>{{pos.idSort}}</span>
+          </div>
+
+          <div class="col-sm-3">
+            <span>{{pos.sortName}}</span>
+          </div>
+
+          <div class="col-sm-2">
+            <span>{{pos.volume}}</span>
+          </div>
+
+          <div class="col-sm-2">
+            <span>{{pos.cost}}</span>
+          </div>
+
+          <div class="col-sm-2">
+            <span>{{pos.quantity}}</span>
+          </div>
+
+          <div class="col-sm-2">
+            <span>{{pos.sumPosition}}</span>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+<!--          <div class="col-sm-2">-->
+<!--            <span>{{gen.worker.name}}</span>-->
+<!--          </div>-->
+
+          <div class="col-sm-8">
+            <span>{{gen.date}}</span>
+          </div>
+
+          <div class="col-sm-2">
+            <span>{{gen.sum}}</span>
+          </div>
+
+        </div>
       </div>
     </div>
-
-<!--    <div id="bodySale" class="row positionSale" v-for="order in orders" :key="order.id" v-model="orders">-->
-
-<!--      <div class="col-sm-1">-->
-<!--        <span>{{order.id}}</span>-->
-<!--      </div>-->
-
-<!--      <div class="col-sm-11">-->
-<!--        <div class="row position" v-for="item in order.beerOrder">-->
-
-<!--          <div class="col-sm-1">-->
-<!--            <span>{{item.idSort}}</span>-->
-<!--          </div>-->
-
-<!--          <div class="col-sm-3">-->
-<!--            <span>{{item.beerSort}}</span>-->
-<!--          </div>-->
-
-<!--          <div class="col-sm-2">-->
-<!--            <span>{{item.volume}}</span>-->
-<!--          </div>-->
-
-<!--          <div class="col-sm-2">-->
-<!--            <span>{{item.cost}}</span>-->
-<!--          </div>-->
-
-<!--          <div class="col-sm-2">-->
-<!--            <span>{{item.quantity}}</span>-->
-<!--          </div>-->
-
-<!--          <div class="col-sm-2">-->
-<!--            <span>{{item.sumPosition}}</span>-->
-<!--          </div>-->
-
-<!--        </div>-->
-
-<!--        <div class="row align-items-end">-->
-<!--          &lt;!&ndash;            <div class="col-sm-2">&ndash;&gt;-->
-<!--          &lt;!&ndash;              <span>{{order.worker.name}}</span>&ndash;&gt;-->
-<!--          &lt;!&ndash;            </div>&ndash;&gt;-->
-<!--          <div class="col-sm-8">-->
-<!--            <span>{{order.date}}</span>-->
-<!--          </div>-->
-<!--          <div class="col-sm-2">-->
-<!--            <span>{{order.sum}}</span>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
-
-<!--    </div>-->
-
-<!--    <div id="bodySupply" class="row positionSupply" v-for="supply in supplies">-->
-<!--      <div class="col-sm-1">-->
-<!--        <span>{{supply.id}}</span>-->
-<!--      </div>-->
-<!--      <div class="col-11">-->
-<!--        <div class="row position" v-for="item in supply.supply">-->
-<!--          <div class="col-1">-->
-<!--            <span>{{item.idSort}}</span>-->
-<!--          </div>-->
-
-<!--          <div class="col-3">-->
-<!--            <span>{{item.sortName}}</span>-->
-<!--          </div>-->
-
-<!--          <div class="col-2">-->
-<!--            <span>{{item.price.volume}}</span>-->
-<!--          </div>-->
-
-<!--          <div class="col-2">-->
-<!--            <span>{{item.price.cost}}</span>-->
-<!--          </div>-->
-
-<!--          <div class="col-2">-->
-<!--            <span>{{item.price.quantity}}</span>-->
-<!--          </div>-->
-
-<!--          <div class="col-2">-->
-<!--            <span>{{item.sumPosition}}</span>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <div class="row">-->
-<!--          &lt;!&ndash;            <div class="col-sm-1">&ndash;&gt;-->
-<!--          &lt;!&ndash;              <span>{{supply.worker.name}}</span>&ndash;&gt;-->
-<!--          &lt;!&ndash;            </div>&ndash;&gt;-->
-<!--          <div class="col-sm-10">-->
-<!--            <span>{{supply.date}}</span>-->
-<!--          </div>-->
-<!--          &lt;!&ndash;            <div class="col-sm-1">&ndash;&gt;-->
-<!--          &lt;!&ndash;              <span>{{supply.sumSupply}}</span>&ndash;&gt;-->
-<!--          &lt;!&ndash;            </div>&ndash;&gt;-->
-<!--        </div>-->
-<!--        &lt;!&ndash;          <div class="row">&ndash;&gt;-->
-<!--        &lt;!&ndash;            <span>{{supply.provider.name}}</span>&ndash;&gt;-->
-<!--        &lt;!&ndash;          </div>&ndash;&gt;-->
-<!--      </div>-->
-<!--    </div>-->
 
   </div>
 </template>
@@ -243,15 +186,8 @@
           this.resourceSupply.get().then(responce => responce.json())
             .then(supplies => this.supplies = supplies)
             .then(general => this.general = this.orders.concat(this.supplies))
-
-          // const collection = [];
-
-
-        // Array.prototype.push.apply(collection, this.supplies);
-        // Array.prototype.push.apply(this.general, this.orders)
-
-        // this.general = collection;
-
+            // .then(general => this.general = this.orders.sort(function(a, b){
+            //   return a.date - b.date}))
       },
     }
 </script>

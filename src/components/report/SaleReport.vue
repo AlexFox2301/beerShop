@@ -60,14 +60,14 @@
         </div>
 
         <div class="col-sm-11">
-          <div class="row position" v-for="item in order.beerOrder">
+          <div class="row position" v-for="item in order.positions">
 
             <div class="col-sm-1">
               <span>{{item.idSort}}</span>
             </div>
 
             <div class="col-sm-3">
-              <span>{{item.beerSort}}</span>
+              <span>{{item.sortName}}</span>
             </div>
 
             <div class="col-sm-2">

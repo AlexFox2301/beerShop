@@ -17,7 +17,7 @@
 
         </div>
 
-        <div class="row positionOrder">
+        <div id="newPosition" class="row positionOrder">
 
           <div class="col-sm-3 mt-1">
               <select v-model="sortSelected" >
@@ -56,10 +56,10 @@
         <button class="btn btn-sm">-</button>
       </div>
 
-        <div class="row positionOrders" v-for="(order, count) in beerOrder">
+        <div id="positions" class="row positionOrders" v-for="(order, count) in positions">
 
           <div class="col-sm-3 mt-1">
-            <span id="sortInOrder">{{order.beerSort}}</span>
+            <span id="sortInOrder">{{order.sortName}}</span>
           </div>
 
           <div class="col-sm-2 m-1">
@@ -77,7 +77,10 @@
           <div class="col-sm-2 m-1" id="sumOrderInMas">
             <strong>{{order.sumPosition}}</strong><b> грн.</b>
           </div>
-          <button id="deletPositionFromOrder" class="btn btn-success btn-sm bat" @click="deletePosition(count)">-</button>
+          <button id="deletPositionFromOrder"
+                  class="btn btn-success btn-sm bat"
+                  @click="deletePosition(count)"
+          >-</button>
 
         </div>
 
@@ -95,7 +98,7 @@
         <button id="addPosition" class="btn btn-info" @click="addPosition">Добавить</button>
         <button id="checkout" class="btn btn-warning" @click="checkout">Оформить</button>
         <button id="closeOrder" class="btn btn-danger" @click="closeOrder">Закрыть</button>
-      </div>
+      </div><br>
 
     </div>
 </template>
@@ -110,8 +113,8 @@
           resource: null,
           resourceOrders: null,
 
-          beerOrder: [],//массив заказаных позиций пива
-            beerSort: '',//выбранный сорт пива в массиве beerOrder
+          positions: [],//массив заказаных позиций пива
+            sortName: '',//выбранный сорт пива в массиве beerOrder
             idSort: null,// id выбраного сорта
               orderPosition:[],//массив выбранных позиций заказанного сорта, как поле объекта beerSort
                 volume: '',//объём бутылки выбраного сорта пива
@@ -140,16 +143,16 @@
         addPosition() {
           const orderPosition = {
             idSort: this.sortSelected.id,
-            beerSort: this.sortSelected.sortName,
+            sortName: this.sortSelected.sortName,
             volume: this.volumeSelected.volume,
             cost: this.volumeSelected.cost,
             quantity: this.quantity,
             sumPosition: this.sumPosition
           }
-          this.beerOrder.push(orderPosition);
+          this.positions.push(orderPosition);
 
           this.idSort = null;
-          this.beerSort = '';
+          this.sortName = '';
           this.volume = '';
           this.cost = 0;
           this.quantity = 0;
@@ -157,26 +160,27 @@
 
           this.sum = 0;
 
-          for (var i=0; i<this.beerOrder.length; i++)
+          for (let i=0; i<this.positions.length; i++)
           {
-            this.sum = this.sum + this.beerOrder[i].sumPosition;
+            this.sum = this.sum + this.positions[i].sumPosition;
           }
 
         },
 
         deletePosition(count) {
-          this.beerOrder.splice(count, 1);
+          this.positions.splice(count, 1);
           this.sum = 0;
-          for (var i=0; i<this.beerOrder.length; i++)
+          for (let i=0; i<this.positions.length; i++)
           {
-            this.sum = this.sum + this.beerOrder[i].sumPosition;
+            this.sum = this.sum + this.positions[i].sumPosition;
           }
 
         },
 
         checkout(){
           const order = {
-            beerOrder: this.beerOrder,
+            positions: this.positions,
+            sale: true,
             sum: this.sum,
             date: Date(),
             worker: null//this.user
@@ -186,12 +190,12 @@
           // this.$http.post('http://localhost:3000/orders', order)
           //   .then(response => {return response.json()}).then()
 
-          this.beerOrder = [];
+          this.positions = [];
           this.sum = 0;
         },
 
         closeOrder() {
-          this.beerOrder = [];
+          this.positions = [];
           this.sum = 0;
         }
 

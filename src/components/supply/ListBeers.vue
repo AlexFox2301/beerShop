@@ -1,7 +1,7 @@
 <template>
   <div>
 
-    <div class="row position">
+    <div id="head" class="row position">
 
     <div class="col-1">ID</div>
     <div class="col-3">Сорт Пива</div>
@@ -18,7 +18,7 @@
 
   </div>
 
-    <div class="row positionBeer" v-for="beer in beers" :key="beer.id" v-model="beers">
+    <div id="body" class="row positionBeer" v-for="beer in beers" :key="beer.id" v-model="beers">
 
       <div class="col-1">{{beer.id}}</div>
       <div class="col-3">{{beer.sortName}}</div>

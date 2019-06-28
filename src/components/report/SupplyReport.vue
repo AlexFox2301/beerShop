@@ -67,7 +67,7 @@
           <span>{{supply.id}}</span>
         </div>
         <div class="col-11">
-          <div class="row position" v-for="item in supply.supply">
+          <div class="row position" v-for="item in supply.positions">
             <div class="col-1">
               <span>{{item.idSort}}</span>
             </div>
@@ -77,15 +77,18 @@
             </div>
 
             <div class="col-2">
-              <span>{{item.price.volume}} л.</span>
+<!--              <span>{{item.price.volume}} л.</span>-->
+              <span>{{item.volume}} л.</span>
             </div>
 
             <div class="col-2">
-              <span>{{item.price.cost}} грн.</span>
+<!--              <span>{{item.price.cost}} грн.</span>-->
+              <span>{{item.cost}} грн.</span>
             </div>
 
             <div class="col-2">
-              <span>{{item.price.quantity}} шт.</span>
+<!--              <span>{{item.price.quantity}} шт.</span>-->
+              <span>{{item.quantity}} шт.</span>
             </div>
 
             <div class="col-2">
@@ -94,7 +97,7 @@
           </div>
           <div class="row mt-2">
 <!--            <div class="col-sm-1">-->
-<!--              <span>{{supply.worker.name}}</span>-->
+<!--              <span>{{positions.worker.name}}</span>-->
 <!--            </div>-->
             <div class="col-sm-9">
               <span>{{supply.date}}</span>
@@ -181,12 +184,6 @@
     border-radius: 15px;
     background-color: #D9FFC2;
   }
-
-  /*div {*/
-  /*  border: darkgray solid 0.5px;*/
-
-  /*  border-radius: 15px;*/
-  /*}*/
 
   input {
     width: 95%;

@@ -84,7 +84,7 @@
     <div id="supply">
 
 
-      <div id="supplyPosition" class="row positionSupplys" v-for="(sup, count) in supply">
+      <div id="supplyPosition" class="row positionSupplys" v-for="(sup, count) in positions">
 
         <div class="col-sm-0.5">
           <button class="bat btn-sm btn-danger" @click="deletePosition(count)">-</button>
@@ -98,24 +98,25 @@
           <div class="row">
 
             <div class="col-sm-3">
-              <span>{{sup.price.volume}} л.</span>
+<!--              <span>{{sup.price.volume}} л.</span>-->
+              <span>{{sup.volume}} л.</span>
             </div>
 
             <div class="col-sm-3">
-              <span>{{sup.price.cost}} грн.</span>
+<!--              <span>{{sup.price.cost}} грн.</span>-->
+              <span>{{sup.cost}} грн.</span>
             </div>
 
             <div class="col-sm-3">
-              <span>{{sup.price.quantity}} шт.</span>
+<!--              <span>{{sup.price.quantity}} шт.</span>-->
+              <span>{{sup.quantity}} шт.</span>
             </div>
 
             <div class="col-sm-3">
-              <strong>{{sup.price.sumPosition}} грн.</strong>
+<!--              <strong>{{sup.price.sumPosition}} грн.</strong>-->
+              <strong>{{sup.sumPosition}} грн.</strong>
             </div>
 
-            <!--          <div class="col-sm-0.5">-->
-            <!--            <button class="btn btn-sm btn-primary" @click="addVol">add</button>-->
-            <!--          </div>-->
           </div>
         </div>
 
@@ -183,7 +184,7 @@
           idSort: 0,
           sum: 0,
 
-          supply: [],//текущая поставка, состоящая из массива объектов supplySort
+          positions: [],//текущая поставка, состоящая из массива объектов supplySort
         }
       },
 
@@ -197,31 +198,34 @@
 
         addNewPosition(){
 
-          this.supplyPrice = {
-            volume: this.supplyVolume.volume,
-            cost: this.supplyVolume.cost,
-            // quantity: this.supplyVolume.quantity
-            // cost: this.cost,
-            quantity: this.quantity,
-            sumPosition: this.sumPosition
-          }
+          // this.supplyPrice = {
+          //   volume: this.supplyVolume.volume,
+          //   cost: this.supplyVolume.cost,
+          //   quantity: this.quantity,
+          //   sumPosition: this.sumPosition
+          // }
 
           const supplyPosition = {
             idSort: this.supplySort.id,
             sortName: this.supplySort.sortName,
-            price: this.supplyPrice,
+            // price: this.supplyPrice,
+            volume: this.supplyVolume.volume,
+            cost: this.supplyVolume.cost,
+            quantity: this.quantity,
+            sumPosition: this.sumPosition
           }
 
-          this.supply.push(supplyPosition);
+          this.positions.push(supplyPosition);
 
           this.sum = 0;
 
-          for (var i=0; i<this.supply.length; i++)
+          for (let i=0; i<this.positions.length; i++)
           {
-            this.sum = this.sum + this.supply[i].price.sumPosition;
+            // this.sum = this.sum + this.positions[i].price.sumPosition;
+            this.sum = this.sum + this.positions[i].sumPosition;
           }
 
-          this.supplyPrice = {};
+          // this.supplyPrice = {};
           this.supplyVolume = {};
           this.supplySort = {};
           this.cost = 0;
@@ -230,19 +234,20 @@
         },
 
         deletePosition(count){
-          this.supply.splice(count, 1);
+          this.positions.splice(count, 1);
         },
 
         addSupplyToDB(){
           // const user = this.user;
 
             const supplyToDB = {
-              supply: this.supply,
+              positions: this.positions,
+              sale: false,
               date: Date(),
               worker: null,
               provider: this.provider,
               sum: this.sum,
-              user: this.user
+              worker: this.user
             };
           // try {
             // this.$http.post('http://localhost:3000/supplies', supplyToDB)
@@ -254,7 +259,7 @@
           // }
 
           // this.supplyToDB = [];
-          this.supply = [];
+          this.positions = [];
         },
       },
 
