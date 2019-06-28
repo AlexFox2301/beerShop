@@ -282,7 +282,7 @@
           "sumPosition": 300
         }
       ],
-      "sumOrder": 700,
+      "sum": 700,
       "date": "Sun Jun 23 2019 00:16:00 GMT+0300 (Восточная Европа, летнее время)",
       "worker": null,
       "id": 1
@@ -298,7 +298,7 @@
           "sumPosition": 150
         }
       ],
-      "sumOrder": 150,
+      "sum": 150,
       "date": "Tue Jun 25 2019 10:52:13 GMT+0300 (Восточная Европа, летнее время)",
       "worker": null,
       "id": 2
@@ -314,7 +314,7 @@
           "sumPosition": 150
         }
       ],
-      "sumOrder": 150,
+      "sum": 150,
       "date": "Tue Jun 25 2019 10:53:13 GMT+0300 (Восточная Европа, летнее время)",
       "worker": null,
       "id": 3
@@ -338,7 +338,7 @@
           "sumPosition": 1000
         }
       ],
-      "sumOrder": 1100,
+      "sum": 1100,
       "date": "Wed Jun 26 2019 23:23:42 GMT+0300 (Восточная Европа, летнее время)",
       "worker": null,
       "id": 4
@@ -354,10 +354,50 @@
           "sumPosition": 375
         }
       ],
-      "sumOrder": 375,
+      "sum": 375,
       "date": "Thu Jun 27 2019 08:46:40 GMT+0300 (Восточная Европа, летнее время)",
       "worker": null,
       "id": 5
+    },
+    {
+      "beerOrder": [
+        {
+          "idSort": 2,
+          "beerSort": "Viaemilia",
+          "volume": 1,
+          "cost": 200,
+          "quantity": 2,
+          "sumPosition": 400
+        },
+        {
+          "idSort": 8,
+          "beerSort": "Black Eyed King",
+          "volume": 0.5,
+          "cost": 100,
+          "quantity": 6,
+          "sumPosition": 600
+        }
+      ],
+      "sum": null,
+      "date": "2019-06-27T17:00:24.096Z",
+      "worker": null,
+      "id": 6
+    },
+    {
+      "beerOrder": [
+        {
+          "idSort": 4,
+          "beerSort": "Galaxy IPA",
+          "volume": 0.5,
+          "cost": 100,
+          "quantity": 20,
+          "sumPosition": 2000
+        }
+      ],
+      "sum": null,
+      "date": "2019-06-27T18:41:45.955Z",
+      "worker": null,
+      "id": 7
     }
   ],
   "supplies": [
@@ -369,126 +409,150 @@
           "price": {
             "volume": 0.25,
             "cost": 50,
-            "quantity": 0
+            "quantity": 100,
+            "sumPosition": 5000
           }
         }
       ],
-      "date": "Tue Jun 25 2019 12:44:25 GMT+0300 (Восточная Европа, летнее время)",
+      "date": "Fri Jun 28 2019 12:07:39 GMT+0300 (Восточная Европа, летнее время)",
       "worker": null,
-      "provider": null,
-      "id": 2
+      "provider": {
+        "name": "Гараж",
+        "address": "кооператив",
+        "phones": [
+          "+380931234567"
+        ],
+        "emails": [
+          "konura@vogorode"
+        ],
+        "doc": "-",
+        "invoice": "123456478965",
+        "id": 2
+      },
+      "sum": 5000,
+      "id": 9
     },
     {
       "supply": [
         {
-          "idSort": 2,
-          "sortName": "Viaemilia",
+          "idSort": 1,
+          "sortName": "Papaya Rye",
           "price": {
             "volume": 0.33,
             "cost": 75,
-            "quantity": 0
+            "quantity": 300,
+            "sumPosition": 22500
           }
-        }
-      ],
-      "date": "Tue Jun 25 2019 12:47:43 GMT+0300 (Восточная Европа, летнее время)",
-      "worker": null,
-      "provider": null,
-      "id": 4
-    },
-    {
-      "supply": [
+        },
         {
           "idSort": 2,
           "sortName": "Viaemilia",
           "price": {
-            "volume": 0.33,
-            "cost": 75,
-            "quantity": 0
+            "volume": 0.25,
+            "cost": 50,
+            "quantity": 500,
+            "sumPosition": 25000
           }
-        }
-      ],
-      "date": "Tue Jun 25 2019 12:48:29 GMT+0300 (Восточная Европа, летнее время)",
-      "worker": null,
-      "provider": null,
-      "id": 5
-    },
-    {
-      "supply": [
-        {
-          "idSort": 2,
-          "sortName": "Viaemilia",
-          "price": {
-            "volume": 1,
-            "cost": 200,
-            "quantity": 20
-          }
-        }
-      ],
-      "date": "Wed Jun 26 2019 23:27:17 GMT+0300 (Восточная Европа, летнее время)",
-      "worker": null,
-      "provider": null,
-      "id": 6
-    },
-    {
-      "supply": [
+        },
         {
           "idSort": 3,
           "sortName": "Brio",
           "price": {
-            "volume": 0.33,
-            "cost": 75,
-            "quantity": 500
-          }
-        },
-        {
-          "idSort": 2,
-          "sortName": "Viaemilia",
-          "price": {
-            "volume": 1,
-            "cost": 200,
-            "quantity": 300
-          }
-        },
-        {
-          "idSort": 6,
-          "sortName": "ManBearPig",
-          "price": {
-            "volume": 0.33,
-            "cost": 75,
-            "quantity": 300
-          }
-        }
-      ],
-      "date": "Wed Jun 26 2019 23:30:39 GMT+0300 (Восточная Европа, летнее время)",
-      "worker": null,
-      "provider": null,
-      "id": 7
-    },
-    {
-      "supply": [
-        {
-          "idSort": 8,
-          "sortName": "Black Eyed King",
-          "price": {
             "volume": 0.5,
             "cost": 100,
-            "quantity": 5000
+            "quantity": 200,
+            "sumPosition": 20000
           }
         },
         {
           "idSort": 4,
           "sortName": "Galaxy IPA",
           "price": {
-            "volume": 0.33,
-            "cost": 79,
-            "quantity": 50
+            "volume": 0.25,
+            "cost": 50,
+            "quantity": 200,
+            "sumPosition": 10000
+          }
+        },
+        {
+          "idSort": 5,
+          "sortName": "Nøgne Ø Porter",
+          "price": {
+            "volume": 0.25,
+            "cost": 40,
+            "quantity": 1000,
+            "sumPosition": 50000
           }
         }
       ],
-      "date": "Thu Jun 27 2019 08:45:39 GMT+0300 (Восточная Европа, летнее время)",
+      "date": "Fri Jun 28 2019 12:17:15 GMT+0300 (Восточная Европа, летнее время)",
       "worker": null,
-      "provider": null,
-      "id": 8
+      "provider": {
+        "name": "Гараж",
+        "address": "кооператив",
+        "phones": [
+          "+380931234567"
+        ],
+        "emails": [
+          "konura@vogorode"
+        ],
+        "doc": "-",
+        "invoice": "123456478965",
+        "id": 2
+      },
+      "sum": 127500,
+      "id": 10
+    },
+    {
+      "supply": [
+        {
+          "idSort": 2,
+          "sortName": "Viaemilia",
+          "price": {
+            "volume": 1,
+            "cost": 180,
+            "quantity": 500,
+            "sumPosition": 90000
+          }
+        },
+        {
+          "idSort": 1,
+          "sortName": "Papaya Rye",
+          "price": {
+            "volume": 0.33,
+            "cost": 70,
+            "quantity": 1000,
+            "sumPosition": 70000
+          }
+        },
+        {
+          "idSort": 5,
+          "sortName": "Nøgne Ø Porter",
+          "price": {
+            "volume": 0.25,
+            "cost": 40,
+            "quantity": 1000,
+            "sumPosition": 40000
+          }
+        }
+      ],
+      "date": "Fri Jun 28 2019 16:31:38 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": null,
+      "provider": {
+        "name": "Гараж",
+        "address": "кооператив",
+        "phones": [
+          "+380931234567"
+        ],
+        "emails": [
+          "konura@vogorode"
+        ],
+        "doc": "-",
+        "invoice": "123456478965",
+        "id": 2
+      },
+      "sum": 200000,
+      "id": 11
     }
   ],
   "providers": [

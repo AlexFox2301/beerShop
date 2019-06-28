@@ -77,35 +77,35 @@
             </div>
 
             <div class="col-2">
-              <span>{{item.price.volume}}</span>
+              <span>{{item.price.volume}} л.</span>
             </div>
 
             <div class="col-2">
-              <span>{{item.price.cost}}</span>
+              <span>{{item.price.cost}} грн.</span>
             </div>
 
             <div class="col-2">
-              <span>{{item.price.quantity}}</span>
+              <span>{{item.price.quantity}} шт.</span>
             </div>
 
             <div class="col-2">
-              <span>{{item.sumPosition}}</span>
+              <span>{{item.sumPosition}} грн.</span>
             </div>
           </div>
-          <div class="row">
+          <div class="row mt-2">
 <!--            <div class="col-sm-1">-->
 <!--              <span>{{supply.worker.name}}</span>-->
 <!--            </div>-->
-            <div class="col-sm-10">
+            <div class="col-sm-9">
               <span>{{supply.date}}</span>
             </div>
-<!--            <div class="col-sm-1">-->
-<!--              <span>{{supply.sumSupply}}</span>-->
-<!--            </div>-->
+            <div class="col-sm-2">
+              <span class="position">{{supply.sum}} грн.</span>
+            </div>
           </div>
-<!--          <div class="row">-->
-<!--            <span>{{supply.provider.name}}</span>-->
-<!--          </div>-->
+          <div class="row">
+            <span>{{supply.provider.name}} / {{supply.provider.phones}} / {{supply.provider.emails}}</span>
+          </div>
         </div>
       </div>
 
@@ -132,7 +132,23 @@
 
         scan(){},
 
-        collectionPeriod(){}
+        collectionPeriod(){
+          const collection = [];
+
+          let start = new Date(this.startDate);
+          let end = new Date(this.endDate).getTime() + 24*60*60*1000;
+          // let now = new Date()
+
+          for (let i=0; i<this.supplies.length; i++)
+          {
+            if (new Date(this.supplies[i].date) >= start & new Date(this.supplies[i].date) <= end)
+            {
+              console.log(this.supplies[i].date)
+              collection.push(this.supplies[i]);
+            }
+          }
+          this.supplies = collection;
+        }
 
       },
 

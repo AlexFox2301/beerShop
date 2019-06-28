@@ -25,8 +25,6 @@
 
       </div>
 
-      {{startDate}} // {{endDate}} //{{orders}}
-
       <div id="head" class="row position">
 
         <div class="col-sm-1">
@@ -97,7 +95,7 @@
             <div class="col-sm-8">
               <span>{{order.date}}</span>
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-2 position">
               <span>{{order.sum}}</span>
             </div>
           </div>
@@ -139,21 +137,17 @@
           const collection = [];
 
           let start = new Date(this.startDate);
-          let end = new Date(this.endDate);
+          let end = new Date(this.endDate).getTime() + 24*60*60*1000;
           // let now = new Date()
 
-            for (let i=0; i<this.orders.length; i+=2)
+            for (let i=0; i<this.orders.length; i++)
             {
-              if (new Date(this.orders[i].date) > start)
+              if (new Date(this.orders[i].date) >= start & new Date(this.orders[i].date) <= end)
               {
                 console.log(this.orders[i].date)
                 collection.push(this.orders[i]);
               }
-
           }
-
-
-
           this.orders = collection;
 
         }

@@ -27,13 +27,6 @@ Vue.use(VueRouter)
 export default new Router({
   routes: [
 
-    // {
-    //   path: '/',
-    //   name: 'Entry',
-    //   component: Entry,
-    //   props: true
-    // },
-
     {
       path: '/bottle',
       name: 'Bottle',
@@ -46,7 +39,8 @@ export default new Router({
       children:[
         {
           path:'order',
-          component: Order
+          component: Order,
+          props: true
         }
       ]
     },
@@ -54,6 +48,7 @@ export default new Router({
       path: '/supply',
       name: 'Supply',
       component: Supply,
+      props: true,
       children:[
         {
           path: 'list_beers',
@@ -65,7 +60,8 @@ export default new Router({
         },
         {
           path: 'supply_beer',
-          component: SupplyBeer
+          component: SupplyBeer,
+          props: true
         }
       ]
     },

@@ -3,6 +3,7 @@
 
     <div class="row float-right">
       <div class="col-sm-5 mr-5" style="color: darkgray">{{user.name}}</div>
+<!--      <div class="col-sm-5 mr-5" style="color: darkgray">{{user}}</div>-->
     </div>
 
     <h1>Бутыль пива</h1>
@@ -40,6 +41,8 @@
               class="nav-link"
               tag="li"
               exact
+              v-bind:user="user"
+              :key="user.id"
               active-class="active"
               to="/sale"
             >
@@ -50,6 +53,8 @@
             <router-link
               class="nav-link"
               tag="li"
+              v-bind:user="user"
+              :key="user.id"
               exact
               active-class="active"
               to="/supply"
@@ -96,7 +101,7 @@
     </nav>
     <hr>
 
-    <div class="container" v-if="activeNav">
+    <div id="loginPassword" class="container" v-if="activeNav">
 
       <div class="form-group">
         <div class="row justify-content-center align-items-center">
@@ -127,17 +132,20 @@
       </div>
 
       <div class="error">
-        <span>{{msgErorLogin}}</span>
+        <span>{{msgErrorLogin}}</span>
       </div>
 
     </div>
 
-    <router-view></router-view>
+    <router-view v-bind:user="user"
+                 :key="user.id"></router-view>
   </div>
 </template>
 
 <script>
 export default {
+
+  // props: ["user"],
 
   data(){
     return{
@@ -150,7 +158,7 @@ export default {
 
       workers: [],
 
-      msgErorLogin: ''
+      msgErrorLogin: ''
 
     }
 },
@@ -176,21 +184,14 @@ export default {
           return;
         }
       }
-      this.msgErorLogin = 'Неверно введенный логин или пароль'
+      this.msgErrorLogin = 'Неверно введенный логин или пароль'
       // alert()
     }
   },
 
-
-
   created() {
     this.resource = this.$resource('workers')
   },
-
-
-
-
-
 }
 </script>
 

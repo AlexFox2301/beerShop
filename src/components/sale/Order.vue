@@ -81,8 +81,6 @@
 
         </div>
 
-
-
       <div class="row">
         <div class="col-sm-10" style="text-align: right">
           <strong>Итого:</strong>
@@ -97,16 +95,20 @@
         <button id="addPosition" class="btn btn-info" @click="addPosition">Добавить</button>
         <button id="checkout" class="btn btn-warning" @click="checkout">Оформить</button>
         <button id="closeOrder" class="btn btn-danger" @click="closeOrder">Закрыть</button>
-      </div><br>
+      </div>
 
     </div>
 </template>
 
 <script>
     export default {
+
+      // props:[user],
+
       data() {
         return {
-          // resource: null,
+          resource: null,
+          resourceOrders: null,
 
           beerOrder: [],//массив заказаных позиций пива
             beerSort: '',//выбранный сорт пива в массиве beerOrder
@@ -157,10 +159,8 @@
 
           for (var i=0; i<this.beerOrder.length; i++)
           {
-            this.sum = this.sumOrder + this.beerOrder[i].sumPosition;
+            this.sum = this.sum + this.beerOrder[i].sumPosition;
           }
-
-          // this.quantityPosition++;
 
         },
 
@@ -178,19 +178,16 @@
           const order = {
             beerOrder: this.beerOrder,
             sum: this.sum,
-            date: new Date(),
-            worker: null
+            date: Date(),
+            worker: null//this.user
           }
 
-          // this.resource.save({}, order);
-          this.$http.post('http://localhost:3000/orders', order)
-            .then(response => {return response.json()}).then()
-
-          alert(order)
+          this.resourceOrders.save({}, order);
+          // this.$http.post('http://localhost:3000/orders', order)
+          //   .then(response => {return response.json()}).then()
 
           this.beerOrder = [];
           this.sum = 0;
-
         },
 
         closeOrder() {
@@ -201,7 +198,7 @@
         },
 
       created() {
-        // this.resource = this.$resource('orders')
+        this.resourceOrders = this.$resource('orders')
         this.resource = this.$resource('beers'),
           this.resource.get().then(responce => responce.json())
             .then(beers => this.beers = beers);

@@ -14,30 +14,34 @@
       <div class="col-sm-8">
         <div class="row">
 
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <span>Объём</span>
           </div>
 
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <span>Цена</span>
           </div>
 
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <span>Количество</span>
+          </div>
+
+          <div class="col-sm-3">
+            <span>Сумма</span>
           </div>
         </div>
       </div>
 
     </div>
 
-    <div id="position" class="row positionSupply">
+    <div id="newPosition" class="row positionSupply">
 
       <div class="col-sm-0.5">
         <button class="bat btn-sm btn-success" @click="addNewPosition">+</button>
       </div>
 
       <div class="col-sm-3">
-        <select v-model="supplySort">
+        <select class="sel" v-model="supplySort">
           <option
             v-for="beerS in beers"
             v-bind:value="beerS"
@@ -50,66 +54,101 @@
       <div class="col-sm-8">
         <div class="row">
 
-          <div class="col-sm-4">
-            <select v-model="supplyVolume">
+          <div class="col-sm-3">
+            <select class="sel" v-model="supplyVolume">
               <option
                 v-for="sVol in supplySort.price"
                 v-bind:value="sVol"
                 >{{sVol.volume}}</option>
-            </select>
+            </select> л.
           </div>
 
-          <div class="col-sm-4">
-            <input v-model.number="supplyVolume.cost" placeholder="Цена">
+          <div class="col-sm-3">
+            <input v-model.number="supplyVolume.cost" placeholder="Цена"> грн.
+<!--            <input v-model.number="cost" placeholder="Цена">-->
           </div>
 
-          <div class="col-sm-4">
-            <input v-model.number="supplyVolume.quantity" placeholder="Количество">
+          <div class="col-sm-3">
+<!--            <input v-model.number="supplyVolume.quantity" placeholder="Количество">-->
+            <input v-model.number="quantity" placeholder="Количество"> шт.
+          </div>
+
+          <div class="col-sm-3">
+            <strong>{{sumPosition}} грн.</strong>
           </div>
         </div>
       </div>
 
     </div>
 
-    <div id="supply" class="row positionSupplys" v-for="(sup, count) in supply">
+    <div id="supply">
 
-      <div class="col-sm-0.5">
-        <button class="bat btn-sm btn-danger" @click="deletePosition(count)">-</button>
-      </div>
 
-      <div class="col-sm-3">
-        <span>{{sup.sortName}}</span>
-      </div>
+      <div id="supplyPosition" class="row positionSupplys" v-for="(sup, count) in supply">
 
-      <div class="col-sm-8">
-        <div class="row">
-
-          <div class="col-sm-4">
-            <span>{{sup.price.volume}}</span>
-          </div>
-
-          <div class="col-sm-4">
-            <span>{{sup.price.cost}}</span>
-          </div>
-
-          <div class="col-sm-4">
-            <span>{{sup.price.quantity}}</span>
-          </div>
-
-          <!--          <div class="col-sm-0.5">-->
-          <!--            <button class="btn btn-sm btn-primary" @click="addVol">add</button>-->
-          <!--          </div>-->
+        <div class="col-sm-0.5">
+          <button class="bat btn-sm btn-danger" @click="deletePosition(count)">-</button>
         </div>
+
+        <div class="col-sm-3">
+          <span>{{sup.sortName}}</span>
+        </div>
+
+        <div class="col-sm-8">
+          <div class="row">
+
+            <div class="col-sm-3">
+              <span>{{sup.price.volume}} л.</span>
+            </div>
+
+            <div class="col-sm-3">
+              <span>{{sup.price.cost}} грн.</span>
+            </div>
+
+            <div class="col-sm-3">
+              <span>{{sup.price.quantity}} шт.</span>
+            </div>
+
+            <div class="col-sm-3">
+              <strong>{{sup.price.sumPosition}} грн.</strong>
+            </div>
+
+            <!--          <div class="col-sm-0.5">-->
+            <!--            <button class="btn btn-sm btn-primary" @click="addVol">add</button>-->
+            <!--          </div>-->
+          </div>
+        </div>
+
       </div>
 
+      <div class="row">
+        <div class="col-sm-6"
+             style="text-align: left">
+          <select class="select" v-model="provider">
+            <option
+              v-for="prov in providers"
+              v-bind:value="prov"
+            >{{prov.name}}</option>
+          </select>
+        </div>
+        <div class="col-2" style="text-align: right">
+          <span>{{user}}</span>
+        </div>
+        <div class="col-2" style="text-align: right">
+          <strong>Итого:</strong>
+        </div>
+        <div class="col-2" style="text-align: left">
+          <strong>{{sum}} грн.</strong>
+        </div>
+
+      </div>
     </div>
 
     <div class="row">
       <hr>
       <button class="bat btn-info" style="margin: 10px" @click="addSupplyToDB">Внести в БД</button>
     </div>
-    <hr>
-<!--    {{supply}} / {{supplies}}-->
+{{$route.query.user}}/
   </div>
 </template>
 
@@ -117,36 +156,41 @@
     export default {
         // name: "SupplyBeer"
 
+      props: {
+        user:{
+          type: Object,
+          required: true
+        }
+      },
+
       data() {
         return{
           resource: null,
+          resourceProvider: null,
 
           beers: [],
           supplies: [],
+          providers:[],
 
           supplyToDB: {},
+          provider: {},
 
-          // supplyPosition:
           supplySort: {},//Позиция сорта пива и номинал бутылки текущей поставки
           supplyPrice: {},//объект (объём-цена-количество) внутри позици поставки
           supplyVolume: {},
-          // volume: '',
-          // cost: 0,
-          // quantity: 0,
+          sumPosition: 0,
+          quantity: 0,
           idSort: 0,
+          sum: 0,
 
           supply: [],//текущая поставка, состоящая из массива объектов supplySort
-
-
-
         }
       },
 
       watch: {
-        // supplies(){
-        //   this.$http.get('http://localhost:3000/supplies')
-        //     .then(response => {return response.json()}).then(supplies => this.supplies = supplies)
-        // }
+        quantity() {
+          this.sumPosition = this.supplyVolume.cost * this.quantity
+        },
       },
 
       methods: {
@@ -156,7 +200,10 @@
           this.supplyPrice = {
             volume: this.supplyVolume.volume,
             cost: this.supplyVolume.cost,
-            quantity: this.supplyVolume.quantity
+            // quantity: this.supplyVolume.quantity
+            // cost: this.cost,
+            quantity: this.quantity,
+            sumPosition: this.sumPosition
           }
 
           const supplyPosition = {
@@ -167,9 +214,19 @@
 
           this.supply.push(supplyPosition);
 
+          this.sum = 0;
+
+          for (var i=0; i<this.supply.length; i++)
+          {
+            this.sum = this.sum + this.supply[i].price.sumPosition;
+          }
+
           this.supplyPrice = {};
           this.supplyVolume = {};
           this.supplySort = {};
+          this.cost = 0;
+          this.quantity = 0;
+          this.sumPosition = 0;
         },
 
         deletePosition(count){
@@ -177,16 +234,20 @@
         },
 
         addSupplyToDB(){
+          // const user = this.user;
+
             const supplyToDB = {
               supply: this.supply,
-              date: new Date(),
+              date: Date(),
               worker: null,
-              provider: null
+              provider: this.provider,
+              sum: this.sum,
+              user: this.user
             };
           // try {
             // this.$http.post('http://localhost:3000/supplies', supplyToDB)
             //   .then(response => {return response.json()}).then(supplies => this.supplies = supplies)
-            this.resource = this.$resource('supplies')
+            this.resource = this.$resource('supplies');
             this.resource.save({}, supplyToDB);
           // }catch (e) {
           //   alert('ошибка вставки в базу');
@@ -200,11 +261,15 @@
       created() {
         // this.resource = this.$resource('beers'),
         this.resource = this.$resource('supplies'),
+        this.resourceProvider = this.$resource('providers'),
           // this.resource.get().then(responce => responce.json())
           //   .then(beers => this.beers = beers);
 
           this.resource.get().then(responce => responce.json())
             .then(supplies => this.supplies = supplies)
+
+        this.resourceProvider.get().then(responce => responce.json())
+            .then(providers => this.providers = providers)
 
         // this.$http.get('http://localhost:3000/supplies')
         //   .then(response => {return response.json()}).then(supplies => this.supplies = supplies)
@@ -246,19 +311,27 @@
 }
 
   input {
-    width: 95%;
+    width: 75%;
     border-radius: 10px;
     padding-left: 20px;
   }
 
-  select {
-    width: 95%;
+  .sel {
+    width: 85%;
     border-radius: 10px;
     padding: 2%;
+  }
+
+  .select {
+    width: 85%;
+    border-radius: 10px;
+    padding: 2px;
+    margin: 3px;
   }
 
   .bat{
     border-radius: 15px;
   }
+
 
 </style>
