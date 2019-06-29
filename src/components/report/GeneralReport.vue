@@ -22,6 +22,9 @@
       <div class="col-sm-1">
         <button class="btn btn-sm btn-info" @click="collectionPeriod">Вывести</button>
       </div>
+      <!--<div class="col-sm-1">-->
+        <!--<button class="btn btn-sm btn-info" @click="dateSorting">сортировать по дате</button>-->
+      <!--</div>-->
 
     </div>
 
@@ -31,24 +34,35 @@
         <span>ID</span>
       </div>
 
-      <div class="col-sm-3">
-        <span>Сорт пива</span>
-      </div>
+      <div class="col-sm-11">
+        <div class="row">
 
-      <div class="col-sm-2">
-        <span>объём бутылки</span>
-      </div>
+          <div class="col-sm-1">
+            <span>ID пива</span>
+          </div>
 
-      <div class="col-sm-2">
-        <span>Цена</span>
-      </div>
+          <div class="col-sm-3">
+            <span>Сорт пива</span>
+          </div>
 
-      <div class="col-sm-2">
-        <span>Количество</span>
-      </div>
+          <div class="col-sm-2">
+            <span>Объём бутылки</span>
+          </div>
 
-      <div class="col-sm-2">
-        <span>Сумма</span>
+          <div class="col-sm-2">
+            <span>Цена</span>
+          </div>
+
+          <div class="col-sm-2">
+            <span>Количество</span>
+          </div>
+
+          <div class="col-sm-2">
+            <span>Сумма</span>
+          </div>
+
+
+        </div>
       </div>
 
     </div>
@@ -57,7 +71,7 @@
          class="row position"
          v-for="(gen, index) in general"
          :key="index"
-         :class="{'positionSale': gen.sale, 'positionSupply': !gen.sale}"
+         :class="{'positionSales': gen.sale, 'positionSupplys': !gen.sale}"
     >
 
       <div class="col-sm-1">
@@ -65,7 +79,10 @@
       </div>
 
       <div class="col-sm-11">
-        <div class="row" v-for="pos in gen.positions">
+        <div class="row"
+             v-for="pos in gen.positions"
+             :class="{'positionSale': gen.sale, 'positionSupply': !gen.sale}"
+        >
 
           <div class="col-sm-1">
             <span>{{pos.idSort}}</span>
@@ -76,19 +93,19 @@
           </div>
 
           <div class="col-sm-2">
-            <span>{{pos.volume}}</span>
+            <span>{{pos.volume}} л.</span>
           </div>
 
           <div class="col-sm-2">
-            <span>{{pos.cost}}</span>
+            <span>{{pos.cost}} грн.</span>
           </div>
 
           <div class="col-sm-2">
-            <span>{{pos.quantity}}</span>
+            <span>{{pos.quantity}} шт.</span>
           </div>
 
           <div class="col-sm-2">
-            <span>{{pos.sumPosition}}</span>
+            <span>{{pos.sumPosition}} грн.</span>
           </div>
 
         </div>
@@ -103,10 +120,13 @@
             <span>{{gen.date}}</span>
           </div>
 
-          <div class="col-sm-2">
-            <span>{{gen.sum}}</span>
+          <div class="col-sm-2" :class="{'positionSale': gen.sale, 'positionSupply': !gen.sale}">
+            <span>{{gen.sum}} грн.</span>
           </div>
 
+        </div>
+        <div class="row" v-if="!gen.sale">
+          {{gen.provider.name}} / {{gen.provider.phones}} / {{gen.provider.emails}}
         </div>
       </div>
     </div>
@@ -126,10 +146,6 @@
           orders: [],
           supplies: [],
           general: [],
-
-          her:[1, 2,3,4,5,6],
-          reh:['jhg','jkhg','jhgkjhkg','jhghvg'],
-          ra:[],
 
           search: '',
           startDate: null,
@@ -160,9 +176,14 @@
 
         },
 
-        update(){
-          this.general = this.orders.concat(this.supplies);
-        }
+        // dateSorting(){
+        //   this.general = this.general.sort(function(a, b){
+        //     return new Date(b.date) - new Date(a.date)})
+        // },
+
+        // update(){
+        //   this.general = this.orders.concat(this.supplies);
+        // }
 
 
       },
@@ -186,8 +207,8 @@
           this.resourceSupply.get().then(responce => responce.json())
             .then(supplies => this.supplies = supplies)
             .then(general => this.general = this.orders.concat(this.supplies))
-            // .then(general => this.general = this.orders.sort(function(a, b){
-            //   return a.date - b.date}))
+            .then(general => this.general = this.general.sort(function(a, b){
+              return new Date(b.date) - new Date(a.date)}))
       },
     }
 </script>
@@ -201,11 +222,25 @@
     background-color: #AFDAFC;
   }
 
+  .positionSales {
+    border: darkgray solid 0.5px;
+    padding: 5px;
+    border-radius: 15px;
+    background-color: #A9F5F2;
+  }
+
   .positionSale {
     border: darkgray solid 0.5px;
     padding: 5px;
     border-radius: 15px;
     background-color: #E0F8F7;
+  }
+
+  .positionSupplys {
+    border: darkgray solid 0.5px;
+    padding: 5px;
+    border-radius: 15px;
+    background-color: #81F79F;
   }
 
   .positionSupply {
