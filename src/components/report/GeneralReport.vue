@@ -5,7 +5,7 @@
         id="search"
         type="search"
         v-model="search"
-        @change="scan"
+        @input="scan"
         placeholder="ПОИСК">
       <!--        <button class="btn btn-sm" ></button>-->
     </div>
@@ -155,7 +155,38 @@
 
       methods:{
 
-        scan(){},
+        scan(){
+          const searchCollection = [];
+
+          for (let i=0; i<this.general.length; i++)
+          {
+            if (this.general[i].worker.name === this.search ||
+              this.general[i].provider.name === this.search)
+            {
+              searchCollection.push(this.general[i]);
+              continue;
+            }
+
+            for (let j=0; j<this.general[i].positions.length; j++)
+            {
+              if (this.general[i].positions[j].idSort === this.search ||
+                this.general[i].positions[j].sortName === this.search ||
+                this.general[i].positions[j].volume === this.search ||
+                this.general[i].positions[j].cost === this.search ||
+                this.general[i].positions[j].sumPosition === this.search
+              )
+              {
+                searchCollection.push(this.general[i]);
+                break;
+              }
+            }
+
+
+          }
+
+          this.general = searchCollection;
+
+        },
 
         collectionPeriod(){
           const collection = [];
