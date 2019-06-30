@@ -55,7 +55,37 @@
                   <label for="workerPosition">Должность</label>
                 </div>
                 <div class="col-6">
-                  <input id="workerPosition" class="form-control" type="text" v-model="workerPosition">
+<!--                  <input id="workerPosition" class="form-control" type="text" v-model="workerPosition">-->
+                  <select id="workerPosition" v-model="workerPosition">
+                    <option v-for="p in posts">{{p}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="row">
+                <div class="col-4">
+                  <label for="access">Доступ к приложению</label>
+                </div>
+                <div id="access" class="col-6">
+                  <div class="row">
+                    <label for="sale">Продажи </label>
+                    <input id="sale" class="form-control cheks" type="checkbox" v-model="access" value="sale">
+
+                    <label for="supply">Поставка </label>
+                    <input id="supply" class="form-control cheks" type="checkbox" v-model="access" value="supply">
+
+                    <label for="report">Отчет </label>
+                    <input id="report" class="form-control cheks" type="checkbox" v-model="access" value="report">
+
+                    <label for="workers">Сотрудники </label>
+                    <input id="workers" class="form-control cheks" type="checkbox" v-model="access" value="workers">
+
+                    <label for="providers">Поставщики </label>
+                    <input id="providers" class="form-control cheks" type="checkbox" v-model="access" value="providers">
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -117,7 +147,7 @@
             <strong style="color: red; font-size: 14px">{{msgTotal}}</strong>
           </div>
         </div>
-
+{{access}}
     </div>
 </template>
 
@@ -138,6 +168,7 @@
             login: '',
             password: '',
             workerPosition: '',
+            access: [],
             address: '',
             phone: '',
             status: '-',
@@ -148,6 +179,7 @@
             workers:[],
             checkedLogin: false,
             checkedPassword: false,
+            posts: ['Директор', 'Системный администратор', 'Бухгалтер', 'Продавец', 'Водитель', 'Кладовщик', 'Грузчик',  'Охранник',  'Уборщик'],
             msgLog: '',
             msgPas: '',
             msgTotal: ''
@@ -190,6 +222,7 @@
             login: this.login,
             password: this.password,
             workerPosition: this.workerPosition,
+            access: this.access,
             address: this.address,
             phone: this.phone,
             status: this.status,
@@ -207,10 +240,12 @@
               this.login = '',
               this.password = '',
               this.workerPosition = '',
+              this.access = false,
               this.address = '',
               this.phone = '',
               this.status = '-',
               this.note = '-',
+
 
               this.msgTotal = '',
 
@@ -258,6 +293,13 @@ select {
   border-radius: 10px;
   padding: 2%;
   padding-left: 20px;
+}
+
+.cheks {
+  width: 20px;
+  margin-right: 30px;
+  margin-left: 30px;
+  /*align-content: center;*/
 }
 
 .bat{

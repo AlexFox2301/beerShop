@@ -211,6 +211,13 @@
       "login": "AlexFox2301",
       "password": "1425",
       "workerPosition": "boss",
+      "access": [
+        "sale",
+        "workers",
+        "providers",
+        "supply",
+        "report"
+      ],
       "address": "yavor 24a",
       "phone": "+380 93 354 0206",
       "status": "-",
@@ -222,6 +229,10 @@
       "login": "barakuda",
       "password": "123456",
       "workerPosition": "saler",
+      "access": [
+        "sale",
+        "report"
+      ],
       "address": "home",
       "phone": "+380931234567",
       "status": "Работает",
@@ -233,6 +244,10 @@
       "login": "gladiy",
       "password": "123",
       "workerPosition": "security",
+      "access": [
+        "workers",
+        "providers"
+      ],
       "address": "sportsal",
       "phone": "+38 095 12 54 567",
       "status": "Работает",
@@ -244,6 +259,13 @@
       "login": "artem",
       "password": "123",
       "workerPosition": "boss",
+      "access": [
+        "sale",
+        "workers",
+        "providers",
+        "supply",
+        "report"
+      ],
       "address": "yavor 24a",
       "phone": "+380 93 354 0206",
       "status": "Работает",
@@ -255,11 +277,48 @@
       "login": "hrych",
       "password": "12",
       "workerPosition": "грузчик",
+      "access": [],
       "address": "улица",
       "phone": "-",
       "status": "уволен",
       "note": "забухал",
       "id": 5
+    },
+    {
+      "name": "Artem Talanov",
+      "login": "Sheff",
+      "password": "qaz",
+      "workerPosition": "Директор",
+      "access": [
+        "sale",
+        "workers",
+        "providers",
+        "supply",
+        "report"
+      ],
+      "address": "Аруба",
+      "phone": "+380 93 354 0206",
+      "status": "Работает",
+      "note": "-",
+      "id": 6
+    },
+    {
+      "name": "Balbesov",
+      "login": "balbes",
+      "password": "wsx",
+      "workerPosition": "Кладовщик",
+      "access": [
+        "sale",
+        "workers",
+        "providers",
+        "supply",
+        "report"
+      ],
+      "address": "Кладовская",
+      "phone": "+38095 123 45 56",
+      "status": "Стажировка",
+      "note": "-",
+      "id": 7
     }
   ],
   "orders": [

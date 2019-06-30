@@ -34,8 +34,9 @@
             <div class="col-2 tab">Имя</div>
             <div class="col-1 tab">Login</div>
             <div class="col-1 tab">Должность</div>
+            <div class="col-1 tab">Доступ</div>
             <div class="col-2 tab">Адресс</div>
-            <div class="col-2 tab">Телефон</div>
+            <div class="col-1 tab">Телефон</div>
             <div class="col-1 tab">Статус</div>
             <div class="col-2 tab">Примечание</div>
 
@@ -47,8 +48,13 @@
             <div class="col-2">{{worker.name}}</div>
             <div class="col-1">{{worker.login}}</div>
             <div class="col-1">{{worker.workerPosition}}</div>
+            <div class="col-1">
+              <div class="row justify-content-center" style="border-right: solid grey 0.5px;" v-for="access in worker.access">
+                {{access}}
+              </div>
+            </div>
             <div class="col-2">{{worker.address}}</div>
-            <div class="col-2">{{worker.phone}}</div>
+            <div class="col-1">{{worker.phone}}</div>
             <div class="col-1">{{worker.status}}</div>
             <div class="col-1">{{worker.note}}</div>
             <div class="col-1">

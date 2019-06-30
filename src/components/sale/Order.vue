@@ -1,215 +1,215 @@
 <template>
-    <div class="container">
+  <div class="container">
 
-        <div class="row justify-content-center align-items-center position">
+    <div class="row justify-content-center align-items-center position">
 
-          <div class="col-sm-3 mt-1">Сорт пива</div>
+      <div class="col-sm-3 mt-1">Сорт пива</div>
 
-          <div class="col-sm-2 m-1">Выбрать объем</div>
+      <div class="col-sm-2 m-1">Выбрать объем</div>
 
-          <div class="col-sm-2 m-1">Цена</div>
+      <div class="col-sm-2 m-1">Цена</div>
 
-          <div class="col-sm-2 m-1">Количество</div>
+      <div class="col-sm-2 m-1">Количество</div>
 
-          <div class="col-sm-2 m-1">Сумма</div>
+      <div class="col-sm-2 m-1">Сумма</div>
 
-          <div>Del</div>
-
-        </div>
-
-        <div id="newPosition" class="row positionOrder">
-
-          <div class="col-sm-3 mt-1">
-              <select v-model="sortSelected" >
-                <option
-                  v-for="sort in beers"
-                  v-bind:value="sort"
-                >
-                  {{sort.sortName}}
-                </option>
-              </select>
-
-          </div>
-
-          <div class="col-sm-2 m-1">
-            <select v-model="volumeSelected">
-              <option
-                v-for="vol in sortSelected.price"
-                v-bind:value="vol"
-              >{{vol.volume}}</option>
-            </select>
-          </div>
-
-          <div class="col-sm-2 m-1">
-            <span> {{volumeSelected.cost}}грн.</span>
-          </div>
-
-          <div class="col-sm-2 m-1">
-            <input
-                   v-model.number="quantity"
-                   ><span>шт.</span>
-          </div>
-
-          <div class="col-sm-2 m-1" >
-            <strong>{{sumPosition}}грн.</strong>
-          </div>
-        <button class="btn btn-sm">-</button>
-      </div>
-
-        <div id="positions" class="row positionOrders" v-for="(order, count) in positions">
-
-          <div class="col-sm-3 mt-1">
-            <span id="sortInOrder">{{order.sortName}}</span>
-          </div>
-
-          <div class="col-sm-2 m-1">
-            <span id="volumeInOrder">{{order.volume}}</span>
-          </div>
-
-          <div class="col-sm-2 m-1">
-            <span>{{order.cost}}грн.</span>
-          </div>
-
-          <div class="col-sm-2 m-1">
-            <span id="quantityPos">{{order.quantity}} шт.</span>
-          </div>
-
-          <div class="col-sm-2 m-1" id="sumOrderInMas">
-            <strong>{{order.sumPosition}}</strong><b> грн.</b>
-          </div>
-          <button id="deletPositionFromOrder"
-                  class="btn btn-success btn-sm bat"
-                  @click="deletePosition(count)"
-          >-</button>
-
-        </div>
-
-      <div class="row">
-        <div class="col-sm-10" style="text-align: right">
-          <strong>Итого:</strong>
-        </div>
-        <div class="col-sm-2" style="text-align: left">
-          <strong>{{sum}}грн.</strong>
-        </div>
-      </div>
-
-      <hr>
-      <div id="total">
-        <button id="addPosition" class="btn btn-info" @click="addPosition">Добавить</button>
-        <button id="checkout" class="btn btn-warning" @click="checkout">Оформить</button>
-        <button id="closeOrder" class="btn btn-danger" @click="closeOrder">Закрыть</button>
-      </div><br>
+      <div>Del</div>
 
     </div>
+
+    <div id="newPosition" class="row positionOrder">
+
+      <div class="col-sm-3 mt-1">
+        <select v-model="sortSelected" >
+          <option
+            v-for="sort in beers"
+            v-bind:value="sort"
+          >
+            {{sort.sortName}}
+          </option>
+        </select>
+
+      </div>
+
+      <div class="col-sm-2 m-1">
+        <select v-model="volumeSelected">
+          <option
+            v-for="vol in sortSelected.price"
+            v-bind:value="vol"
+          >{{vol.volume}}</option>
+        </select>
+      </div>
+
+      <div class="col-sm-2 m-1">
+        <span> {{volumeSelected.cost}}грн.</span>
+      </div>
+
+      <div class="col-sm-2 m-1">
+        <input
+          v-model.number="quantity"
+        ><span>шт.</span>
+      </div>
+
+      <div class="col-sm-2 m-1" >
+        <strong>{{sumPosition}}грн.</strong>
+      </div>
+      <button class="btn btn-sm">-</button>
+    </div>
+
+    <div id="positions" class="row positionOrders" v-for="(order, count) in positions">
+
+      <div class="col-sm-3 mt-1">
+        <span id="sortInOrder">{{order.sortName}}</span>
+      </div>
+
+      <div class="col-sm-2 m-1">
+        <span id="volumeInOrder">{{order.volume}}</span>
+      </div>
+
+      <div class="col-sm-2 m-1">
+        <span>{{order.cost}}грн.</span>
+      </div>
+
+      <div class="col-sm-2 m-1">
+        <span id="quantityPos">{{order.quantity}} шт.</span>
+      </div>
+
+      <div class="col-sm-2 m-1" id="sumOrderInMas">
+        <strong>{{order.sumPosition}}</strong><b> грн.</b>
+      </div>
+      <button id="deletPositionFromOrder"
+              class="btn btn-success btn-sm bat"
+              @click="deletePosition(count)"
+      >-</button>
+
+    </div>
+
+    <div class="row">
+      <div class="col-sm-10" style="text-align: right">
+        <strong>Итого:</strong>
+      </div>
+      <div class="col-sm-2" style="text-align: left">
+        <strong>{{sum}}грн.</strong>
+      </div>
+    </div>
+
+    <hr>
+    <div id="total">
+      <button id="addPosition" class="btn btn-info" @click="addPosition">Добавить</button>
+      <button id="checkout" class="btn btn-warning" @click="checkout">Оформить</button>
+      <button id="closeOrder" class="btn btn-danger" @click="closeOrder">Закрыть</button>
+    </div><br>
+
+  </div>
 </template>
 
 <script>
-    export default {
+  export default {
 
-      // props:[user],
+    // props:[user],
 
-      data() {
-        return {
-          resource: null,
-          resourceOrders: null,
+    data() {
+      return {
+        resource: null,
+        resourceOrders: null,
 
-          positions: [],//массив заказаных позиций пива
-            sortName: '',//выбранный сорт пива в массиве beerOrder
-            idSort: null,// id выбраного сорта
-              orderPosition:[],//массив выбранных позиций заказанного сорта, как поле объекта beerSort
-                volume: '',//объём бутылки выбраного сорта пива
-                cost: 0,//Стоимость выбранной бутылки пива
-                quantity: 0,//Количество заказых бутылок пива выбраного сорта
-                sumPosition: 0,//Сумма заказаных бутылок одного сорта и одного объема
-          sum: 0,//Сумма всего заказа
-          date: null,//дата заказа и время
+        positions: [],//массив заказаных позиций пива
+        sortName: '',//выбранный сорт пива в массиве beerOrder
+        idSort: null,// id выбраного сорта
+        orderPosition:[],//массив выбранных позиций заказанного сорта, как поле объекта beerSort
+        volume: '',//объём бутылки выбраного сорта пива
+        cost: 0,//Стоимость выбранной бутылки пива
+        quantity: 0,//Количество заказых бутылок пива выбраного сорта
+        sumPosition: 0,//Сумма заказаных бутылок одного сорта и одного объема
+        sum: 0,//Сумма всего заказа
+        date: null,//дата заказа и время
 
-          quantityPosition: 1,
+        quantityPosition: 1,
 
-          sortSelected: {},
-          volumeSelected: {},
+        sortSelected: {},
+        volumeSelected: {},
+      }
+    },
+
+    watch: {
+      quantity(){
+        this.sumPosition = this.volumeSelected.cost * this.quantity;
+      },
+
+    },
+
+    methods: {
+
+      addPosition() {
+        const orderPosition = {
+          idSort: this.sortSelected.id,
+          sortName: this.sortSelected.sortName,
+          volume: this.volumeSelected.volume,
+          cost: this.volumeSelected.cost,
+          quantity: this.quantity,
+          sumPosition: this.sumPosition
         }
-      },
+        this.positions.push(orderPosition);
 
-      watch: {
-        quantity(){
-          this.sumPosition = this.volumeSelected.cost * this.quantity;
-        },
+        this.idSort = null;
+        this.sortName = '';
+        this.volume = '';
+        this.cost = 0;
+        this.quantity = 0;
+        this.sumPosition = 0;
 
-      },
+        this.sum = 0;
 
-      methods: {
-
-        addPosition() {
-          const orderPosition = {
-            idSort: this.sortSelected.id,
-            sortName: this.sortSelected.sortName,
-            volume: this.volumeSelected.volume,
-            cost: this.volumeSelected.cost,
-            quantity: this.quantity,
-            sumPosition: this.sumPosition
-          }
-          this.positions.push(orderPosition);
-
-          this.idSort = null;
-          this.sortName = '';
-          this.volume = '';
-          this.cost = 0;
-          this.quantity = 0;
-          this.sumPosition = 0;
-
-          this.sum = 0;
-
-          for (let i=0; i<this.positions.length; i++)
-          {
-            this.sum = this.sum + this.positions[i].sumPosition;
-          }
-
-        },
-
-        deletePosition(count) {
-          this.positions.splice(count, 1);
-          this.sum = 0;
-          for (let i=0; i<this.positions.length; i++)
-          {
-            this.sum = this.sum + this.positions[i].sumPosition;
-          }
-
-        },
-
-        checkout(){
-          const order = {
-            positions: this.positions,
-            sale: true,
-            sum: this.sum,
-            date: Date(),
-            worker: null//this.user
-          }
-
-          this.resourceOrders.save({}, order);
-          // this.$http.post('http://localhost:3000/orders', order)
-          //   .then(response => {return response.json()}).then()
-
-          this.positions = [];
-          this.sum = 0;
-        },
-
-        closeOrder() {
-          this.positions = [];
-          this.sum = 0;
+        for (let i=0; i<this.positions.length; i++)
+        {
+          this.sum = this.sum + this.positions[i].sumPosition;
         }
 
-        },
+      },
 
-      created() {
-        this.resourceOrders = this.$resource('orders')
-        this.resource = this.$resource('beers'),
-          this.resource.get().then(responce => responce.json())
-            .then(beers => this.beers = beers);
-
+      deletePosition(count) {
+        this.positions.splice(count, 1);
+        this.sum = 0;
+        for (let i=0; i<this.positions.length; i++)
+        {
+          this.sum = this.sum + this.positions[i].sumPosition;
+        }
 
       },
-    }
+
+      checkout(){
+        const order = {
+          positions: this.positions,
+          sale: true,
+          sum: this.sum,
+          date: Date(),
+          worker: null//this.user
+        }
+
+        this.resourceOrders.save({}, order);
+        // this.$http.post('http://localhost:3000/orders', order)
+        //   .then(response => {return response.json()}).then()
+
+        this.positions = [];
+        this.sum = 0;
+      },
+
+      closeOrder() {
+        this.positions = [];
+        this.sum = 0;
+      }
+
+    },
+
+    created() {
+      this.resourceOrders = this.$resource('orders')
+      this.resource = this.$resource('beers'),
+        this.resource.get().then(responce => responce.json())
+          .then(beers => this.beers = beers);
+
+
+    },
+  }
 </script>
 
 <style scoped>
