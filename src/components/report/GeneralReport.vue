@@ -160,20 +160,20 @@
 
           for (let i=0; i<this.general.length; i++)
           {
-            if (this.general[i].worker.name === this.search ||
-              this.general[i].provider.name === this.search)
-            {
-              searchCollection.push(this.general[i]);
-              continue;
-            }
+            // if (this.general[i].worker.name === this.search ||
+            //   this.general[i].provider.name === this.search)
+            // {
+            //   searchCollection.push(this.general[i]);
+            //   continue;
+            // }
 
             for (let j=0; j<this.general[i].positions.length; j++)
             {
-              if (this.general[i].positions[j].idSort === this.search ||
-                this.general[i].positions[j].sortName === this.search ||
-                this.general[i].positions[j].volume === this.search ||
-                this.general[i].positions[j].cost === this.search ||
-                this.general[i].positions[j].sumPosition === this.search
+              if (this.general[i].positions[j].idSort.toString() === this.search ||
+                this.general[i].positions[j].sortName.toLowerCase() === this.search.toLowerCase() ||
+                this.general[i].positions[j].volume.toLowerCase() === this.search.toLowerCase() ||
+                this.general[i].positions[j].cost.toString() === this.search ||
+                this.general[i].positions[j].sumPosition.toString() === this.search
               )
               {
                 searchCollection.push(this.general[i]);

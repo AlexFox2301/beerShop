@@ -1,13 +1,17 @@
 <template>
     <div class="container">
       <div class="row mb-3">
-        <input
-          id="search"
-          type="search"
-          v-model="search"
-          @change="scan"
-          placeholder="ПОИСК">
-<!--        <button class="btn btn-sm" ></button>-->
+        <div class="col-sm-11">
+          <input
+            id="search"
+            type="search"
+            v-model="search"
+            placeholder="ПОИСК">
+        </div>
+        <div class="col-sm-1">
+          <button class="btn btn-primary btn-sm" @click="scan">Найти</button>
+        </div>
+
       </div>
       <div class="row mb-3">
         <div class="col-sm-2">
@@ -24,7 +28,7 @@
         </div>
 
       </div>
-
+{{search}} / {{ser}}
       <div id="head" class="row position">
 
         <div class="col-sm-1">
@@ -53,7 +57,7 @@
 
       </div>
 
-      <div id="body" class="row positionSale" v-for="order in orders" :key="order.id" v-model="orders">
+      <div id="body" class="row positionSale" v-for="order in general" :key="order.id" v-model="general">
 
         <div class="col-sm-1">
           <span>{{order.id}}</span>
@@ -114,7 +118,9 @@
           resource: null,
 
           // beers: [],
+          general: [],
           orders: [],
+          ser:[],
 
           search: '',
           startDate: null,
@@ -122,16 +128,26 @@
         }
       },
 
-      // watch:{
-      //   orders: function () {
-      //     this.resource.get().then(responce => responce.json())
-      //       .then(orders => this.orders = orders)
-      //   }
-      // },
-
       methods:{
 
-        scan(){},
+        scan(){
+          // let collections = [];
+
+          for (let i=0; i<this.orders.length; i++){
+            // if (this.orders[i].worker.name.toLowerCase() === this.search.toLowerCase()){
+            //   collection.push(this.orders[i]);
+            //   continue;
+            // }
+            if (this.orders[i].sum.toString() === this.search){
+              this.ser.push(this.orders[i]);
+            }
+
+          }
+          alert('массив готов')
+          this.orders = this.ser;
+          alert('массив')
+          this.ser = [];
+        },
 
         collectionPeriod(){
           const collection = [];
@@ -140,15 +156,15 @@
           let end = new Date(this.endDate).getTime() + 24*60*60*1000;
           // let now = new Date()
 
-            for (let i=0; i<this.orders.length; i++)
+            for (let i=0; i<this.general.length; i++)
             {
-              if (new Date(this.orders[i].date) >= start & new Date(this.orders[i].date) <= end)
+              if (new Date(this.general[i].date) >= start & new Date(this.general[i].date) <= end)
               {
-                console.log(this.orders[i].date)
-                collection.push(this.orders[i]);
+                console.log(this.general[i].date)
+                collection.push(this.general[i]);
               }
           }
-          this.orders = collection;
+          this.general = collection;
 
         }
 
@@ -162,6 +178,7 @@
 
           this.resource.get().then(responce => responce.json())
             .then(orders => this.orders = orders)
+            .then(general => this.general = this.general.concat(this.orders))
 
         // this.$http.get('http://localhost:3000/orders')
         //   .then(response => {return response.json()}).then(orders => this.orders = orders)

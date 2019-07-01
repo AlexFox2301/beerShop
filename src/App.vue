@@ -3,10 +3,9 @@
 
     <div class="row float-right">
       <div class="col-sm-5 mr-5" style="color: darkgray">{{user.name}}</div>
-<!--      <div class="col-sm-5 mr-5" style="color: darkgray">{{user}}</div>-->
     </div>
 
-    <h1>Бутыль пива</h1>
+    <h2>Бутыль пива</h2>
 
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light" v-if="!activeNav">
@@ -41,6 +40,7 @@
               class="nav-link"
               tag="li"
               exact
+              v-if="saleLink"
               v-bind:user="user"
               :key="user.id"
               active-class="active"
@@ -54,6 +54,7 @@
               class="nav-link"
               tag="li"
               v-bind:user="user"
+              v-if="supplyLink"
               :key="user.id"
               exact
               active-class="active"
@@ -66,6 +67,7 @@
           <router-link
             class="nav-link"
             tag="li"
+            v-if="reportLink"
             exact
             active-class="active"
             to="/report"
@@ -77,6 +79,7 @@
           <router-link
             class="nav-link"
             tag="li"
+            v-if="workersLink"
             exact
             active-class="active"
             to="/workers"
@@ -88,6 +91,7 @@
           <router-link
             class="nav-link"
             tag="li"
+            v-if="providersLink"
             exact
             active-class="active"
             to="/providers"
@@ -145,14 +149,18 @@
 <script>
 export default {
 
-  // props: ["user"],
-
-  data(){
-    return{
+  data() {
+    return {
       login: '',
       password: '',
 
-      user: {name:'Гость'},
+      user: {name: 'Гость'},
+
+      saleLink: false,
+      supplyLink: false,
+      reportLink: false,
+      workersLink: false,
+      providersLink: false,
 
       activeNav: true,
 
@@ -161,32 +169,47 @@ export default {
       msgErrorLogin: ''
 
     }
-},
+  },
 
-  methods:{
+  methods: {
 
-    loginCheck () {
+    loginCheck() {
       this.resource.get().then(responce => responce.json())
         .then(workers => this.workers = workers);
 
-      for (var i=0; i<this.workers.length; ++i) {
+      for (var i = 0; i < this.workers.length; ++i) {
 
-        if (this.workers[i].login !== this.login)
-        {
+        if (this.workers[i].login !== this.login) {
           continue;
         }
-        if (this.workers[i].password === this.password)
-        {
+        if (this.workers[i].password === this.password) {
           this.activeNav = !this.activeNav;
           this.user = this.workers[i];
-          this.$router.push('/bottle');
-          this.workers = [];
-          return;
+
+          if (this.user.access.indexOf('sale') >= 0) {
+            this.saleLink = true;}
+
+          if (this.user.access.indexOf('supply') >= 0) {
+            this.supplyLink = true;}
+
+          if (this.user.access.indexOf('report') >= 0) {
+            this.reportLink = true;}
+
+          if (this.user.access.indexOf('workers') >= 0) {
+            this.workersLink = true;}
+
+          if (this.user.access.indexOf('providers') >= 0) {
+            this.providersLink = true;}
+
+            this.$router.push('/bottle');
+            this.workers = [];
+            return;
+          }
         }
+        this.msgErrorLogin = 'Неверно введенный логин или пароль'
       }
-      this.msgErrorLogin = 'Неверно введенный логин или пароль'
-      // alert()
-    }
+
+
   },
 
   created() {
