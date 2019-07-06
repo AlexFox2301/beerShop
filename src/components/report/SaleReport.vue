@@ -138,15 +138,28 @@
 
           let start = new Date(this.startDate);
           let end = new Date(this.endDate).getTime() + 24*60*60*1000;
-          // let now = new Date()
 
-            for (let i=0; i<this.orders.length; i++)
-            {
-              if (new Date(this.orders[i].date) >= start & new Date(this.orders[i].date) <= end)
-              {
-                console.log(this.orders[i].date)
+          alert(start + "-" + end)
+
+          for (let i=0; i<this.orders.length; i++)
+          {
+
+            if (this.startDate === null) {
+              if (new Date(this.orders[i].date) <= end) {
                 collection.push(this.orders[i]);
               }
+            }else{
+              if (this.endDate === null){
+                if (new Date(this.orders[i].date) >= start) {
+                  collection.push(this.orders[i]);
+                }
+              } else {
+                if (new Date(this.orders[i].date) >= start & new Date(this.orders[i].date) <= end)
+                {
+                  collection.push(this.orders[i]);
+                }
+              }
+            }
           }
           this.orders = collection;
 

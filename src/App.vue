@@ -41,6 +41,7 @@
               class="nav-link"
               tag="li"
               exact
+              v-if="saleLink"
               v-bind:user="user"
               :key="user.id"
               active-class="active"
@@ -56,6 +57,7 @@
               v-bind:user="user"
               :key="user.id"
               exact
+              v-if="supplyLink"
               active-class="active"
               to="/supply"
             >
@@ -67,6 +69,7 @@
             class="nav-link"
             tag="li"
             exact
+            v-if="reportLink"
             active-class="active"
             to="/report"
           >
@@ -78,6 +81,7 @@
             class="nav-link"
             tag="li"
             exact
+            v-if="workersLink"
             active-class="active"
             to="/workers"
           >
@@ -89,6 +93,7 @@
             class="nav-link"
             tag="li"
             exact
+            v-if="providersLink"
             active-class="active"
             to="/providers"
           >
@@ -154,6 +159,12 @@ export default {
 
       user: {name:'Гость'},
 
+      saleLink: false,
+      supplyLink: false,
+      reportLink: false,
+      workersLink: false,
+      providersLink: false,
+
       activeNav: true,
 
       workers: [],
@@ -169,7 +180,7 @@ export default {
       this.resource.get().then(responce => responce.json())
         .then(workers => this.workers = workers);
 
-      for (var i=0; i<this.workers.length; ++i) {
+      for (let i=0; i<this.workers.length; ++i) {
 
         if (this.workers[i].login !== this.login)
         {
@@ -179,6 +190,18 @@ export default {
         {
           this.activeNav = !this.activeNav;
           this.user = this.workers[i];
+
+          if (this.user.access.indexOf('sale') >= 0) {
+            this.saleLink = true;}
+          if (this.user.access.indexOf('supply') >= 0) {
+            this.supplyLink = true;}
+          if (this.user.access.indexOf('report') >= 0) {
+            this.reportLink = true;}
+          if (this.user.access.indexOf('workers') >= 0) {
+            this.workersLink = true;}
+          if (this.user.access.indexOf('providers') >= 0) {
+            this.providersLink = true;}
+
           this.$router.push('/bottle');
           this.workers = [];
           return;

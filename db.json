@@ -497,29 +497,28 @@
         {
           "idSort": 1,
           "sortName": "Papaya Rye",
-          "price": {
-            "volume": 0.25,
-            "cost": 50,
-            "quantity": 100,
-            "sumPosition": 5000
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 100,
+          "sumPosition": 5000
           }
-        }
       ],
       "sale": false,
       "date": "Fri Jun 28 2019 12:07:39 GMT+0300 (Восточная Европа, летнее время)",
       "worker": null,
-      "provider": {
-        "name": "Гараж",
-        "address": "кооператив",
+      "provider": {"name": "Сарай",
+        "address": "yavor 24a",
         "phones": [
-          "+380931234567"
+          "+38 095 12 54 567",
+          "+380 93 354 0206"
         ],
         "emails": [
-          "konura@vogorode"
+          "konura@vogorode",
+          "talanov_artem@ukr.net"
         ],
         "doc": "-",
-        "invoice": "123456478965",
-        "id": 2
+        "invoice": "456",
+        "id": 3
       },
       "sum": 5000,
       "id": 9
@@ -529,52 +528,42 @@
         {
           "idSort": 1,
           "sortName": "Papaya Rye",
-          "price": {
-            "volume": 0.33,
-            "cost": 75,
-            "quantity": 300,
-            "sumPosition": 22500
-          }
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": 300,
+          "sumPosition": 22500
         },
         {
           "idSort": 2,
           "sortName": "Viaemilia",
-          "price": {
-            "volume": 0.25,
-            "cost": 50,
-            "quantity": 500,
-            "sumPosition": 25000
-          }
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 500,
+          "sumPosition": 25000
         },
         {
           "idSort": 3,
           "sortName": "Brio",
-          "price": {
-            "volume": 0.5,
-            "cost": 100,
-            "quantity": 200,
-            "sumPosition": 20000
-          }
+          "volume": 0.5,
+          "cost": 100,
+          "quantity": 200,
+          "sumPosition": 20000
         },
         {
           "idSort": 4,
           "sortName": "Galaxy IPA",
-          "price": {
-            "volume": 0.25,
-            "cost": 50,
-            "quantity": 200,
-            "sumPosition": 10000
-          }
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 200,
+          "sumPosition": 10000
         },
         {
           "idSort": 5,
           "sortName": "Nøgne Ø Porter",
-          "price": {
-            "volume": 0.25,
-            "cost": 40,
-            "quantity": 1000,
-            "sumPosition": 50000
-          }
+          "volume": 0.25,
+          "cost": 40,
+          "quantity": 1000,
+          "sumPosition": 50000
         }
       ],
       "sale": false,
@@ -701,7 +690,7 @@
       "id": 2
     },
     {
-      "name": "Гараж",
+      "name": "Сарай",
       "address": "yavor 24a",
       "phones": [
         "+38 095 12 54 567",

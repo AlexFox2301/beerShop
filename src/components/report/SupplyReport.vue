@@ -133,21 +133,61 @@
 
       methods:{
 
-        scan(){},
+        scan(){
+          const searchThing = [];
+
+          for (let i=0; i<this.supplies.length; i++){
+
+            if (this.supplies[i].provider.name.toLowerCase() === this.search.toLowerCase() || this.supplies[i].sum.toString() === this.search) {
+              searchThing.push(this.supplies[i]);
+              continue;
+            }
+
+            const pos = this.supplies[i].positions;
+
+            for (let j=0; j<pos.length; j++){
+
+              if (this.supplies[i].positions[j].sortName.toLowerCase() === this.search.toLowerCase()) {
+              // if (this.pos[j].sortName.toLowerCase() === this.search.toLowerCase()) {
+                searchThing.push(this.supplies[i]);
+                continue;
+              }
+              alert(i + '-' + j);
+
+            }
+
+          }
+
+          this.supplies = searchThing;
+
+        },
 
         collectionPeriod(){
           const collection = [];
 
           let start = new Date(this.startDate);
           let end = new Date(this.endDate).getTime() + 24*60*60*1000;
-          // let now = new Date()
+
+          alert(start + "-" + end)
 
           for (let i=0; i<this.supplies.length; i++)
           {
-            if (new Date(this.supplies[i].date) >= start & new Date(this.supplies[i].date) <= end)
-            {
-              console.log(this.supplies[i].date)
-              collection.push(this.supplies[i]);
+
+            if (this.startDate === null) {
+              if (new Date(this.supplies[i].date) <= end) {
+                collection.push(this.supplies[i]);
+              }
+            }else{
+              if (this.endDate === null){
+                if (new Date(this.supplies[i].date) >= start) {
+                  collection.push(this.supplies[i]);
+                }
+              } else {
+                if (new Date(this.supplies[i].date) >= start & new Date(this.supplies[i].date) <= end)
+                {
+                  collection.push(this.supplies[i]);
+                }
+              }
             }
           }
           this.supplies = collection;

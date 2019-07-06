@@ -193,29 +193,29 @@
 
           let start = new Date(this.startDate);
           let end = new Date(this.endDate).getTime() + 24*60*60*1000;
-          // let now = new Date()
 
           for (let i=0; i<this.general.length; i++)
           {
-            if (new Date(this.general[i].date) >= start & new Date(this.general[i].date) <= end)
-            {
-              console.log(this.general[i].date)
-              collection.push(this.general[i]);
+
+            if (this.startDate === null) {
+              if (new Date(this.general[i].date) <= end) {
+                collection.push(this.general[i]);
+              }
+            }else{
+              if (this.endDate === null){
+                if (new Date(this.general[i].date) >= start) {
+                  collection.push(this.general[i]);
+                }
+              } else {
+                if (new Date(this.general[i].date) >= start & new Date(this.general[i].date) <= end)
+                {
+                  collection.push(this.general[i]);
+                }
+              }
             }
           }
           this.general = collection;
-
         },
-
-        // dateSorting(){
-        //   this.general = this.general.sort(function(a, b){
-        //     return new Date(b.date) - new Date(a.date)})
-        // },
-
-        // update(){
-        //   this.general = this.orders.concat(this.supplies);
-        // }
-
 
       },
 
