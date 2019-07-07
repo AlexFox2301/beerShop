@@ -141,11 +141,11 @@
             if (this.supplies[i].provider.name.toLowerCase() === this.search.toLowerCase() || this.supplies[i].sum.toString() === this.search) {
               searchThing.push(this.supplies[i]);
               continue;
-            }
+            }///Работает
 
             const pos = this.supplies[i].positions;
 
-            for (let j=0; j<pos.length; j++){
+            for (let j=0; j<pos.length; j++){//Что-то с этим циклом
 
               if (this.supplies[i].positions[j].sortName.toLowerCase() === this.search.toLowerCase()) {
               // if (this.pos[j].sortName.toLowerCase() === this.search.toLowerCase()) {
