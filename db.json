@@ -443,7 +443,7 @@
         }
       ],
       "sale": true,
-      "sum": null,
+      "sum": 1000,
       "date": "Sun Jun 27 2019 00:16:00 GMT+0300 (Восточная Европа, летнее время)",
       "worker": null,
       "id": 6
@@ -460,7 +460,7 @@
         }
       ],
       "sale": true,
-      "sum": null,
+      "sum": 2000,
       "date": "Sun Jun 27 2019 00:16:00 GMT+0300 (Восточная Европа, летнее время)",
       "worker": null,
       "id": 7
@@ -590,32 +590,26 @@
         {
           "idSort": 2,
           "sortName": "Viaemilia",
-          "price": {
             "volume": 1,
             "cost": 180,
             "quantity": 500,
             "sumPosition": 90000
-          }
         },
         {
           "idSort": 1,
           "sortName": "Papaya Rye",
-          "price": {
             "volume": 0.33,
             "cost": 70,
             "quantity": 1000,
             "sumPosition": 70000
-          }
         },
         {
           "idSort": 5,
           "sortName": "Nøgne Ø Porter",
-          "price": {
             "volume": 0.25,
             "cost": 40,
             "quantity": 1000,
             "sumPosition": 40000
-          }
         }
       ],
       "sale": false,

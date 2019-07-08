@@ -2,12 +2,23 @@
     <div class="container">
 
       <div class="row mb-3">
-        <input
-          id="search"
-          type="search"
-          v-model="search"
-          @change="scan"
-          placeholder="ПОИСК">
+        <div class="col-11">
+          <input
+            id="search"
+            type="search"
+            v-model="search"
+            placeholder="ПОИСК">
+<!--          <input-->
+<!--            id="search"-->
+<!--            type="search"-->
+<!--            v-model="search"-->
+<!--            @change="scan"-->
+<!--            placeholder="ПОИСК">-->
+        </div>
+        <div class="col-xs-1">
+          <button class="btn btn-info btn-sm bat" @click="scan">Найти</button>
+        </div>
+
       </div>
       <div class="row mb-3">
         <div class="col-sm-2">
@@ -20,7 +31,10 @@
           <input type="date" v-model="endDate">
         </div>
         <div class="col-sm-1">
-          <button class="btn btn-sm btn-info" @click="collectionPeriod">Вывести</button>
+          <button class="btn btn-sm btn-info bat" @click="collectionPeriod">Вывести</button>
+        </div>
+        <div class="col-sm-3">
+          <button class="btn btn-sm btn-info bat" @click="resetSearch">Сбросить параметры поиска</button>
         </div>
 
       </div>
@@ -133,33 +147,43 @@
 
       methods:{
 
+        resetSearch(){
+          this.resource.get().then(responce => responce.json())
+            .then(supplies => this.supplies = supplies);
+          this.search = '';
+          this.startDate = null;
+          this.endDate = null;
+        },
+
         scan(){
           const searchThing = [];
 
-          for (let i=0; i<this.supplies.length; i++){
+          try {
+            for (let i=0; i<this.supplies.length; i++){
 
-            if (this.supplies[i].provider.name.toLowerCase() === this.search.toLowerCase() || this.supplies[i].sum.toString() === this.search) {
-              searchThing.push(this.supplies[i]);
-              continue;
-            }///Работает
-
-            const pos = this.supplies[i].positions;
-
-            for (let j=0; j<pos.length; j++){//Что-то с этим циклом
-
-              if (this.supplies[i].positions[j].sortName.toLowerCase() === this.search.toLowerCase()) {
-              // if (this.pos[j].sortName.toLowerCase() === this.search.toLowerCase()) {
+              if (this.supplies[i].provider.name.toLowerCase() === this.search.toLowerCase() ||
+                this.supplies[i].sum.toString() === this.search) {
                 searchThing.push(this.supplies[i]);
                 continue;
+              }///Работает
+
+              const pos = this.supplies[i].positions;
+
+              for (let j=0; j<pos.length; j++){//Что-то с этим циклом
+
+                if (this.supplies[i].positions[j].sortName.toLowerCase() === this.search.toLowerCase() ||
+                  this.supplies[i].positions[j].volume.toString().toLowerCase() === this.search.toLowerCase() ||
+                  this.supplies[i].positions[j].cost.toString().toLowerCase() === this.search.toLowerCase()) {
+                  searchThing.push(this.supplies[i]);
+                  continue;
+                }
               }
-              alert(i + '-' + j);
 
             }
-
+            this.supplies = searchThing;
+          }catch (e) {
+            alert('Ой! Что-то пошло не так.')
           }
-
-          this.supplies = searchThing;
-
         },
 
         collectionPeriod(){

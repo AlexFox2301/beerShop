@@ -1,13 +1,16 @@
 <template>
     <div class="container">
       <div class="row mb-3">
-        <input
-          id="search"
-          type="search"
-          v-model="search"
-          @change="scan"
-          placeholder="ПОИСК">
-<!--        <button class="btn btn-sm" ></button>-->
+        <div class="col-11">
+          <input
+            id="search"
+            type="search"
+            v-model="search"
+            placeholder="ПОИСК">
+        </div>
+        <div class="col-xs-1">
+          <button class="btn btn-info btn-sm bat" @click="scan">Найти</button>
+        </div>
       </div>
       <div class="row mb-3">
         <div class="col-sm-2">
@@ -20,7 +23,10 @@
           <input type="date" v-model="endDate">
         </div>
         <div class="col-sm-1">
-          <button class="btn btn-sm btn-info" @click="collectionPeriod">Вывести</button>
+          <button class="btn btn-sm btn-info bat" @click="collectionPeriod">Вывести</button>
+        </div>
+        <div class="col-sm-3">
+          <button class="btn btn-sm btn-info bat" @click="resetSearch">Сбросить параметры поиска</button>
         </div>
 
       </div>
@@ -131,7 +137,46 @@
 
       methods:{
 
-        scan(){},
+        resetSearch(){
+          this.resource.get().then(responce => responce.json())
+            .then(orders => this.orders = orders);
+          this.search = '';
+          this.startDate = null;
+          this.endDate = null;
+        },
+
+        scan(){
+
+          const searchOrder = [];
+
+          try {
+            for (let i=0; i<this.orders.length; i++){
+
+              if (this.orders[i].sum.toString() === this.search) {
+                // if (this.orders[i].worker.name.toLowerCase() === this.search.toLowerCase() ||
+                //   this.orders[i].sum.toString() === this.search) {
+                searchOrder.push(this.orders[i]);
+                continue;
+              }
+
+              for (let j=0; j<this.orders[i].positions.length; j++){
+
+                if (this.orders[i].positions[j].sortName.toLowerCase() === this.search.toLowerCase() ||
+                  this.orders[i].positions[j].volume.toString().toLowerCase() === this.search.toLowerCase() ||
+                  this.orders[i].positions[j].cost.toString().toLowerCase() === this.search.toLowerCase()) {
+
+                  searchOrder.push(this.orders[i]);
+                  continue;
+                }
+              }
+            }
+            this.orders = searchOrder;
+          }catch (e) {
+            alert('Ой! Что-то пошло не так.');
+          }
+
+
+        },
 
         collectionPeriod(){
           const collection = [];

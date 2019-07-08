@@ -1,13 +1,16 @@
 <template>
   <div class="container">
     <div class="row mb-3">
-      <input
-        id="search"
-        type="search"
-        v-model="search"
-        @input="scan"
-        placeholder="ПОИСК">
-      <!--        <button class="btn btn-sm" ></button>-->
+      <div class="col-11">
+        <input
+          id="search"
+          type="search"
+          v-model="search"
+          placeholder="ПОИСК">
+      </div>
+      <div class="col-xs-1">
+        <button class="btn btn-info btn-sm bat" @click="scan">Найти</button>
+      </div>
     </div>
     <div class="row mb-3">
       <div class="col-sm-2">
@@ -20,7 +23,10 @@
         <input type="date" v-model="endDate">
       </div>
       <div class="col-sm-1">
-        <button class="btn btn-sm btn-info" @click="collectionPeriod">Вывести</button>
+        <button class="btn btn-sm btn-info bat" @click="collectionPeriod">Вывести</button>
+      </div>
+      <div class="col-sm-3">
+        <button class="btn btn-sm btn-info bat" @click="resetSearch">Сбросить параметры поиска</button>
       </div>
       <!--<div class="col-sm-1">-->
         <!--<button class="btn btn-sm btn-info" @click="dateSorting">сортировать по дате</button>-->
@@ -155,36 +161,56 @@
 
       methods:{
 
+        resetSearch(){
+
+          this.general = this.orders.concat(this.supplies);
+
+          this.general = this.general.sort(function(a, b){
+            return new Date(b.date) - new Date(a.date)});
+
+          this.search = '';
+          this.startDate = null;
+          this.endDate = null;
+        },
+
         scan(){
-          const searchCollection = [];
 
-          for (let i=0; i<this.general.length; i++)
-          {
-            // if (this.general[i].worker.name === this.search ||
-            //   this.general[i].provider.name === this.search)
-            // {
-            //   searchCollection.push(this.general[i]);
-            //   continue;
-            // }
+          const searches = [];
 
-            for (let j=0; j<this.general[i].positions.length; j++)
-            {
-              if (this.general[i].positions[j].idSort.toString() === this.search ||
-                this.general[i].positions[j].sortName.toLowerCase() === this.search.toLowerCase() ||
-                this.general[i].positions[j].volume.toLowerCase() === this.search.toLowerCase() ||
-                this.general[i].positions[j].cost.toString() === this.search ||
-                this.general[i].positions[j].sumPosition.toString() === this.search
-              )
-              {
-                searchCollection.push(this.general[i]);
-                break;
+          try {
+            for (let i=0; i<this.general.length; i++){
+
+              if (this.general[i].sum.toString() === this.search) {
+                // if (this.orders[i].worker.name.toLowerCase() === this.search.toLowerCase() ||
+                //   this.orders[i].sum.toString() === this.search) {
+                searches.push(this.general[i]);
+                continue;
+              }
+
+              try {
+                if (this.general[i].provider.name.toLowerCase() === this.search.toLowerCase()) {
+                  searches.push(this.general[i]);
+                  continue;
+                }
+              }catch (e) {}
+
+              for (let j=0; j<this.general[i].positions.length; j++){
+
+                if (this.general[i].positions[j].sortName.toLowerCase() === this.search.toLowerCase() ||
+                  this.general[i].positions[j].volume.toString().toLowerCase() === this.search.toLowerCase() ||
+                  this.general[i].positions[j].cost.toString().toLowerCase() === this.search.toLowerCase()) {
+
+                  searches.push(this.general[i]);
+                  continue;
+                }
               }
             }
-
-
+            this.general = searches;
+          }catch (e) {
+            alert('Ой! Что-то пошло не так.');
           }
 
-          this.general = searchCollection;
+
 
         },
 
