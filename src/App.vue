@@ -178,37 +178,38 @@ export default {
 
     loginCheck () {
       this.resource.get().then(responce => responce.json())
-        .then(workers => this.workers = workers);
+        .then(workers => this.workers = workers)
+        .then(us => {
 
-      for (let i=0; i<this.workers.length; ++i) {
+          for (let i=0; i<this.workers.length; ++i) {//alert('начали цикл')
 
-        if (this.workers[i].login !== this.login)
-        {
-          continue;
-        }
-        if (this.workers[i].password === this.password)
-        {
-          this.activeNav = !this.activeNav;
-          this.user = this.workers[i];
+            if (this.workers[i].login !== this.login)
+            {
+              continue;
+            }
+            if (this.workers[i].password === this.password)
+            {
+              this.activeNav = !this.activeNav;
+              this.user = this.workers[i];
 
-          if (this.user.access.indexOf('sale') >= 0) {
-            this.saleLink = true;}
-          if (this.user.access.indexOf('supply') >= 0) {
-            this.supplyLink = true;}
-          if (this.user.access.indexOf('report') >= 0) {
-            this.reportLink = true;}
-          if (this.user.access.indexOf('workers') >= 0) {
-            this.workersLink = true;}
-          if (this.user.access.indexOf('providers') >= 0) {
-            this.providersLink = true;}
+              if (this.user.access.indexOf('sale') >= 0) {
+                this.saleLink = true;}
+              if (this.user.access.indexOf('supply') >= 0) {
+                this.supplyLink = true;}
+              if (this.user.access.indexOf('report') >= 0) {
+                this.reportLink = true;}
+              if (this.user.access.indexOf('workers') >= 0) {
+                this.workersLink = true;}
+              if (this.user.access.indexOf('providers') >= 0) {
+                this.providersLink = true;}
 
-          this.$router.push('/bottle');
-          this.workers = [];
-          return;
-        }
-      }
-      this.msgErrorLogin = 'Неверно введенный логин или пароль'
-      // alert()
+              this.$router.push('/bottle');
+              this.workers = [];
+              return;
+            }
+          }
+          this.msgErrorLogin = 'Неверно введенный логин или пароль'
+        })
     }
   },
 
