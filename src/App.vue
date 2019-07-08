@@ -174,6 +174,12 @@ export default {
     }
 },
 
+  computed:{
+    user(){
+      return this.$store.state.user
+    }
+  },
+
   methods:{
 
     loginCheck () {
@@ -191,6 +197,7 @@ export default {
             {
               this.activeNav = !this.activeNav;
               this.user = this.workers[i];
+
 
               if (this.user.access.indexOf('sale') >= 0) {
                 this.saleLink = true;}
