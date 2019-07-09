@@ -319,6 +319,20 @@
       "status": "Стажировка",
       "note": "-",
       "id": 7
+    },
+    {
+      "name": "Бориска",
+      "login": "boryga",
+      "password": "qwe",
+      "workerPosition": "Продавец",
+      "access": [
+        "sale"
+      ],
+      "address": "где-то там",
+      "phone": "+380931234567",
+      "status": "Стажировка",
+      "note": "-",
+      "id": 8
     }
   ],
   "orders": [
@@ -789,7 +803,7 @@
       ],
       "sale": false,
       "date": "Fri Jun 28 2019 12:17:15 GMT+0300 (Восточная Европа, летнее время)",
-      "worker":  {
+      "worker": {
         "name": "Artem",
         "login": "AlexFox2301",
         "password": "1425",
@@ -852,7 +866,7 @@
       ],
       "sale": false,
       "date": "Fri Jun 28 2019 16:31:38 GMT+0300 (Восточная Европа, летнее время)",
-      "worker":  {
+      "worker": {
         "name": "Artem",
         "login": "AlexFox2301",
         "password": "1425",
@@ -907,7 +921,7 @@
       ],
       "sale": false,
       "date": "Fri Jun 28 2019 23:41:30 GMT+0300 (Восточная Европа, летнее время)",
-      "worker":  {
+      "worker": {
         "name": "Artem",
         "login": "AlexFox2301",
         "password": "1425",

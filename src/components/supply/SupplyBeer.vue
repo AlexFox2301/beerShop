@@ -185,7 +185,7 @@
           idSort: 0,
           sum: 0,
 
-          // worker: {},
+          worker: {},
 
           positions: [],//текущая поставка, состоящая из массива объектов supplySort
         }

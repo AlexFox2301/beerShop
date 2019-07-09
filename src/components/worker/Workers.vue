@@ -58,22 +58,23 @@
             <div class="col-1">{{worker.status}}</div>
             <div class="col-1">{{worker.note}}</div>
             <div class="col-1">
-              <router-link
-              class="btn btn-success btn-sm"
-              tag="button"
-              exact
-              active-class="active"
-              @click="setID(worker.id)"
-              to="/workers/edit_worker"
-              >
-              Править
-              <span class="sr-only">(current)</span>
-              </router-link>
-<!--              <button id="editInDB"-->
-<!--                      class="btn btn-success btn-sm"-->
-<!--                      ref="/workers/edit_worker"-->
-<!--              >Править-->
-<!--              </button>-->
+<!--              <router-link-->
+<!--              class="btn btn-success btn-sm"-->
+<!--              tag="button"-->
+<!--              @click="setID(worker.id)"-->
+<!--              exact-->
+<!--              active-class="active"-->
+<!--              to="/workers/edit_worker"-->
+<!--              >-->
+<!--              Править-->
+<!--              <span class="sr-only">(current)</span>-->
+<!--              </router-link>-->
+              <button id="editInDB"
+                      class="btn btn-success btn-sm"
+                      @click="setID(worker.id)"
+                      ref="/workers/edit_worker"
+              >Править
+              </button>
             </div>
           </div>
 
@@ -107,7 +108,9 @@
 
       methods:{
         setID(id){
+          alert(id);
           this.$store.commit('setWorkerID', id);
+          this.$router.push('/workers/edit_worker')
         }
       },
 

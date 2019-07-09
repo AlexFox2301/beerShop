@@ -1,6 +1,6 @@
 <template>
   <div class="container position">
-
+{{idWorker}} // {{worker}}
     <div class="row justify-content-center align-items-center">
       <div class="col-10">
         <div class="form-group">
@@ -56,8 +56,10 @@
             </div>
             <div class="col-6">
               <!--                  <input id="workerPosition" class="form-control" type="text" v-model="workerPosition">-->
-              <select id="workerPosition" v-model="worker.workerPosition">
-                <option v-for="p in posts">{{p}}</option>
+<!--              <select id="workerPosition" v-model="worker.workerPosition">-->
+              <select id="workerPosition" v-model="defaultPosition">
+                <option v-for="p in posts"
+                >{{p}}</option>
               </select>
             </div>
           </div>
@@ -158,6 +160,7 @@
     data() {
       return{
         resource: null,
+
         statusArrey: [
           'Стажировка',
           'Работает',
@@ -174,6 +177,7 @@
         // status: '-',
         // note: '-',
 
+        defaultPosition:'',
         msgLogin: '',
         confirmPassword: '',
         worker:{},
@@ -187,6 +191,12 @@
         idWorker: null
       }
     },
+
+    // computed:{
+    //   defaultPosition(){
+    //     return this.defaultPosition = worker.workerPosition;
+    //   },
+    // },
 
     methods: {
 
@@ -267,10 +277,15 @@
     created() {
       this.resource = this.$resource('workers');
 
-        this.idWorker = this.$store.getters.setWorkerID;
+        this.idWorker = this.$store.getters.getWorkerID;
 
-        this.resource.get(this.idWorker).then(responce => responce.json())
+      this.$http.get('http://localhost:3000/workers/' + this.idWorker)
+        .then(response => {return response.json()})
           .then(worker => this.worker = worker)
+        .then(pos => this.defaultPosition = this.worker.workerPosition)
+
+        // this.resource.get(this.idWorker).then(response => response.json())
+        //   .then(worker => this.worker = worker)
     }
 
 
