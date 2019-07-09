@@ -91,17 +91,14 @@
             </div>
 
             <div class="col-2">
-<!--              <span>{{item.price.volume}} л.</span>-->
               <span>{{item.volume}} л.</span>
             </div>
 
             <div class="col-2">
-<!--              <span>{{item.price.cost}} грн.</span>-->
               <span>{{item.cost}} грн.</span>
             </div>
 
             <div class="col-2">
-<!--              <span>{{item.price.quantity}} шт.</span>-->
               <span>{{item.quantity}} шт.</span>
             </div>
 
@@ -110,10 +107,10 @@
             </div>
           </div>
           <div class="row mt-2">
-<!--            <div class="col-sm-1">-->
-<!--              <span>{{positions.worker.name}}</span>-->
-<!--            </div>-->
-            <div class="col-sm-9">
+            <div class="col-sm-3" style="text-align: left">
+              <span>{{supply.worker.name}}</span>
+            </div>
+            <div class="col-sm-7" style="text-align: left">
               <span>{{supply.date}}</span>
             </div>
             <div class="col-sm-2">
@@ -162,7 +159,8 @@
             for (let i=0; i<this.supplies.length; i++){
 
               if (this.supplies[i].provider.name.toLowerCase() === this.search.toLowerCase() ||
-                this.supplies[i].sum.toString() === this.search) {
+                this.supplies[i].sum.toString() === this.search ||
+                this.supplies[i].worker.name.toLowerCase() === this.search.toLowerCase()) {
                 searchThing.push(this.supplies[i]);
                 continue;
               }///Работает

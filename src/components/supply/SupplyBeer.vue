@@ -123,7 +123,7 @@
       </div>
 
       <div class="row">
-        <div class="col-sm-6"
+        <div id="provider" class="col-sm-6"
              style="text-align: left">
           <select class="select" v-model="provider">
             <option
@@ -132,8 +132,8 @@
             >{{prov.name}}</option>
           </select>
         </div>
-        <div class="col-2" style="text-align: right">
-          <span>{{user}}</span>
+        <div class="col-2" style="text-align: right; color: darkgray">
+          {{worker.name}}
         </div>
         <div class="col-2" style="text-align: right">
           <strong>Итого:</strong>
@@ -143,13 +143,14 @@
         </div>
 
       </div>
+
     </div>
 
     <div class="row">
       <hr>
       <button class="bat btn-info" style="margin: 10px" @click="addSupplyToDB">Внести в БД</button>
     </div>
-{{$route.query.user}}/
+<!--{{worker.name}}-->
   </div>
 </template>
 
@@ -157,12 +158,12 @@
     export default {
         // name: "SupplyBeer"
 
-      props: {
-        user:{
-          type: Object,
-          required: true
-        }
-      },
+      // props: {
+      //   user:{
+      //     type: Object,
+      //     required: true
+      //   }
+      // },
 
       data() {
         return{
@@ -183,6 +184,8 @@
           quantity: 0,
           idSort: 0,
           sum: 0,
+
+          // worker: {},
 
           positions: [],//текущая поставка, состоящая из массива объектов supplySort
         }
@@ -247,7 +250,7 @@
               worker: null,
               provider: this.provider,
               sum: this.sum,
-              worker: this.user
+              worker: this.worker
             };
           // try {
             // this.$http.post('http://localhost:3000/supplies', supplyToDB)
@@ -281,6 +284,7 @@
 
         this.$http.get('http://localhost:3000/beers')
           .then(response => {return response.json()}).then(beers => this.beers = beers)
+          .then(worker => this.worker = this.$store.getters.getWorker)
       },
 
     }

@@ -1,7 +1,7 @@
 <template>
   <div class="container">
 
-    <div class="row justify-content-center align-items-center position">
+    <div id="head" class="row justify-content-center align-items-center position">
 
       <div class="col-sm-3 mt-1">Сорт пива</div>
 
@@ -85,7 +85,10 @@
     </div>
 
     <div class="row">
-      <div class="col-sm-10" style="text-align: right">
+      <div id="worker" class="col-sm-6" style="text-align: left; color: darkgray">
+        {{worker.name}}
+      </div>
+      <div class="col-sm-4" style="text-align: right">
         <strong>Итого:</strong>
       </div>
       <div class="col-sm-2" style="text-align: left">
@@ -98,7 +101,7 @@
       <button id="addPosition" class="btn btn-info" @click="addPosition">Добавить</button>
       <button id="checkout" class="btn btn-warning" @click="checkout">Оформить</button>
       <button id="closeOrder" class="btn btn-danger" @click="closeOrder">Закрыть</button>
-    </div><br>
+    </div><tr></tr>
 
   </div>
 </template>
@@ -123,6 +126,8 @@
         sumPosition: 0,//Сумма заказаных бутылок одного сорта и одного объема
         sum: 0,//Сумма всего заказа
         date: null,//дата заказа и время
+
+        worker: {},
 
         quantityPosition: 1,
 
@@ -183,12 +188,11 @@
           sale: true,
           sum: this.sum,
           date: Date(),
-          worker: null//this.user
+          worker: this.worker
         }
+        alert('order')
 
         this.resourceOrders.save({}, order);
-        // this.$http.post('http://localhost:3000/orders', order)
-        //   .then(response => {return response.json()}).then()
 
         this.positions = [];
         this.sum = 0;
@@ -205,7 +209,8 @@
       this.resourceOrders = this.$resource('orders')
       this.resource = this.$resource('beers'),
         this.resource.get().then(responce => responce.json())
-          .then(beers => this.beers = beers);
+          .then(beers => this.beers = beers)
+          .then(worker => this.worker = this.$store.getters.getWorker);
 
 
     },

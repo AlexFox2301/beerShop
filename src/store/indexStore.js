@@ -9,9 +9,17 @@ export default new Vuex.Store({
     user: {}
   },
 
-  getters:{},
+  getters:{
+    getWorker(state){
+      return state.user;
+    }
+  },
 
-  mutations:{},
+  mutations:{
+    setWorker(state, payload){
+      state.user = payload;
+    }
+  },
 
   actions:{},
 

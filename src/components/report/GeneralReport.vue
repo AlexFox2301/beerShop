@@ -118,9 +118,9 @@
 
         <div class="row">
 
-<!--          <div class="col-sm-2">-->
-<!--            <span>{{gen.worker.name}}</span>-->
-<!--          </div>-->
+          <div class="col-sm-2" style="text-align: left">
+            <span>{{gen.worker.name}}</span>
+          </div>
 
           <div class="col-sm-8">
             <span>{{gen.date}}</span>
@@ -180,9 +180,9 @@
           try {
             for (let i=0; i<this.general.length; i++){
 
-              if (this.general[i].sum.toString() === this.search) {
-                // if (this.orders[i].worker.name.toLowerCase() === this.search.toLowerCase() ||
-                //   this.orders[i].sum.toString() === this.search) {
+              // if (this.general[i].sum.toString() === this.search) {
+                if (this.general[i].worker.name.toLowerCase() === this.search.toLowerCase() ||
+                    this.general[i].sum.toString() === this.search) {
                 searches.push(this.general[i]);
                 continue;
               }

@@ -37,24 +37,34 @@
           <span>ID</span>
         </div>
 
-        <div class="col-sm-3">
-          <span>Сорт пива</span>
-        </div>
+        <div class="col-sm-11">
+          <div class="row">
 
-        <div class="col-sm-2">
-          <span>объём бутылки</span>
-        </div>
+            <div class="col-sm-1">
+              <span>ID пива</span>
+            </div>
 
-        <div class="col-sm-2">
-          <span>Цена</span>
-        </div>
+            <div class="col-sm-3">
+              <span>Сорт пива</span>
+            </div>
 
-        <div class="col-sm-2">
-          <span>Количество</span>
-        </div>
+            <div class="col-sm-2">
+              <span>Объём бутылки</span>
+            </div>
 
-        <div class="col-sm-2">
-          <span>Сумма</span>
+            <div class="col-sm-2">
+              <span>Цена</span>
+            </div>
+
+            <div class="col-sm-2">
+              <span>Количество</span>
+            </div>
+
+            <div class="col-sm-2">
+              <span>Сумма</span>
+            </div>
+
+          </div>
         </div>
 
       </div>
@@ -95,9 +105,9 @@
             </div>
 
           <div class="row align-items-end">
-<!--            <div class="col-sm-2">-->
-<!--              <span>{{order.worker.name}}</span>-->
-<!--            </div>-->
+            <div class="col-sm-2">
+              <span>{{order.worker.name}}</span>
+            </div>
             <div class="col-sm-8">
               <span>{{order.date}}</span>
             </div>
@@ -128,13 +138,6 @@
         }
       },
 
-      // watch:{
-      //   orders: function () {
-      //     this.resource.get().then(responce => responce.json())
-      //       .then(orders => this.orders = orders)
-      //   }
-      // },
-
       methods:{
 
         resetSearch(){
@@ -152,9 +155,9 @@
           try {
             for (let i=0; i<this.orders.length; i++){
 
-              if (this.orders[i].sum.toString() === this.search) {
-                // if (this.orders[i].worker.name.toLowerCase() === this.search.toLowerCase() ||
-                //   this.orders[i].sum.toString() === this.search) {
+              // if (this.orders[i].sum.toString() === this.search) {
+                if (this.orders[i].worker.name.toLowerCase() === this.search.toLowerCase() ||
+                  this.orders[i].sum.toString() === this.search) {
                 searchOrder.push(this.orders[i]);
                 continue;
               }
