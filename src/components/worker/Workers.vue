@@ -63,11 +63,17 @@
               tag="button"
               exact
               active-class="active"
+              @click="setID(worker.id)"
               to="/workers/edit_worker"
               >
               Править
               <span class="sr-only">(current)</span>
               </router-link>
+<!--              <button id="editInDB"-->
+<!--                      class="btn btn-success btn-sm"-->
+<!--                      ref="/workers/edit_worker"-->
+<!--              >Править-->
+<!--              </button>-->
             </div>
           </div>
 
@@ -86,7 +92,8 @@
       data() {
           return {
 
-            workers:[]
+            workers:[],
+            idWorker: null
 
           }
       },
@@ -96,6 +103,12 @@
             this.resource.get().then(responce => responce.json())
               .then(workers => this.workers = workers)
           }
+      },
+
+      methods:{
+        setID(id){
+          this.$store.commit('setWorkerID', id);
+        }
       },
 
       created() {

@@ -6,18 +6,27 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 
   state: {
-    user: {}
+    user: {},
+    idWorker: null
   },
 
   getters:{
     getWorker(state){
       return state.user;
+    },
+
+    getWorkerID(state){
+      return state.idWorker;
     }
   },
 
   mutations:{
     setWorker(state, payload){
       state.user = payload;
+    },
+
+    setWorkerID(state, payload){
+      state.idWorker = payload;
     }
   },
 
