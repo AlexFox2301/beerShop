@@ -740,6 +740,90 @@
         "id": 6
       },
       "id": 11
+    },
+    {
+      "positions": [
+        {
+          "idSort": 4,
+          "sortName": "Galaxy IPA",
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": 1,
+          "sumPosition": 75
+        },
+        {
+          "idSort": 9,
+          "sortName": "Breakside IPA",
+          "volume": 0.5,
+          "cost": 100,
+          "quantity": 1,
+          "sumPosition": 100
+        }
+      ],
+      "sale": true,
+      "sum": 175,
+      "date": "Wed Jul 10 2019 22:32:24 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": {
+        "name": "Artem Talanov",
+        "login": "Sheff",
+        "password": "qaz",
+        "workerPosition": "Директор",
+        "access": [
+          "sale",
+          "workers",
+          "providers",
+          "supply",
+          "report"
+        ],
+        "address": "Аруба",
+        "phone": "+380 93 354 0206",
+        "status": "Работает",
+        "note": "-",
+        "id": 6
+      },
+      "id": 12
+    },
+    {
+      "positions": [
+        {
+          "idSort": 5,
+          "sortName": "Nøgne Ø Porter",
+          "volume": 0.5,
+          "cost": 100,
+          "quantity": 3,
+          "sumPosition": 300
+        },
+        {
+          "idSort": 8,
+          "sortName": "Black Eyed King",
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 3,
+          "sumPosition": 150
+        }
+      ],
+      "sale": true,
+      "sum": 450,
+      "date": "Wed Jul 10 2019 22:37:03 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": {
+        "name": "Artem Talanov",
+        "login": "Sheff",
+        "password": "qaz",
+        "workerPosition": "Директор",
+        "access": [
+          "sale",
+          "workers",
+          "providers",
+          "supply",
+          "report"
+        ],
+        "address": "Аруба",
+        "phone": "+380 93 354 0206",
+        "status": "Работает",
+        "note": "-",
+        "id": 6
+      },
+      "id": 13
     }
   ],
   "supplies": [
@@ -1102,6 +1186,63 @@
       },
       "sum": 23000,
       "id": 14
+    },
+    {
+      "positions": [
+        {
+          "idSort": 1,
+          "sortName": "Papaya Rye",
+          "volume": 0.33,
+          "cost": 70,
+          "quantity": 200,
+          "sumPosition": 14000
+        },
+        {
+          "idSort": 4,
+          "sortName": "Galaxy IPA",
+          "volume": 0.33,
+          "cost": 68,
+          "quantity": 500,
+          "sumPosition": 34000
+        }
+      ],
+      "sale": false,
+      "date": "Wed Jul 10 2019 22:42:45 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": {
+        "name": "Artem Talanov",
+        "login": "Sheff",
+        "password": "qaz",
+        "workerPosition": "Директор",
+        "access": [
+          "sale",
+          "workers",
+          "providers",
+          "supply",
+          "report"
+        ],
+        "address": "Аруба",
+        "phone": "+380 93 354 0206",
+        "status": "Работает",
+        "note": "-",
+        "id": 6
+      },
+      "provider": {
+        "name": "Сарай",
+        "address": "yavor 24a",
+        "phones": [
+          "+38 095 12 54 567",
+          "+380 93 354 0206"
+        ],
+        "emails": [
+          "konura@vogorode",
+          "talanov_artem@ukr.net"
+        ],
+        "doc": "-",
+        "invoice": "456",
+        "id": 3
+      },
+      "sum": 48000,
+      "id": 15
     }
   ],
   "providers": [

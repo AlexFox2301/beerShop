@@ -198,7 +198,7 @@ export default {
               this.activeNav = !this.activeNav;
               this.user = this.workers[i];
               this.$store.commit('setWorker', this.user);
-              alert(this.$store.getters.getWorker.name)//
+
 
               if (this.user.access.indexOf('sale') >= 0) {
                 this.saleLink = true;}

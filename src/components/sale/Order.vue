@@ -189,8 +189,7 @@
           sum: this.sum,
           date: Date(),
           worker: this.worker
-        }
-        alert('order')
+        };
 
         this.resourceOrders.save({}, order);
 

@@ -156,14 +156,6 @@
 
 <script>
     export default {
-        // name: "SupplyBeer"
-
-      // props: {
-      //   user:{
-      //     type: Object,
-      //     required: true
-      //   }
-      // },
 
       data() {
         return{
@@ -201,13 +193,6 @@
 
         addNewPosition(){
 
-          // this.supplyPrice = {
-          //   volume: this.supplyVolume.volume,
-          //   cost: this.supplyVolume.cost,
-          //   quantity: this.quantity,
-          //   sumPosition: this.sumPosition
-          // }
-
           const supplyPosition = {
             idSort: this.supplySort.id,
             sortName: this.supplySort.sortName,
@@ -224,11 +209,9 @@
 
           for (let i=0; i<this.positions.length; i++)
           {
-            // this.sum = this.sum + this.positions[i].price.sumPosition;
             this.sum = this.sum + this.positions[i].sumPosition;
           }
 
-          // this.supplyPrice = {};
           this.supplyVolume = {};
           this.supplySort = {};
           this.cost = 0;
