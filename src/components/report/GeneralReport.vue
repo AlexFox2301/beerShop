@@ -265,7 +265,7 @@
             .then(supplies => this.supplies = supplies)
             .then(general => this.general = this.orders.concat(this.supplies))
             .then(general => this.general = this.general.sort(function(a, b){
-              return new Date(b.date) - new Date(a.date)}))
+              return new Date(b.date) - new Date(a.date)}));
       },
     }
 </script>

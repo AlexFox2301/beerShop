@@ -70,19 +70,13 @@
 <!--              <span class="sr-only">(current)</span>-->
 <!--              </router-link>-->
               <button id="editInDB"
-                      class="btn btn-success btn-sm"
+                      class="btn btn-success btn-sm bat"
                       @click="setID(worker.id)"
                       ref="/workers/edit_worker"
               >Править
               </button>
             </div>
           </div>
-
-
-
-
-
-
   </div>
 </template>
 
@@ -108,9 +102,8 @@
 
       methods:{
         setID(id){
-          alert(id);
           this.$store.commit('setWorkerID', id);
-          this.$router.push('/workers/edit_worker')
+          this.$router.push('/workers/edit_worker');
         }
       },
 

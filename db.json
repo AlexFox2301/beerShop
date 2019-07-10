@@ -210,7 +210,7 @@
       "name": "Artem",
       "login": "AlexFox2301",
       "password": "1425",
-      "workerPosition": "boss",
+      "workerPosition": "Бухгалтер",
       "access": [
         "sale",
         "workers",
@@ -220,7 +220,7 @@
       ],
       "address": "yavor 24a",
       "phone": "+380 93 354 0206",
-      "status": "-",
+      "status": "Работает",
       "note": "-",
       "id": 1
     },
@@ -228,7 +228,7 @@
       "name": "barka",
       "login": "barakuda",
       "password": "123456",
-      "workerPosition": "saler",
+      "workerPosition": "Продавец",
       "access": [
         "sale",
         "report"
@@ -242,14 +242,14 @@
     {
       "name": "krill",
       "login": "gladiy",
-      "password": "123",
-      "workerPosition": "security",
+      "password": "zzz",
+      "workerPosition": "Водитель",
       "access": [
         "workers",
         "providers"
       ],
-      "address": "sportsal",
-      "phone": "+38 095 12 54 567",
+      "address": "г.Николаев, ПГУ 13",
+      "phone": "+38 095 12 54 111",
       "status": "Работает",
       "note": "-",
       "id": 3
@@ -258,7 +258,7 @@
       "name": "talanov",
       "login": "artem",
       "password": "123",
-      "workerPosition": "boss",
+      "workerPosition": "Системный администратор",
       "access": [
         "sale",
         "workers",
@@ -362,7 +362,7 @@
         "name": "barka",
         "login": "barakuda",
         "password": "123456",
-        "workerPosition": "saler",
+        "workerPosition": "Продавец",
         "access": [
           "sale",
           "report"
@@ -469,7 +469,7 @@
         "name": "barka",
         "login": "barakuda",
         "password": "123456",
-        "workerPosition": "saler",
+        "workerPosition": "Продавец",
         "access": [
           "sale",
           "report"
@@ -618,7 +618,7 @@
         "name": "barka",
         "login": "barakuda",
         "password": "123456",
-        "workerPosition": "saler",
+        "workerPosition": "Продавец",
         "access": [
           "sale",
           "report"
@@ -706,6 +706,40 @@
         "id": 6
       },
       "id": 10
+    },
+    {
+      "positions": [
+        {
+          "idSort": 4,
+          "sortName": "Galaxy IPA",
+          "volume": 0.5,
+          "cost": 100,
+          "quantity": 20,
+          "sumPosition": 2000
+        }
+      ],
+      "sale": true,
+      "sum": 2000,
+      "date": "Wed Jul 10 2019 10:26:27 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": {
+        "name": "Artem Talanov",
+        "login": "Sheff",
+        "password": "qaz",
+        "workerPosition": "Директор",
+        "access": [
+          "sale",
+          "workers",
+          "providers",
+          "supply",
+          "report"
+        ],
+        "address": "Аруба",
+        "phone": "+380 93 354 0206",
+        "status": "Работает",
+        "note": "-",
+        "id": 6
+      },
+      "id": 11
     }
   ],
   "supplies": [
@@ -807,7 +841,7 @@
         "name": "Artem",
         "login": "AlexFox2301",
         "password": "1425",
-        "workerPosition": "boss",
+        "workerPosition": "Бухгалтер",
         "access": [
           "sale",
           "workers",
@@ -817,7 +851,7 @@
         ],
         "address": "yavor 24a",
         "phone": "+380 93 354 0206",
-        "status": "-",
+        "status": "Работает",
         "note": "-",
         "id": 1
       },
@@ -870,7 +904,7 @@
         "name": "Artem",
         "login": "AlexFox2301",
         "password": "1425",
-        "workerPosition": "boss",
+        "workerPosition": "Бухгалтер",
         "access": [
           "sale",
           "workers",
@@ -880,7 +914,7 @@
         ],
         "address": "yavor 24a",
         "phone": "+380 93 354 0206",
-        "status": "-",
+        "status": "Работает",
         "note": "-",
         "id": 1
       },
@@ -925,7 +959,7 @@
         "name": "Artem",
         "login": "AlexFox2301",
         "password": "1425",
-        "workerPosition": "boss",
+        "workerPosition": "Бухгалтер",
         "access": [
           "sale",
           "workers",
@@ -935,7 +969,7 @@
         ],
         "address": "yavor 24a",
         "phone": "+380 93 354 0206",
-        "status": "-",
+        "status": "Работает",
         "note": "-",
         "id": 1
       },
@@ -1011,6 +1045,63 @@
       },
       "sum": 525,
       "id": 13
+    },
+    {
+      "positions": [
+        {
+          "idSort": 6,
+          "sortName": "ManBearPig",
+          "volume": 0.33,
+          "cost": 70,
+          "quantity": 200,
+          "sumPosition": 14000
+        },
+        {
+          "idSort": 10,
+          "sortName": "Lambo Door",
+          "volume": 0.5,
+          "cost": 90,
+          "quantity": 100,
+          "sumPosition": 9000
+        }
+      ],
+      "sale": false,
+      "date": "Wed Jul 10 2019 10:30:45 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": {
+        "name": "Artem Talanov",
+        "login": "Sheff",
+        "password": "qaz",
+        "workerPosition": "Директор",
+        "access": [
+          "sale",
+          "workers",
+          "providers",
+          "supply",
+          "report"
+        ],
+        "address": "Аруба",
+        "phone": "+380 93 354 0206",
+        "status": "Работает",
+        "note": "-",
+        "id": 6
+      },
+      "provider": {
+        "name": "Сарай",
+        "address": "yavor 24a",
+        "phones": [
+          "+38 095 12 54 567",
+          "+380 93 354 0206"
+        ],
+        "emails": [
+          "konura@vogorode",
+          "talanov_artem@ukr.net"
+        ],
+        "doc": "-",
+        "invoice": "456",
+        "id": 3
+      },
+      "sum": 23000,
+      "id": 14
     }
   ],
   "providers": [

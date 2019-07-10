@@ -167,6 +167,8 @@
             this.origin = null;
             this.alcohol = null;
             this.price = [];
+
+          this.$router.push('/supply/list_beers');
         }
       },
 

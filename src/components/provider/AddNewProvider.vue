@@ -81,7 +81,6 @@
         <button class="btn btn-primary" @click="addProviderToDB">Внести в базу</button>
       </div>
 
-{{phones}} / {{emails}} / {{providers}}
     </div>
 </template>
 

@@ -17,13 +17,13 @@
       <router-view></router-view>
       <hr>
 
-      <div class="row position">
+      <div id="head" class="row position">
 
         <div class="col-sm-1">
           <span>ID</span>
         </div>
 
-        <div class="col-sm-2">
+        <div class="col-sm-1">
           <span>Наименование</span>
         </div>
 
@@ -43,13 +43,13 @@
           <span>Документы</span>
         </div>
 
-        <div class="col-sm-2">
+        <div class="col-sm-1">
           <span>Счет</span>
         </div>
 
       </div>
 
-      <div class="row positionProvider"
+      <div id="body" class="row positionProvider"
            v-for="provider in providers"
            :key="provider.id"
            v-model="providers">
@@ -58,7 +58,7 @@
           <span>{{provider.id}}</span>
         </div>
 
-        <div class="col-sm-2">
+        <div class="col-sm-1">
           <span>{{provider.name}}</span>
         </div>
 
@@ -86,11 +86,18 @@
           <span>{{provider.invoice}}</span>
         </div>
 
-        <div class="col-sm-1">
+        <div class="col-sm-2">
           <button
             class="btn btn-danger btn-sm bat"
             @click="deleteProvider(provider)"
           >-</button>
+
+          <button id="editInDB"
+                  class="btn btn-success btn-sm bat"
+                  @click="setID(provider.id)"
+                  ref="/providers/edit_provider"
+          >Править
+          </button>
         </div>
 
       </div>
@@ -106,23 +113,21 @@
           resource: null,
 
           providers: [],
+          idProvider: null
 
-          // name: '',
-          // address: '',
-          // phones: [],
-          //   phone: '',
-          // emails:[],
-          //   email: '',
-          // doc: '',
-          // invoice: ''
         }
       },
 
       methods:{
 
+        setID(id){
+          this.$store.commit('setProviderID', id);
+          this.$router.push('/providers/edit_provider');
+        },
+
         deleteProvider(provider){
           this.$http.delete('http://localhost:3000/providers/' + provider.id)
-            .then(response => {return response.json()}).then()
+            .then(response => {return response.json()}).then();
         },
 
       },
@@ -130,7 +135,7 @@
       watch:{
         providers(){
           this.resource.get().then(responce => responce.json())
-            .then(providers => this.providers = providers)
+            .then(providers => this.providers = providers);
         }
       },
 
@@ -138,13 +143,10 @@
       created() {
 
 
-        this.resource = this.$resource('providers'),
+        this.resource = this.$resource('providers');
 
           this.resource.get().then(responce => responce.json())
-            .then(providers => this.providers = providers)
-
-        // this.$http.get('http://localhost:3000/orders')
-        //   .then(response => {return response.json()}).then(orders => this.orders = orders)
+            .then(providers => this.providers = providers);
       }
 
     }

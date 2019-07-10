@@ -221,10 +221,12 @@
 
       created() {
 
-        this.resource = this.$resource('supplies'),
+        this.resource = this.$resource('supplies');
 
           this.resource.get().then(responce => responce.json())
             .then(supplies => this.supplies = supplies)
+            .then(sup => this.supplies = this.supplies.sort(function(a, b){
+              return new Date(b.date) - new Date(a.date)}));
 
         // this.$http.get('http://localhost:3000/supplies')
         //   .then(response => {return response.json()}).then(supplies => this.supplies = supplies)

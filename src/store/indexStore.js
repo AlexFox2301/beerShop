@@ -7,7 +7,8 @@ export default new Vuex.Store({
 
   state: {
     user: {},
-    idWorker: null
+    idWorker: null,
+    idProvider: null
   },
 
   getters:{
@@ -17,6 +18,10 @@ export default new Vuex.Store({
 
     getWorkerID(state){
       return state.idWorker;
+    },
+
+    getProviderID(state){
+      return state.idProvider;
     }
   },
 
@@ -27,6 +32,10 @@ export default new Vuex.Store({
 
     setWorkerID(state, payload){
       state.idWorker = payload;
+    },
+
+    setProviderID(state, payload){
+      state.idProvider = payload;
     }
   },
 

@@ -18,6 +18,7 @@ import SaleReport from "../components/report/SaleReport";
 import GeneralReport from "../components/report/GeneralReport";
 import AddNewProvider from "../components/provider/AddNewProvider";
 import Providers from "../components/provider/Providers";
+import EditProvider from "../components/provider/EditProvider";
 
 Vue.use(VueRouter)
 
@@ -107,6 +108,11 @@ export default new Router({
         {
           path: 'add_new_provider',
           component: AddNewProvider
+        },
+        {
+          path: 'edit_provider',
+          name: 'EditProvider',
+          component: EditProvider
         }
       ]
     }

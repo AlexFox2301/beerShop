@@ -1,8 +1,9 @@
 <template>
   <div class="container position">
-{{idWorker}} // {{worker}}
+
     <div class="row justify-content-center align-items-center">
       <div class="col-10">
+
         <div class="form-group">
           <div class="row">
             <div class="col-4">
@@ -20,7 +21,7 @@
               <label for="login">login</label>
             </div>
             <div class="col-6">
-              <input id="login" class="form-control" type="text" v-model="worker.login" @change="checkLogin">
+              <input id="login" class="form-control" type="text" disabled v-model="worker.login">
               <span style="color: red; font-size: 10px">{{msgLog}}</span>
             </div>
           </div>
@@ -55,9 +56,7 @@
               <label for="workerPosition">Должность</label>
             </div>
             <div class="col-6">
-              <!--                  <input id="workerPosition" class="form-control" type="text" v-model="workerPosition">-->
-<!--              <select id="workerPosition" v-model="worker.workerPosition">-->
-              <select id="workerPosition" v-model="defaultPosition">
+              <select id="workerPosition" v-model="worker.workerPosition">
                 <option v-for="p in posts"
                 >{{p}}</option>
               </select>
@@ -121,7 +120,7 @@
             </div>
             <div class="col-6">
               <!--                  <input id="status" class="form-control" type="tel" v-model="status">-->
-              <select id="status" v-model="status">
+              <select id="status" v-model="worker.status">
                 <option v-for="stat in statusArrey">{{stat}}</option>
 
               </select>
@@ -167,20 +166,10 @@
           'уволен'
         ],
 
-        // name: '',
-        // login: '',
-        // password: '',
-        // workerPosition: '',
-        // access: [],
-        // address: '',
-        // phone: '',
-        // status: '-',
-        // note: '-',
-
-        defaultPosition:'',
         msgLogin: '',
         confirmPassword: '',
         worker:{},
+        workers: [],
         checkedLogin: false,
         checkedPassword: false,
         posts: ['Директор', 'Системный администратор', 'Бухгалтер', 'Продавец', 'Водитель', 'Кладовщик', 'Грузчик',  'Охранник',  'Уборщик'],
@@ -192,33 +181,10 @@
       }
     },
 
-    // computed:{
-    //   defaultPosition(){
-    //     return this.defaultPosition = worker.workerPosition;
-    //   },
-    // },
-
     methods: {
 
-      checkLogin() {
-
-        for (var i=0; i<this.workers.length; i++) {
-          if (this.workers[i].login === this.login) {
-            this.checkedLogin = false;
-            this.msgLog = 'Данный Логин уже зарегестрирован в системе. Выберите другой.';
-            return;
-          } else {
-            this.checkedLogin = true;
-            this.msgLog = '';
-            this.msgTotal = ''
-          }
-        }
-
-
-      },
-
       checkConfirmationPassword() {
-        if (this.password === this.confirmPassword) {
+        if (this.worker.password === this.confirmPassword) {
           this.checkedPassword = true;
           this.msgPas = '';
           this.msgTotal = ''
@@ -228,67 +194,61 @@
         }
       },
 
-      // addWorkerToDB() {
-      //   var worker = {
-      //     name: this.name,
-      //     login: this.login,
-      //     password: this.password,
-      //     workerPosition: this.workerPosition,
-      //     access: this.access,
-      //     address: this.address,
-      //     phone: this.phone,
-      //     status: this.status,
-      //     note: this.note
-      //   }
-      //
-      //   if (this.checkedLogin & this.checkedPassword){
-      //     this.resource = this.$resource('workers'),
-      //       // this.resource.get().then(responce => responce.json())
-      //       //   .then(workers => this.workers = workers)
-      //
-      //       this.resource.save({}, worker)
-      //
-      //     this.name = '',
-      //       this.login = '',
-      //       this.password = '',
-      //       this.workerPosition = '',
-      //       this.access = false,
-      //       this.address = '',
-      //       this.phone = '',
-      //       this.status = '-',
-      //       this.note = '-',
-      //
-      //
-      //       this.msgTotal = '',
-      //
-      //       this.confirmPassword = ''
-      //
-      //     this.$router.push('/workers')
-      //   } else {
-      //     this.msgTotal = ' Для окончания регистрации нового сотрудника необходимо исправить замечания!'
-      //   }
-      //
-      //
-      //
-      //
-      // }
+      addWorkerToDB() {
+        // const worker = {
+        //   name: this.name,
+        //   login: this.login,
+        //   password: this.password,
+        //   workerPosition: this.workerPosition,
+        //   access: this.access,
+        //   address: this.address,
+        //   phone: this.phone,
+        //   status: this.status,
+        //   note: this.note
+        // }
+
+        if (this.checkedPassword){
+          // this.resource = this.$resource('workers');
+
+          this.$http.put('http://localhost:3000/workers/' + this.idWorker, this.worker)
+            .then(responce => responce.json())
+
+          this.worker = null;
+
+          // this.name = '',
+          //   this.login = '',
+          //   this.password = '',
+          //   this.workerPosition = '',
+          //   this.access = false,
+          //   this.address = '',
+          //   this.phone = '',
+          //   this.status = '-',
+          //   this.note = '-',
+
+
+            this.msgTotal = '';
+
+            this.confirmPassword = '';
+
+          this.$router.push('/workers');
+        } else {
+          this.msgTotal = ' Для окончания редактирования данных сотрудника необходимо исправить замечания!'
+        }
+      }
     },
 
     created() {
       this.resource = this.$resource('workers');
+
+      this.resource.get().then(responce => responce.json())
+        .then(workers => this.workers = workers);
 
         this.idWorker = this.$store.getters.getWorkerID;
 
       this.$http.get('http://localhost:3000/workers/' + this.idWorker)
         .then(response => {return response.json()})
           .then(worker => this.worker = worker)
-        .then(pos => this.defaultPosition = this.worker.workerPosition)
-
-        // this.resource.get(this.idWorker).then(response => response.json())
-        //   .then(worker => this.worker = worker)
     }
-
-
   }
 </script>
 
