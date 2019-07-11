@@ -195,36 +195,13 @@
       },
 
       addWorkerToDB() {
-        // const worker = {
-        //   name: this.name,
-        //   login: this.login,
-        //   password: this.password,
-        //   workerPosition: this.workerPosition,
-        //   access: this.access,
-        //   address: this.address,
-        //   phone: this.phone,
-        //   status: this.status,
-        //   note: this.note
-        // }
 
         if (this.checkedPassword){
-          // this.resource = this.$resource('workers');
 
           this.$http.put('http://localhost:3000/workers/' + this.idWorker, this.worker)
             .then(responce => responce.json())
 
           this.worker = null;
-
-          // this.name = '',
-          //   this.login = '',
-          //   this.password = '',
-          //   this.workerPosition = '',
-          //   this.access = false,
-          //   this.address = '',
-          //   this.phone = '',
-          //   this.status = '-',
-          //   this.note = '-',
-
 
             this.msgTotal = '';
 

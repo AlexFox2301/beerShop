@@ -13,7 +13,7 @@
         {
           "volume": 0.33,
           "cost": 75,
-          "quantity": 0
+          "quantity": 200
         }
       ],
       "id": 1
@@ -1243,6 +1243,100 @@
       },
       "sum": 48000,
       "id": 15
+    },
+    {
+      "positions": [
+        {
+          "idSort": 1,
+          "sortName": "Papaya Rye",
+          "volume": 0.33,
+          "cost": 70,
+          "quantity": 500,
+          "sumPosition": 35000
+        }
+      ],
+      "sale": false,
+      "date": "Thu Jul 11 2019 15:40:46 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": {
+        "name": "Artem Talanov",
+        "login": "Sheff",
+        "password": "qaz",
+        "workerPosition": "Директор",
+        "access": [
+          "sale",
+          "workers",
+          "providers",
+          "supply",
+          "report"
+        ],
+        "address": "Аруба",
+        "phone": "+380 93 354 0206",
+        "status": "Работает",
+        "note": "-",
+        "id": 6
+      },
+      "provider": {
+        "name": "КиВиТ",
+        "address": "г.Нтколаев, Новозаводская 60",
+        "phones": [
+          "+380 512 456 236"
+        ],
+        "emails": [
+          "kivit@kivit"
+        ],
+        "doc": "-",
+        "invoice": "7412 5896 3214 7896",
+        "id": 4
+      },
+      "sum": 35000,
+      "id": 16
+    },
+    {
+      "positions": [
+        {
+          "idSort": 1,
+          "sortName": "Papaya Rye",
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": 200,
+          "sumPosition": 15000
+        }
+      ],
+      "sale": false,
+      "date": "Thu Jul 11 2019 16:41:28 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": {
+        "name": "Artem Talanov",
+        "login": "Sheff",
+        "password": "qaz",
+        "workerPosition": "Директор",
+        "access": [
+          "sale",
+          "workers",
+          "providers",
+          "supply",
+          "report"
+        ],
+        "address": "Аруба",
+        "phone": "+380 93 354 0206",
+        "status": "Работает",
+        "note": "-",
+        "id": 6
+      },
+      "provider": {
+        "name": "КиВиТ",
+        "address": "г.Нтколаев, Новозаводская 60",
+        "phones": [
+          "+380 512 456 236"
+        ],
+        "emails": [
+          "kivit@kivit"
+        ],
+        "doc": "-",
+        "invoice": "7412 5896 3214 7896",
+        "id": 4
+      },
+      "sum": 15000,
+      "id": 43
     }
   ],
   "providers": [
@@ -1260,7 +1354,7 @@
       "id": 2
     },
     {
-      "name": "Сарай",
+      "name": "Сарайка",
       "address": "yavor 24a",
       "phones": [
         "+38 095 12 54 567",
@@ -1271,8 +1365,23 @@
         "talanov_artem@ukr.net"
       ],
       "doc": "-",
-      "invoice": "456",
-      "id": 3
+      "invoice": "1234 5678 9876 5432",
+      "id": 3,
+      "phone": "+380 99 987 12 34",
+      "email": "sarayka@gm"
+    },
+    {
+      "name": "КиВиТ",
+      "address": "г.Нтколаев, Новозаводская 60",
+      "phones": [
+        "+380 512 456 236"
+      ],
+      "emails": [
+        "kivit@kivit"
+      ],
+      "doc": "-",
+      "invoice": "7412 5896 3214 7896",
+      "id": 4
     }
   ]
 }

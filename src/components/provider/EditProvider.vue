@@ -1,33 +1,30 @@
 <template>
-  <div class="container position">
+  <div class="container positionProvider">
 
-    <div class="row form-group justify-content-md-center">
-      <div class="col-sm-2 text-right">
-        <label for="nameP">Наименование</label>
+    <div class="row form-group">
+      <div class="col-sm-4 text-right">
+        <label for="nameProvider">Наименование</label>
       </div>
-      <div class="col-sm-4 align-self-start">
-        <input id="nameP" class="form-control" type="text" v-model="provider.name">
+      <div class="col-sm-5 align-self-start">
+        <input id="nameProvider" class="form-control" type="text" v-model="provider.name">
       </div>
     </div>
 
-    <div class="row form-group justify-content-md-center">
-      <div class="col-sm-2 text-right">
-        <label for="address">Адрес</label>
+    <div class="row form-group">
+      <div class="col-sm-4 text-right">
+        <label for="addressProvider">Адресс</label>
       </div>
-      <div class="col-sm-4 text-left">
-        <input id="address" class="form-control" type="text" v-model="provider.address">
+      <div class="col-sm-5 text-left">
+        <input id="addressProvider" class="form-control" type="text" v-model="provider.address">
       </div>
     </div>
 
-    <div class="row form-group justify-content-md-center">
-      <div class="col-sm-2 text-right">
+    <div class="row form-group">
+      <div class="col-sm-4 text-right">
         <label for="phone">Телефон</label>
       </div>
-      <div class="col-sm-4 text-left">
-        <div class="row">
+      <div class="col-sm-5 text-left">
           <input id="phone" class="form-control" type="text" v-model="provider.phone">
-          <button class="btn btn-sm btn-primary bat" @click="addPhone">+</button>
-        </div>
         <div class="row" v-for="(ph, count) in provider.phones">
           <div class="col-sm-9">
             <span class="p-2">{{ph}}</span>
@@ -37,17 +34,17 @@
           </div>
         </div>
       </div>
+      <div class="col-sm-1 text-right">
+        <button class="btn btn-sm btn-primary bat" @click="addPhone">+</button>
+      </div>
     </div>
 
-    <div class="row form-group justify-content-md-center">
-      <div class="col-sm-2 text-right">
+    <div class="row form-group">
+      <div class="col-sm-4 text-right">
         <label for="email">e-mail</label>
       </div>
-      <div class="col-sm-4 text-left">
-        <div class="row">
+      <div class="col-sm-5 text-left">
           <input id="email" class="form-control" type="text" v-model="provider.email">
-          <button class="btn btn-sm btn-primary bat" @click="addEmail">+</button>
-        </div>
         <div class="row" v-for="em in provider.emails">
           <div class="col-sm-9">
             <span>{{em}}</span>
@@ -57,22 +54,25 @@
           </div>
         </div>
       </div>
+      <div class="col-sm-1 text-right">
+        <button class="btn btn-sm btn-primary bat" @click="addEmail">+</button>
+      </div>
     </div>
 
-    <div class="row form-group justify-content-md-center">
-      <div class="col-sm-2 text-right">
+    <div class="row form-group">
+      <div class="col-sm-4 text-right">
         <label for="doc">Документы</label>
       </div>
-      <div class="col-sm-4 text-left">
+      <div class="col-sm-5 text-left">
         <input id="doc" class="form-control" type="text" v-model="provider.doc">
       </div>
     </div>
 
-    <div class="row form-group justify-content-md-center">
-      <div class="col-sm-2 text-right">
+    <div class="row form-group">
+      <div class="col-sm-4 text-right">
         <label for="invoice">Счет</label>
       </div>
-      <div class="col-sm-4 text-left">
+      <div class="col-sm-5 text-left">
         <input id="invoice" class="form-control" type="text" v-model="provider.invoice">
       </div>
     </div>
@@ -85,86 +85,76 @@
 </template>
 
 <script>
-  export default {
-    // name: "EditProvider",
+    export default {
+        name: "EditProviderOk",
 
-    data(){
-      return{
-        resource: null,
+      data(){
+        return{
+          resource: null,
 
-        providers: [],
+          phone: '',
+          email: '',
 
-        idProvider: null
+          providers: [],
+          provider:{},
+
+          idProvider: null
+        }
+      },
+
+      methods: {
+
+        addPhone(){
+          this. provider.phones.push(this.phone);
+          this.phone = '';
+        },
+
+        addEmail() {
+          this.provider.emails.push(this.email);
+          this.email = '';
+        },
+
+        deletePhone(count){
+          this.provider.phones.splice(count, 1)
+        },
+
+        deleteEmail(count){
+          this.provider.emails.splice(count, 1)
+        },
+
+        addProviderToDB(){
+
+          if (this.phone !== '') {
+            this.provider.phones.push(this.phone);
+            this.phone = '';
+          }
+
+          if (this.email !== '') {
+            this.provider.emails.push(this.email);
+            this.email = '';
+          }
+
+          this.$http.put('http://localhost:3000/providers/' + this.idProvider, this.provider)
+            .then(responce => responce.json());
+
+          this.provider = null;
+
+          this.$router.push('/providers')
+        }
+
+      },
+
+      created() {
+
+        this.resource = this.$resource('providers');
+
+        this.idProvider = this.$store.getters.getProviderID;
+
+        this.$http.get('http://localhost:3000/providers/' + this.idProvider)
+          .then(response => {return response.json()})
+          .then(provider => this.provider = provider);
       }
-    },
-
-    methods: {
-
-      addPhone(){
-        this.phones.push(this.phone);
-        this.phone = '';
-      },
-
-      addEmail() {
-        this.emails.push(this.email);
-        this.email = '';
-      },
-
-      deletePhone(count){
-        this.phones.splice(count, 1)
-      },
-
-      deleteEmail(count){
-        this.emails.splice(count, 1)
-      },
-
-      addProviderToDB(){
-
-        // if (this.phone !== '') {
-        //   this.phones.push(this.phone)
-        // }
-        //
-        // if (this.email !== '') {
-        //   this.emails.push(this.email)
-        // }
-        //
-        // const provider = {
-        //   name: this.name,
-        //   address: this.address,
-        //   phones: this.phones,
-        //   emails: this.emails,
-        //   doc: this.doc,
-        //   invoice: this.invoice
-        // }
-        // this.resource.save(provider);
-        //
-        // this.name = '';
-        // this.address = '';
-        // this.phones = '';
-        // this.emails = '';
-        // this.doc = '';
-        // this.invoice = '';
-        //
-        // this.$router.push('/providers')
-      }
-
-    },
-
-
-    created() {
-
-      this.resource = this.$resource('providers');
-
-      // this.resource.get().then(responce => responce.json())
-      //   .then(providers => this.providers = providers);
-
-      this.idProvider = this.$store.getters.getProviderID;
-
-      this.$http.get('http://localhost:3000/providers/' + this.idProvider)
-        .then(response => {return response.json()})
-        .then(provider => this.provider = provider);
     }
-  }
 </script>
 
 <style scoped>
@@ -184,12 +174,6 @@
     background-color: #ECE0F8;
   }
 
-  /*div {*/
-  /*  border: darkgray solid 0.5px;*/
-
-  /*  border-radius: 15px;*/
-  /*}*/
-
   input {
     width: 90%;
     border-radius: 10px;
@@ -203,8 +187,13 @@
 
   }
 
+  label {
+    margin: 5px;
+  }
+
   .bat{
     border-radius: 15px;
 
   }
+
 </style>

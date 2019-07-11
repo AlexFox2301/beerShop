@@ -1,33 +1,30 @@
 <template>
     <div class="container position">
 
-      <div class="row form-group justify-content-md-center">
-        <div class="col-sm-2 text-right">
+      <div class="row form-group">
+        <div class="col-sm-4 text-right">
           <label for="nameP">Наименование</label>
         </div>
-        <div class="col-sm-4 align-self-start">
+        <div class="col-sm-5 align-self-start">
           <input id="nameP" class="form-control" type="text" v-model="name">
         </div>
       </div>
 
-      <div class="row form-group justify-content-md-center">
-        <div class="col-sm-2 text-right">
+      <div class="row form-group">
+        <div class="col-sm-4 text-right">
           <label for="address">Адрес</label>
         </div>
-        <div class="col-sm-4 text-left">
+        <div class="col-sm-5 text-left">
           <input id="address" class="form-control" type="text" v-model="address">
         </div>
       </div>
 
-      <div class="row form-group justify-content-md-center">
-        <div class="col-sm-2 text-right">
+      <div class="row form-group">
+        <div class="col-sm-4 text-right">
           <label for="phone">Телефон</label>
         </div>
-        <div class="col-sm-4 text-left">
-          <div class="row">
+        <div class="col-sm-5 text-left">
             <input id="phone" class="form-control" type="text" v-model="phone">
-            <button class="btn btn-sm btn-primary bat" @click="addPhone">+</button>
-          </div>
           <div class="row" v-for="(ph, count) in phones">
             <div class="col-sm-9">
               <span class="p-2">{{ph}}</span>
@@ -37,17 +34,17 @@
             </div>
           </div>
         </div>
+        <div class="col-sm-1 text-right">
+          <button class="btn btn-sm btn-primary bat" @click="addPhone">+</button>
+        </div>
       </div>
 
-      <div class="row form-group justify-content-md-center">
-        <div class="col-sm-2 text-right">
+      <div class="row form-group">
+        <div class="col-sm-4 text-right">
           <label for="email">e-mail</label>
         </div>
-        <div class="col-sm-4 text-left">
-          <div class="row">
+        <div class="col-sm-5 text-left">
             <input id="email" class="form-control" type="text" v-model="email">
-            <button class="btn btn-sm btn-primary bat" @click="addEmail">+</button>
-          </div>
           <div class="row" v-for="em in emails">
             <div class="col-sm-9">
               <span>{{em}}</span>
@@ -57,22 +54,25 @@
             </div>
           </div>
         </div>
+        <div class="col-sm-1 text - right">
+          <button class="btn btn-sm btn-primary bat" @click="addEmail">+</button>
+        </div>
       </div>
 
-      <div class="row form-group justify-content-md-center">
-        <div class="col-sm-2 text-right">
+      <div class="row form-group">
+        <div class="col-sm-4 text-right">
           <label for="doc">Документы</label>
         </div>
-        <div class="col-sm-4 text-left">
+        <div class="col-sm-5 text-left">
           <input id="doc" class="form-control" type="text" v-model="doc">
         </div>
       </div>
 
-      <div class="row form-group justify-content-md-center">
-        <div class="col-sm-2 text-right">
+      <div class="row form-group">
+        <div class="col-sm-4 text-right">
           <label for="invoice">Счет</label>
         </div>
-        <div class="col-sm-4 text-left">
+        <div class="col-sm-5 text-left">
           <input id="invoice" class="form-control" type="text" v-model="invoice">
         </div>
       </div>
@@ -193,7 +193,7 @@
   /*}*/
 
   input {
-    width: 90%;
+    /*width: 90%;*/
     border-radius: 10px;
     padding-left: 20px;
   }
@@ -203,6 +203,10 @@
     border-radius: 10px;
     padding: 2%;
 
+  }
+
+  label {
+    margin: 5px;
   }
 
   .bat{

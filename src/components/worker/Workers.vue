@@ -58,17 +58,6 @@
             <div class="col-1">{{worker.status}}</div>
             <div class="col-1">{{worker.note}}</div>
             <div class="col-1">
-<!--              <router-link-->
-<!--              class="btn btn-success btn-sm"-->
-<!--              tag="button"-->
-<!--              @click="setID(worker.id)"-->
-<!--              exact-->
-<!--              active-class="active"-->
-<!--              to="/workers/edit_worker"-->
-<!--              >-->
-<!--              Править-->
-<!--              <span class="sr-only">(current)</span>-->
-<!--              </router-link>-->
               <button id="editInDB"
                       class="btn btn-success btn-sm bat"
                       @click="setID(worker.id)"
