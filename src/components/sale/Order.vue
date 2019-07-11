@@ -47,7 +47,9 @@
       <div class="col-sm-2 m-1">
         <input
           v-model.number="quantity"
+          @input="quantitys(volumeSelected.quantity)"
         ><span>шт.</span>
+        <span>{{msg}}</span>
       </div>
 
       <div class="col-sm-2 m-1" >
@@ -101,7 +103,7 @@
       <button id="addPosition" class="btn btn-info" @click="addPosition">Добавить</button>
       <button id="checkout" class="btn btn-warning" @click="checkout">Оформить</button>
       <button id="closeOrder" class="btn btn-danger" @click="closeOrder">Закрыть</button>
-    </div><tr></tr>
+    </div><tr>{{sortSelected}}</tr>{{volumeSelected}}
 
   </div>
 </template>
@@ -128,22 +130,45 @@
         date: null,//дата заказа и время
 
         worker: {},
+        orderToDB:{},
+        beerEdit:{},
 
         quantityPosition: 1,
 
         sortSelected: {},
         volumeSelected: {},
+        msg:''
       }
     },
 
     watch: {
-      quantity(){
-        this.sumPosition = this.volumeSelected.cost * this.quantity;
+      quantity(quant){
+
+
+      //   if (this.quantity <= quant) {
+      //     alert(quant);
+      //     this.sumPosition = this.volumeSelected.cost * this.quantity;
+      //   }else {
+      //     this.msg = 'На складе имеется в наличии только ' + quant + 'шт.';
+      //   }
+      //
       },
 
     },
 
     methods: {
+
+      quantitys(quant){
+        if (this.quantity <= quant) {
+          this.msg = '';
+          this.sumPosition = this.volumeSelected.cost * this.quantity;
+
+        }else {
+          this.msg = 'На складе имеется в наличии только ' + quant + 'шт.';
+          this.quantity = quant;
+        }
+
+      },
 
       addPosition() {
         const orderPosition = {
@@ -192,9 +217,32 @@
         };
 
         this.resourceOrders.save({}, order);
+        this.orderToDB = order;
+        this.changeBeersDB();
 
         this.positions = [];
         this.sum = 0;
+      },
+
+      changeBeersDB(){
+        for ( let i=0; i<this.orderToDB.positions.length; i++){
+          let id = this.orderToDB.positions[i].idSort;
+          this.$http.get('http://localhost:3000/beers/' + id)
+            .then(response => {return response.json()})
+            .then(beer => this.beerEdit = beer)
+            .then(() => {
+              for ( let j=0; j<this.beerEdit.price.length; j++){
+                if (this.beerEdit.price[j].volume === this.orderToDB.positions[i].volume){ alert('Найден')
+                  this.beerEdit.price[j].quantity -= this.orderToDB.positions[i].quantity;
+                  this.$http.put('http://localhost:3000/beers/' + id, this.beerEdit)
+                    .then(responce => responce.json())
+                    .then(() => this.beerEdit = {}); alert("вычтен")
+                  break;
+                }
+              }
+            });
+        }
+
       },
 
       closeOrder() {

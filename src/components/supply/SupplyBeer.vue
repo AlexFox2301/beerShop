@@ -166,7 +166,6 @@
           supplies: [],
           providers:[],
 
-          supplyToDB: {},
           provider: {},
 
           supplySort: {},//Позиция сорта пива и номинал бутылки текущей поставки
@@ -179,7 +178,7 @@
 
           worker: {},
           beerEdit: {},
-          sup:{},
+          supplyToDB:{},
 
           positions: [],//текущая поставка, состоящая из массива объектов supplySort
         }
@@ -226,7 +225,6 @@
         },
 
         addSupplyToDB(){
-          // const user = this.user;
 
             const supplyToDB = {
               positions: this.positions,
@@ -242,7 +240,8 @@
             //   .then(response => {return response.json()}).then(supplies => this.supplies = supplies)
             this.resource = this.$resource('supplies');
             this.resource.save({}, supplyToDB);
-this.sup = supplyToDB;
+            this.supplyToDB = supplyToDB;
+
             this.changeBeersDB();
           // }catch (e) {
           //   alert('ошибка вставки в базу');
@@ -254,17 +253,16 @@ this.sup = supplyToDB;
 
         changeBeersDB(){
 
+          for ( let i=0; i<this.supplyToDB.positions.length; i++){
 
-          for ( let i=0; i<this.sup.positions.length; i++){
-
-            let id = this.sup.positions[i].idSort
+            let id = this.supplyToDB.positions[i].idSort;
             this.$http.get('http://localhost:3000/beers/' + id)
               .then(response => {return response.json()})
               .then(beer => this.beerEdit = beer)
               .then(() => {
                 for ( let j=0; j<this.beerEdit.price.length; j++){
-                  if (this.beerEdit.price[j].volume === this.sup.positions[i].volume){
-                    this.beerEdit.price[j].quantity += this.sup.positions[i].quantity;
+                  if (this.beerEdit.price[j].volume === this.supplyToDB.positions[i].volume){
+                    this.beerEdit.price[j].quantity += this.supplyToDB.positions[i].quantity;
                     this.$http.put('http://localhost:3000/beers/' + id, this.beerEdit)
                       .then(responce => responce.json())
                       .then(() => this.beerEdit = {});
@@ -272,9 +270,6 @@ this.sup = supplyToDB;
                   }
                 }
               });
-
-
-
           }
 
         }

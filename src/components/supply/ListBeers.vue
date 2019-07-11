@@ -51,12 +51,12 @@
           }
       },
 
-      watch:{
-        beers: function () {
-          this.resource.get().then(responce => responce.json())
-            .then(beers => this.beers = beers)
-        }
-      },
+      // watch:{
+      //   beers: function () {
+      //     this.resource.get().then(responce => responce.json())
+      //       .then(beers => this.beers = beers)
+      //   }
+      // },
 
       methods:{
 
