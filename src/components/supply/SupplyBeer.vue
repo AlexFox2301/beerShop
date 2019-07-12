@@ -193,7 +193,7 @@
 
       methods: {
 
-        addNewPosition(){
+        addNewPosition() {
 
           const supplyPosition = {
             idSort: this.supplySort.id,
@@ -209,10 +209,11 @@
 
           this.sum = 0;
 
-          for (let i=0; i<this.positions.length; i++)
-          {
+          for (let i = 0; i < this.positions.length; i++) {
             this.sum = this.sum + this.positions[i].sumPosition;
           }
+
+          this.changeBeersDB(supplyPosition);
 
           this.supplyVolume = {};
           this.supplySort = {};
@@ -221,44 +222,39 @@
           this.sumPosition = 0;
         },
 
-        deletePosition(count){
+        deletePosition(count) {
+          this.cancelChangeBeersDB(this.positions[count]);
           this.positions.splice(count, 1);
         },
 
-        addSupplyToDB(){
+        addSupplyToDB() {
           // const user = this.user;
 
-            const supplyToDB = {
-              positions: this.positions,
-              sale: false,
-              date: Date(),
-              worker: null,
-              provider: this.provider,
-              sum: this.sum,
-              worker: this.worker
-            };
+          const supplyToDB = {
+            positions: this.positions,
+            sale: false,
+            date: Date(),
+            worker: null,
+            provider: this.provider,
+            sum: this.sum,
+            worker: this.worker
+          };
 
-            this.resource = this.$resource('supplies');
-            this.resource.save({}, supplyToDB);
+          this.resource = this.$resource('supplies');
+          this.resource.save({}, supplyToDB);
 
-            // this.sup = supplyToDB;
-            for (let i=0; i<this.positions.length; i++){
-              // alert('передаем в метод ' + this.positions[i].sortName);
-              try {
-                this.changeBeersDB(this.positions[i]);
-              }catch (e) {
-                alert('error 1');
-              }
-
-              // alert("вернулся из метода");
-            }
+          // this.sup = supplyToDB;
+          // for (let i = 0; i < this.positions.length; i++) {
+          //   // alert('передаем в метод ' + this.positions[i].sortName);
+          //  this.changeBeersDB(this.positions[i]);
+          // }
 
           this.positions = [];
         },
 
 
         changeBeersDB(pos){
-alert("вошли в метод со значением " + pos.sortName);
+            alert("вошли в метод со значением " + pos.sortName);
             // let id = pos.idSort;
             this.$http.get('http://localhost:3000/beers/' + pos.idSort)
               .then(response => {return response.json()})
@@ -276,7 +272,31 @@ alert("вошли в метод со значением " + pos.sortName);
                 }
               });
 
-        }
+
+        },
+
+        cancelChangeBeersDB(pos){
+          alert("вошли в метод со значением " + pos.sortName);
+          // let id = pos.idSort;
+          this.$http.get('http://localhost:3000/beers/' + pos.idSort)
+            .then(response => {return response.json()})
+            .then(beer => this.beerEdit = beer)
+            .then(() => {alert("получили пиво из базы " + this.beerEdit.sortName);
+              for ( let j=0; j<this.beerEdit.price.length; j++){alert("ищем бутылочку" + pos.volume)
+                if (this.beerEdit.price[j].volume === pos.volume){alert('нашли бутылочку');
+                  this.beerEdit.price[j].quantity -= pos.quantity;alert('отняли количество бутылок, стало ' + this.beerEdit.price[j].quantity)
+                  this.$http.put('http://localhost:3000/beers/' + pos.idSort, this.beerEdit)
+                    .then(response => response.json())
+                    .then(() => this.beerEdit = {});
+                  alert("вернули пиво в базу")
+                  break;
+                }
+              }
+            });
+
+
+        },
+
       },
 
       created() {

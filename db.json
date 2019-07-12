@@ -8,7 +8,7 @@
         {
           "volume": 0.25,
           "cost": 50,
-          "quantity": 300
+          "quantity": 800
         },
         {
           "volume": 0.33,
@@ -26,7 +26,7 @@
         {
           "volume": 0.25,
           "cost": 50,
-          "quantity": 300
+          "quantity": 800
         },
         {
           "volume": 0.33,
@@ -54,7 +54,7 @@
         {
           "volume": 0.25,
           "cost": 50,
-          "quantity": 300
+          "quantity": 0
         },
         {
           "volume": 0.33,
@@ -77,7 +77,7 @@
         {
           "volume": 0.25,
           "cost": 50,
-          "quantity": 200
+          "quantity": 1000
         },
         {
           "volume": 0.33,
@@ -105,7 +105,7 @@
         {
           "volume": 0.33,
           "cost": 75,
-          "quantity": 0
+          "quantity": 100
         },
         {
           "volume": 0.5,
@@ -123,17 +123,17 @@
         {
           "volume": 0.25,
           "cost": 50,
-          "quantity": 0
+          "quantity": 100
         },
         {
           "volume": 0.33,
           "cost": 75,
-          "quantity": 0
+          "quantity": 100
         },
         {
           "volume": 0.5,
           "cost": 100,
-          "quantity": 0
+          "quantity": 100
         }
       ],
       "id": 6
@@ -646,6 +646,106 @@
         "id": 6
       },
       "id": 13
+    },
+    {
+      "positions": [
+        {
+          "idSort": 1,
+          "sortName": "Papaya Rye",
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 300,
+          "sumPosition": 15000
+        },
+        {
+          "idSort": 2,
+          "sortName": "Viaemilia",
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 300,
+          "sumPosition": 15000
+        },
+        {
+          "idSort": 3,
+          "sortName": "Brio",
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 300,
+          "sumPosition": 15000
+        },
+        {
+          "idSort": 4,
+          "sortName": "Galaxy IPA",
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 200,
+          "sumPosition": 10000
+        }
+      ],
+      "sale": true,
+      "sum": 55000,
+      "date": "Fri Jul 12 2019 16:23:52 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": {
+        "name": "Artem Talanov",
+        "login": "Sheff",
+        "password": "qaz",
+        "workerPosition": "Директор",
+        "access": [
+          "sale",
+          "workers",
+          "providers",
+          "supply",
+          "report"
+        ],
+        "address": "Аруба",
+        "phone": "+380 93 354 0206",
+        "status": "Работает",
+        "note": "-",
+        "id": 6
+      },
+      "id": 14
+    },
+    {
+      "positions": [
+        {
+          "idSort": 1,
+          "sortName": "Papaya Rye",
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 200,
+          "sumPosition": 10000
+        },
+        {
+          "idSort": 2,
+          "sortName": "Viaemilia",
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 200,
+          "sumPosition": 10000
+        }
+      ],
+      "sale": true,
+      "sum": 20000,
+      "date": "Fri Jul 12 2019 16:26:00 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": {
+        "name": "Artem Talanov",
+        "login": "Sheff",
+        "password": "qaz",
+        "workerPosition": "Директор",
+        "access": [
+          "sale",
+          "workers",
+          "providers",
+          "supply",
+          "report"
+        ],
+        "address": "Аруба",
+        "phone": "+380 93 354 0206",
+        "status": "Работает",
+        "note": "-",
+        "id": 6
+      },
+      "id": 15
     }
   ],
   "supplies": [
@@ -1643,6 +1743,385 @@
       },
       "sum": null,
       "id": 50
+    },
+    {
+      "positions": [
+        {
+          "idSort": 5,
+          "sortName": "Nøgne Ø Porter",
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": 500,
+          "sumPosition": 37500
+        },
+        {
+          "idSort": 5,
+          "sortName": "Nøgne Ø Porter",
+          "volume": 0.5,
+          "cost": 100,
+          "quantity": 500,
+          "sumPosition": 50000
+        },
+        {
+          "idSort": 6,
+          "sortName": "ManBearPig",
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 100,
+          "sumPosition": 5000
+        },
+        {
+          "idSort": 6,
+          "sortName": "ManBearPig",
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": 100,
+          "sumPosition": 7500
+        },
+        {
+          "idSort": 6,
+          "sortName": "ManBearPig",
+          "volume": 0.5,
+          "cost": 100,
+          "quantity": 100,
+          "sumPosition": 10000
+        }
+      ],
+      "sale": false,
+      "date": "Fri Jul 12 2019 15:04:23 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": {
+        "name": "Artem Talanov",
+        "login": "Sheff",
+        "password": "qaz",
+        "workerPosition": "Директор",
+        "access": [
+          "sale",
+          "workers",
+          "providers",
+          "supply",
+          "report"
+        ],
+        "address": "Аруба",
+        "phone": "+380 93 354 0206",
+        "status": "Работает",
+        "note": "-",
+        "id": 6
+      },
+      "provider": {
+        "name": "КиВиТ",
+        "address": "г.Нтколаев, Новозаводская 60",
+        "phones": [
+          "+380 512 456 236"
+        ],
+        "emails": [
+          "kivit@kivit"
+        ],
+        "doc": "-",
+        "invoice": "7412 5896 3214 7896",
+        "id": 4
+      },
+      "sum": 110000,
+      "id": 51
+    },
+    {
+      "positions": [
+        {
+          "idSort": 5,
+          "sortName": "Nøgne Ø Porter",
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": 100,
+          "sumPosition": 7500
+        },
+        {
+          "idSort": 5,
+          "sortName": "Nøgne Ø Porter",
+          "volume": 0.5,
+          "cost": 100,
+          "quantity": 100,
+          "sumPosition": 10000
+        },
+        {
+          "idSort": 6,
+          "sortName": "ManBearPig",
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 100,
+          "sumPosition": 5000
+        },
+        {
+          "idSort": 6,
+          "sortName": "ManBearPig",
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": 100,
+          "sumPosition": 7500
+        },
+        {
+          "idSort": 6,
+          "sortName": "ManBearPig",
+          "volume": 0.5,
+          "cost": 100,
+          "quantity": 100,
+          "sumPosition": 10000
+        }
+      ],
+      "sale": false,
+      "date": "Fri Jul 12 2019 15:06:06 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": {
+        "name": "Artem Talanov",
+        "login": "Sheff",
+        "password": "qaz",
+        "workerPosition": "Директор",
+        "access": [
+          "sale",
+          "workers",
+          "providers",
+          "supply",
+          "report"
+        ],
+        "address": "Аруба",
+        "phone": "+380 93 354 0206",
+        "status": "Работает",
+        "note": "-",
+        "id": 6
+      },
+      "provider": {
+        "name": "Сарайка",
+        "address": "yavor 24a",
+        "phones": [
+          "+38 095 12 54 567",
+          "+380 93 354 0206"
+        ],
+        "emails": [
+          "konura@vogorode",
+          "talanov_artem@ukr.net"
+        ],
+        "doc": "-",
+        "invoice": "1234 5678 9876 5432",
+        "id": 3,
+        "phone": "+380 99 987 12 34",
+        "email": "sarayka@gm"
+      },
+      "sum": 40000,
+      "id": 52
+    },
+    {
+      "positions": [
+        {
+          "idSort": 5,
+          "sortName": "Nøgne Ø Porter",
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": 100,
+          "sumPosition": 7500
+        },
+        {
+          "idSort": 5,
+          "sortName": "Nøgne Ø Porter",
+          "volume": 0.5,
+          "cost": 100,
+          "quantity": 100,
+          "sumPosition": 10000
+        },
+        {
+          "idSort": 6,
+          "sortName": "ManBearPig",
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 100,
+          "sumPosition": 5000
+        },
+        {
+          "idSort": 6,
+          "sortName": "ManBearPig",
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": 100,
+          "sumPosition": 7500
+        },
+        {
+          "idSort": 6,
+          "sortName": "ManBearPig",
+          "volume": 0.5,
+          "cost": 100,
+          "quantity": 100,
+          "sumPosition": 10000
+        }
+      ],
+      "sale": false,
+      "date": "Fri Jul 12 2019 15:09:36 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": {
+        "name": "Artem Talanov",
+        "login": "Sheff",
+        "password": "qaz",
+        "workerPosition": "Директор",
+        "access": [
+          "sale",
+          "workers",
+          "providers",
+          "supply",
+          "report"
+        ],
+        "address": "Аруба",
+        "phone": "+380 93 354 0206",
+        "status": "Работает",
+        "note": "-",
+        "id": 6
+      },
+      "provider": {
+        "name": "Гараж",
+        "address": "кооператив",
+        "phones": [
+          "+380931234567"
+        ],
+        "emails": [
+          "konura@vogorode"
+        ],
+        "doc": "-",
+        "invoice": "123456478965",
+        "id": 2
+      },
+      "sum": 40000,
+      "id": 53
+    },
+    {
+      "positions": [
+        {
+          "idSort": 5,
+          "sortName": "Nøgne Ø Porter",
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": 100,
+          "sumPosition": 7500
+        },
+        {
+          "idSort": 6,
+          "sortName": "ManBearPig",
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 100,
+          "sumPosition": 5000
+        },
+        {
+          "idSort": 6,
+          "sortName": "ManBearPig",
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": 100,
+          "sumPosition": 7500
+        },
+        {
+          "idSort": 6,
+          "sortName": "ManBearPig",
+          "volume": 0.5,
+          "cost": 100,
+          "quantity": 100,
+          "sumPosition": 10000
+        }
+      ],
+      "sale": false,
+      "date": "Fri Jul 12 2019 16:04:46 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": {
+        "name": "Artem Talanov",
+        "login": "Sheff",
+        "password": "qaz",
+        "workerPosition": "Директор",
+        "access": [
+          "sale",
+          "workers",
+          "providers",
+          "supply",
+          "report"
+        ],
+        "address": "Аруба",
+        "phone": "+380 93 354 0206",
+        "status": "Работает",
+        "note": "-",
+        "id": 6
+      },
+      "provider": {
+        "name": "Сарайка",
+        "address": "yavor 24a",
+        "phones": [
+          "+38 095 12 54 567",
+          "+380 93 354 0206"
+        ],
+        "emails": [
+          "konura@vogorode",
+          "talanov_artem@ukr.net"
+        ],
+        "doc": "-",
+        "invoice": "1234 5678 9876 5432",
+        "id": 3,
+        "phone": "+380 99 987 12 34",
+        "email": "sarayka@gm"
+      },
+      "sum": 30000,
+      "id": 54
+    },
+    {
+      "positions": [
+        {
+          "idSort": 1,
+          "sortName": "Papaya Rye",
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 1000,
+          "sumPosition": 50000
+        },
+        {
+          "idSort": 2,
+          "sortName": "Viaemilia",
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 1000,
+          "sumPosition": 50000
+        },
+        {
+          "idSort": 4,
+          "sortName": "Galaxy IPA",
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 1000,
+          "sumPosition": 50000
+        }
+      ],
+      "sale": false,
+      "date": "Fri Jul 12 2019 16:11:30 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": {
+        "name": "Artem Talanov",
+        "login": "Sheff",
+        "password": "qaz",
+        "workerPosition": "Директор",
+        "access": [
+          "sale",
+          "workers",
+          "providers",
+          "supply",
+          "report"
+        ],
+        "address": "Аруба",
+        "phone": "+380 93 354 0206",
+        "status": "Работает",
+        "note": "-",
+        "id": 6
+      },
+      "provider": {
+        "name": "КиВиТ",
+        "address": "г.Нтколаев, Новозаводская 60",
+        "phones": [
+          "+380 512 456 236"
+        ],
+        "emails": [
+          "kivit@kivit"
+        ],
+        "doc": "-",
+        "invoice": "7412 5896 3214 7896",
+        "id": 4
+      },
+      "sum": 200000,
+      "id": 55
     }
   ],
   "providers": [
