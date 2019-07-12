@@ -78,7 +78,8 @@
 
       <div class="row positionSupply" v-for="supply in supplies">
         <div class="col-sm-1">
-          <span>{{supply.id}}</span>
+          <span>{{supply.id}}</span><br>
+          <button class="btn btn-sm btn-danger bat" @click="deleteSupply(supply)">Del</button>
         </div>
         <div class="col-11">
           <div class="row position" v-for="item in supply.positions">
@@ -139,6 +140,13 @@
           search: '',
           startDate: null,
           endDate: null
+        }
+      },
+
+      watch:{
+        supplies(){
+          this.resource.get().then(response => response.json())
+            .then(supplies => this.supplies = supplies);
         }
       },
 
@@ -213,6 +221,11 @@
             }
           }
           this.supplies = collection;
+        },
+
+        deleteSupply(supply){
+          this.$http.delete('http://localhost:3000/supplies/' + supply.id)
+            .then(response => {return response.json()});
         }
 
       },
@@ -264,5 +277,7 @@
 
   .bat{
     border-radius: 15px;
+    background-color: #81F79F;
+    color: black;
   }
 </style>

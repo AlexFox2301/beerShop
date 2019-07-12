@@ -237,45 +237,44 @@
               sum: this.sum,
               worker: this.worker
             };
-          // try {
-            // this.$http.post('http://localhost:3000/supplies', supplyToDB)
-            //   .then(response => {return response.json()}).then(supplies => this.supplies = supplies)
+
             this.resource = this.$resource('supplies');
             this.resource.save({}, supplyToDB);
-this.sup = supplyToDB;
-            this.changeBeersDB();
-          // }catch (e) {
-          //   alert('ошибка вставки в базу');
-          // }
 
-          // this.supplyToDB = [];
+            // this.sup = supplyToDB;
+            for (let i=0; i<this.positions.length; i++){
+              // alert('передаем в метод ' + this.positions[i].sortName);
+              try {
+                this.changeBeersDB(this.positions[i]);
+              }catch (e) {
+                alert('error 1');
+              }
+
+              // alert("вернулся из метода");
+            }
+
           this.positions = [];
         },
 
-        changeBeersDB(){
 
-
-          for ( let i=0; i<this.sup.positions.length; i++){
-
-            let id = this.sup.positions[i].idSort
-            this.$http.get('http://localhost:3000/beers/' + id)
+        changeBeersDB(pos){
+alert("вошли в метод со значением " + pos.sortName);
+            // let id = pos.idSort;
+            this.$http.get('http://localhost:3000/beers/' + pos.idSort)
               .then(response => {return response.json()})
               .then(beer => this.beerEdit = beer)
-              .then(() => {
-                for ( let j=0; j<this.beerEdit.price.length; j++){
-                  if (this.beerEdit.price[j].volume === this.sup.positions[i].volume){
-                    this.beerEdit.price[j].quantity += this.sup.positions[i].quantity;
-                    this.$http.put('http://localhost:3000/beers/' + id, this.beerEdit)
+              .then(() => {alert("получили пиво из базы " + this.beerEdit.sortName);
+                for ( let j=0; j<this.beerEdit.price.length; j++){alert("ищем бутылочку" + pos.volume)
+                  if (this.beerEdit.price[j].volume === pos.volume){alert('нашли бутылочку');
+                    this.beerEdit.price[j].quantity += pos.quantity;alert('добавили количество бутылок, стало ' + this.beerEdit.price[j].quantity)
+                    this.$http.put('http://localhost:3000/beers/' + pos.idSort, this.beerEdit)
                       .then(responce => responce.json())
                       .then(() => this.beerEdit = {});
+                    alert("вернули пиво в базу")
                     break;
                   }
                 }
               });
-
-
-
-          }
 
         }
       },
