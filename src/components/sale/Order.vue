@@ -47,7 +47,7 @@
       <div class="col-sm-2 m-1">
         <input
           v-model.number="quantity"
-          @input="quantitys(volumeSelected.quantity)"
+          @change="checkQuantity(sortSelected)"
         ><span>шт.</span>
         <span>{{msg}}</span>
       </div>
@@ -103,7 +103,7 @@
       <button id="addPosition" class="btn btn-info" @click="addPosition">Добавить</button>
       <button id="checkout" class="btn btn-warning" @click="checkout">Оформить</button>
       <button id="closeOrder" class="btn btn-danger" @click="closeOrder">Закрыть</button>
-    </div><tr>{{sortSelected}}</tr>{{volumeSelected}}
+    </div><tr></tr>
 
   </div>
 </template>
@@ -130,45 +130,35 @@
         date: null,//дата заказа и время
 
         worker: {},
-        orderToDB:{},
-        beerEdit:{},
 
         quantityPosition: 1,
+        msg: '',
 
         sortSelected: {},
         volumeSelected: {},
-        msg:''
+
+        beer: {}
       }
     },
 
     watch: {
-      quantity(quant){
-
-
-      //   if (this.quantity <= quant) {
-      //     alert(quant);
-      //     this.sumPosition = this.volumeSelected.cost * this.quantity;
-      //   }else {
-      //     this.msg = 'На складе имеется в наличии только ' + quant + 'шт.';
-      //   }
-      //
+      quantity(){
+        if (this.quantity <= )
+        this.sumPosition = this.volumeSelected.cost * this.quantity;
       },
 
     },
 
     methods: {
 
-      quantitys(quant){
-        if (this.quantity <= quant) {
-          this.msg = '';
-          this.sumPosition = this.volumeSelected.cost * this.quantity;
-
-        }else {
-          this.msg = 'На складе имеется в наличии только ' + quant + 'шт.';
-          this.quantity = quant;
-        }
-
-      },
+      // checkQuantity(sort){
+      //   this.$http.get('http://localhost:3000/beers/' + sort.id)
+      //     .then(response =>  {return response.json()})
+      //     .then(() => this.beer = beer)
+      //     .then(() => {
+      //       if (this.quantity <= this.beer.price.)
+      //     })
+      // },
 
       addPosition() {
         const orderPosition = {
@@ -180,6 +170,8 @@
           sumPosition: this.sumPosition
         }
         this.positions.push(orderPosition);
+
+        this.changeBeersDB(orderPosition);
 
         this.idSort = null;
         this.sortName = '';
@@ -198,6 +190,9 @@
       },
 
       deletePosition(count) {
+
+        this.cancelChangeBeersDB(this.positions[count]);
+
         this.positions.splice(count, 1);
         this.sum = 0;
         for (let i=0; i<this.positions.length; i++)
@@ -217,31 +212,52 @@
         };
 
         this.resourceOrders.save({}, order);
-        this.orderToDB = order;
-        this.changeBeersDB();
 
         this.positions = [];
         this.sum = 0;
       },
 
-      changeBeersDB(){
-        for ( let i=0; i<this.orderToDB.positions.length; i++){
-          let id = this.orderToDB.positions[i].idSort;
-          this.$http.get('http://localhost:3000/beers/' + id)
-            .then(response => {return response.json()})
-            .then(beer => this.beerEdit = beer)
-            .then(() => {
-              for ( let j=0; j<this.beerEdit.price.length; j++){
-                if (this.beerEdit.price[j].volume === this.orderToDB.positions[i].volume){ alert('Найден')
-                  this.beerEdit.price[j].quantity -= this.orderToDB.positions[i].quantity;
-                  this.$http.put('http://localhost:3000/beers/' + id, this.beerEdit)
-                    .then(responce => responce.json())
-                    .then(() => this.beerEdit = {}); alert("вычтен")
-                  break;
-                }
+      changeBeersDB(pos){
+        alert("вошли в метод со значением " + pos.sortName);
+        // let id = pos.idSort;
+        this.$http.get('http://localhost:3000/beers/' + pos.idSort)
+          .then(response => {return response.json()})
+          .then(beer => this.beerEdit = beer)
+          .then(() => {alert("получили пиво из базы " + this.beerEdit.sortName);
+            for ( let j=0; j<this.beerEdit.price.length; j++){alert("ищем бутылочку" + pos.volume)
+              if (this.beerEdit.price[j].volume === pos.volume){alert('нашли бутылочку');
+                this.beerEdit.price[j].quantity -= pos.quantity;alert('добавили количество бутылок, стало ' + this.beerEdit.price[j].quantity)
+                this.$http.put('http://localhost:3000/beers/' + pos.idSort, this.beerEdit)
+                  .then(responce => responce.json())
+                  .then(() => this.beerEdit = {});
+                alert("вернули пиво в базу")
+                break;
               }
-            });
-        }
+            }
+          });
+
+
+      },
+
+      cancelChangeBeersDB(pos){
+        alert("вошли в метод со значением " + pos.sortName);
+        // let id = pos.idSort;
+        this.$http.get('http://localhost:3000/beers/' + pos.idSort)
+          .then(response => {return response.json()})
+          .then(beer => this.beerEdit = beer)
+          .then(() => {alert("получили пиво из базы " + this.beerEdit.sortName);
+            for ( let j=0; j<this.beerEdit.price.length; j++){alert("ищем бутылочку" + pos.volume)
+              if (this.beerEdit.price[j].volume === pos.volume){alert('нашли бутылочку');
+                this.beerEdit.price[j].quantity += pos.quantity;alert('отняли количество бутылок, стало ' + this.beerEdit.price[j].quantity)
+                this.$http.put('http://localhost:3000/beers/' + pos.idSort, this.beerEdit)
+                  .then(response => response.json())
+                  .then(() => this.beerEdit = {});
+                alert("вернули пиво в базу")
+                break;
+              }
+            }
+          });
+
 
       },
 

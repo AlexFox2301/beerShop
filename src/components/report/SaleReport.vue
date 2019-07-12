@@ -72,7 +72,8 @@
       <div id="body" class="row positionSale" v-for="order in orders" :key="order.id" v-model="orders">
 
         <div class="col-sm-1">
-          <span>{{order.id}}</span>
+          <span>{{order.id}}</span><br>
+          <button class="btn btn-sm btn-danger bat" @click="deleteOrder(order)">Del</button>
         </div>
 
         <div class="col-sm-11">
@@ -87,19 +88,19 @@
             </div>
 
             <div class="col-sm-2">
-              <span>{{item.volume}}</span>
+              <span>{{item.volume}} л.</span>
             </div>
 
             <div class="col-sm-2">
-              <span>{{item.cost}}</span>
+              <span>{{item.cost}} грн.</span>
             </div>
 
             <div class="col-sm-2">
-              <span>{{item.quantity}}</span>
+              <span>{{item.quantity}} шт.</span>
             </div>
 
             <div class="col-sm-2">
-              <span>{{item.sumPosition}}</span>
+              <span>{{item.sumPosition}}грн.</span>
             </div>
 
             </div>
@@ -112,7 +113,7 @@
               <span>{{order.date}}</span>
             </div>
             <div class="col-sm-2 position">
-              <span>{{order.sum}}</span>
+              <span>{{order.sum}} грн.</span>
             </div>
           </div>
         </div>
@@ -135,6 +136,15 @@
           search: '',
           startDate: null,
           endDate: null
+        }
+      },
+
+      watch:{
+        orders(){
+          this.resource.get().then(responce => responce.json())
+            .then(orders => this.orders = orders);
+            // .then(ord => this.orders = this.orders.sort(function(a, b){
+            //   return new Date(b.date) - new Date(a.date)}));
         }
       },
 
@@ -211,6 +221,11 @@
           }
           this.orders = collection;
 
+        },
+
+        deleteOrder(order){
+          this.$http.delete('http://localhost:3000/orders/' + order.id)
+            .then(response => {return response.json()});
         }
 
       },
@@ -263,5 +278,7 @@
 
   .bat{
     border-radius: 15px;
+    background-color: #AFDAFC;
+    color: black;
   }
 </style>
