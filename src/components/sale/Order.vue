@@ -47,9 +47,9 @@
       <div class="col-sm-2 m-1">
         <input
           v-model.number="quantity"
-          @change="checkQuantity(sortSelected)"
+          @input="quantitys(volumeSelected.quantity)"
         ><span>шт.</span>
-        <span>{{msg}}</span>
+        <span class="errorMsg">{{msg}}</span>
       </div>
 
       <div class="col-sm-2 m-1" >
@@ -142,15 +142,25 @@
     },
 
     watch: {
-      quantity(){
-        if (this.quantity <= )
-        this.sumPosition = this.volumeSelected.cost * this.quantity;
-      },
+      // quantity(){
+      //   if (this.quantity <= )
+      //   this.sumPosition = this.volumeSelected.cost * this.quantity;
+      // },
 
     },
 
     methods: {
 
+      quantitys(quant){
+
+        if (this.quantity <= quant) {
+          this.msg = '';
+          this.sumPosition = this.volumeSelected.cost * this.quantity;
+
+        }else {
+          this.msg = 'На складе имеется в наличии только ' + quant + 'шт.';
+          this.quantity = quant;
+        }
       // checkQuantity(sort){
       //   this.$http.get('http://localhost:3000/beers/' + sort.id)
       //     .then(response =>  {return response.json()})
@@ -158,7 +168,7 @@
       //     .then(() => {
       //       if (this.quantity <= this.beer.price.)
       //     })
-      // },
+      },
 
       addPosition() {
         const orderPosition = {
@@ -336,6 +346,10 @@
 
   .bat{
     border-radius: 15px;
+  }
+  .errorMsg {
+    color: red;
+    font-size: 14px
   }
 
 </style>
