@@ -19,6 +19,10 @@
 
     <div id="newPosition" class="row positionOrder">
 
+      <div class="col-sm-0.5">
+        <button id="addPosition" class="btn btn-info bat" @click="addPosition">+</button>
+      </div>
+
       <div class="col-sm-3 mt-1">
         <select v-model="sortSelected" >
           <option
@@ -100,9 +104,9 @@
 
     <hr>
     <div id="total">
-      <button id="addPosition" class="btn btn-info" @click="addPosition">Добавить</button>
-      <button id="checkout" class="btn btn-warning" @click="checkout">Оформить</button>
-      <button id="closeOrder" class="btn btn-danger" @click="closeOrder">Закрыть</button>
+<!--      <button id="addPosition" class="btn btn-info bat" @click="addPosition">Добавить</button>-->
+      <button id="checkout" class="btn btn-warning bat" @click="checkout">Оформить</button>
+      <button id="closeOrder" class="btn btn-danger bat" @click="closeOrder">Закрыть</button>
     </div><tr></tr>
 
   </div>

@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="col-1">
-        <button class="btn btn-success btn-sm" @click="deletePosition(beer)">Удалить</button>
+        <button class="btn btn-success btn-sm bat" @click="deletePosition(beer)">Del</button>
       </div>
 
     </div>

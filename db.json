@@ -26,7 +26,7 @@
         {
           "volume": 0.25,
           "cost": 50,
-          "quantity": 800
+          "quantity": 790
         },
         {
           "volume": 0.33,
@@ -746,6 +746,40 @@
         "id": 6
       },
       "id": 15
+    },
+    {
+      "positions": [
+        {
+          "idSort": 2,
+          "sortName": "Viaemilia",
+          "volume": 0.25,
+          "cost": 50,
+          "quantity": 10,
+          "sumPosition": 500
+        }
+      ],
+      "sale": true,
+      "sum": 500,
+      "date": "Sat Jul 13 2019 21:04:42 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": {
+        "name": "Artem Talanov",
+        "login": "Sheff",
+        "password": "qaz",
+        "workerPosition": "Директор",
+        "access": [
+          "sale",
+          "workers",
+          "providers",
+          "supply",
+          "report"
+        ],
+        "address": "Аруба",
+        "phone": "+380 93 354 0206",
+        "status": "Работает",
+        "note": "-",
+        "id": 6
+      },
+      "id": 16
     }
   ],
   "supplies": [
