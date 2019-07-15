@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     user: {},
     idWorker: null,
-    idProvider: null
+    idProvider: null,
+    idBeer: null,
   },
 
   getters:{
@@ -18,6 +19,10 @@ export default new Vuex.Store({
 
     getWorkerID(state){
       return state.idWorker;
+    },
+
+    getBeerID(state){
+      return state.idBeer;
     },
 
     getProviderID(state){
@@ -32,6 +37,10 @@ export default new Vuex.Store({
 
     setWorkerID(state, payload){
       state.idWorker = payload;
+    },
+
+    setBeerID(state, payload){
+      state.idBeer = payload;
     },
 
     setProviderID(state, payload){

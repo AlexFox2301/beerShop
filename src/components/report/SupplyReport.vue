@@ -143,13 +143,6 @@
         }
       },
 
-      watch:{
-        supplies(){
-          this.resource.get().then(response => response.json())
-            .then(supplies => this.supplies = supplies);
-        }
-      },
-
       methods:{
 
         resetSearch(){

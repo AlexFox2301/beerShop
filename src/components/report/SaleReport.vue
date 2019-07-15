@@ -139,15 +139,6 @@
         }
       },
 
-      watch:{
-        orders(){
-          this.resource.get().then(responce => responce.json())
-            .then(orders => this.orders = orders);
-            // .then(ord => this.orders = this.orders.sort(function(a, b){
-            //   return new Date(b.date) - new Date(a.date)}));
-        }
-      },
-
       methods:{
 
         resetSearch(){
@@ -165,12 +156,12 @@
           try {
             for (let i=0; i<this.orders.length; i++){
 
-              // if (this.orders[i].sum.toString() === this.search) {
                 if (this.orders[i].worker.name.toLowerCase() === this.search.toLowerCase() ||
                   this.orders[i].sum.toString() === this.search) {
-                searchOrder.push(this.orders[i]);
-                continue;
-              }
+                    searchOrder.push(this.orders[i]);
+                    continue;
+                  }
+                // }
 
               for (let j=0; j<this.orders[i].positions.length; j++){
 

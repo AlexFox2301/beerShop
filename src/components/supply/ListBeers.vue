@@ -3,7 +3,7 @@
 
     <div id="head" class="row position">
 
-    <div class="col-1">ID</div>
+    <div class="col-0.5 pl-2">ID</div>
     <div class="col-3">Сорт Пива</div>
     <div class="col-2">Происхождение</div>
     <div class="col-1">Крепость</div>
@@ -20,7 +20,7 @@
 
     <div id="body" class="row positionBeer" v-for="beer in beers" :key="beer.id" v-model="beers">
 
-      <div class="col-1">{{beer.id}}</div>
+      <div class="col-0.5 pl-2">{{beer.id}}</div>
       <div class="col-3">{{beer.sortName}}</div>
       <div class="col-2">{{beer.origin}}</div>
       <div class="col-1">{{beer.alcohol}}</div>
@@ -31,8 +31,9 @@
           <div class="col-4 pr">{{pr.quantity}} шт.</div>
         </div>
       </div>
-      <div class="col-1">
-        <button class="btn btn-success btn-sm bat" @click="deletePosition(beer)">Del</button>
+      <div class="col">
+        <button class="btn btn-danger btn-sm bat" @click="deletePosition(beer)">-</button>
+        <button class="btn btn-success btn-sm bat" @click="setID(beer.id)">Править</button>
       </div>
 
     </div>
@@ -59,6 +60,11 @@
       // },
 
       methods:{
+
+        setID(id){
+          this.$store.commit('setBeerID', id);
+          this.$router.push('/supply/edit_beer');
+        },
 
           deletePosition(beer){
 

@@ -20,7 +20,7 @@
     <div id="newPosition" class="row positionOrder">
 
       <div class="col-sm-0.5">
-        <button id="addPosition" class="btn btn-info bat" @click="addPosition">+</button>
+        <button id="addPosition" class="btn btn-success bat" @click="addPosition">+</button>
       </div>
 
       <div class="col-sm-3 mt-1">
@@ -105,7 +105,7 @@
     <hr>
     <div id="total">
 <!--      <button id="addPosition" class="btn btn-info bat" @click="addPosition">Добавить</button>-->
-      <button id="checkout" class="btn btn-warning bat" @click="checkout">Оформить</button>
+      <button id="checkout" class="btn btn-info bat" @click="checkout">Оформить</button>
       <button id="closeOrder" class="btn btn-danger bat" @click="closeOrder">Закрыть</button>
     </div><tr></tr>
 
@@ -232,19 +232,16 @@
       },
 
       changeBeersDB(pos){
-        alert("вошли в метод со значением " + pos.sortName);
-        // let id = pos.idSort;
         this.$http.get('http://localhost:3000/beers/' + pos.idSort)
           .then(response => {return response.json()})
           .then(beer => this.beerEdit = beer)
-          .then(() => {alert("получили пиво из базы " + this.beerEdit.sortName);
-            for ( let j=0; j<this.beerEdit.price.length; j++){alert("ищем бутылочку" + pos.volume)
-              if (this.beerEdit.price[j].volume === pos.volume){alert('нашли бутылочку');
-                this.beerEdit.price[j].quantity -= pos.quantity;alert('добавили количество бутылок, стало ' + this.beerEdit.price[j].quantity)
+          .then(() => {
+            for ( let j=0; j<this.beerEdit.price.length; j++){
+              if (this.beerEdit.price[j].volume === pos.volume){
+                this.beerEdit.price[j].quantity -= pos.quantity;
                 this.$http.put('http://localhost:3000/beers/' + pos.idSort, this.beerEdit)
                   .then(responce => responce.json())
                   .then(() => this.beerEdit = {});
-                alert("вернули пиво в базу")
                 break;
               }
             }
@@ -254,19 +251,16 @@
       },
 
       cancelChangeBeersDB(pos){
-        alert("вошли в метод со значением " + pos.sortName);
-        // let id = pos.idSort;
         this.$http.get('http://localhost:3000/beers/' + pos.idSort)
           .then(response => {return response.json()})
           .then(beer => this.beerEdit = beer)
-          .then(() => {alert("получили пиво из базы " + this.beerEdit.sortName);
-            for ( let j=0; j<this.beerEdit.price.length; j++){alert("ищем бутылочку" + pos.volume)
-              if (this.beerEdit.price[j].volume === pos.volume){alert('нашли бутылочку');
-                this.beerEdit.price[j].quantity += pos.quantity;alert('отняли количество бутылок, стало ' + this.beerEdit.price[j].quantity)
+          .then(() => {
+            for ( let j=0; j<this.beerEdit.price.length; j++){
+              if (this.beerEdit.price[j].volume === pos.volume){
+                this.beerEdit.price[j].quantity += pos.quantity;
                 this.$http.put('http://localhost:3000/beers/' + pos.idSort, this.beerEdit)
                   .then(response => response.json())
                   .then(() => this.beerEdit = {});
-                alert("вернули пиво в базу")
                 break;
               }
             }
@@ -276,6 +270,11 @@
       },
 
       closeOrder() {
+
+        // for (let i=0; i<this.positions.length; i++) {
+        //   this.cancelChangeBeersDB(this.positions[i]);
+        // }
+
         this.positions = [];
         this.sum = 0;
       }
@@ -287,7 +286,7 @@
       this.resource = this.$resource('beers'),
         this.resource.get().then(responce => responce.json())
           .then(beers => this.beers = beers)
-          .then(worker => this.worker = this.$store.getters.getWorker);
+          .then(() => this.worker = this.$store.getters.getWorker);
 
 
     },

@@ -45,7 +45,7 @@
               v-bind:user="user"
               :key="user.id"
               active-class="active"
-              to="/sale"
+              to="/order"
             >
               Продажа
               <span class="sr-only">(current)</span>
@@ -127,7 +127,7 @@
           </div>
 
           <div class="col-sm-3">
-            <input id="password" class="form-control" type="password" v-model="password">
+            <input id="password" class="form-control" type="password" v-model="password" @keyup.enter="loginCheck">
           </div>
         </div>
       </div>

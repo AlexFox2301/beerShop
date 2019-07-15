@@ -19,6 +19,7 @@ import GeneralReport from "../components/report/GeneralReport";
 import AddNewProvider from "../components/provider/AddNewProvider";
 import Providers from "../components/provider/Providers";
 import EditProvider from "../components/provider/EditProvider";
+import EditBeer from "../components/supply/EditBeer";
 
 Vue.use(VueRouter)
 
@@ -33,28 +34,35 @@ export default new Router({
       name: 'Bottle',
       component: Bottle
     },
+
     {
-      path: '/sale',
-      name: 'Sale',
-      component: Sale,
-      children:[
-        {
-          path:'order',
-          component: Order,
-          props: true
-        }
-      ]
+      path: '/order',
+      name: 'Order',
+      component: Order
     },
+
+    // {
+    //   path: '/sale',
+    //   name: 'Sale',
+    //   component: Sale,
+    //   children:[
+    //     {
+    //       path:'order',
+    //       component: Order,
+    //       props: true
+    //     }
+    //   ]
+    // },
     {
       path: '/supply',
       name: 'Supply',
       component: Supply,
       props: true,
       children:[
-        {
-          path: 'list_beers',
-          component: ListBeers
-        },
+        // {
+        //   path: 'list_beers',
+        //   component: ListBeers
+        // },
         {
           path: 'add_new_sort',
           component: AddNewSort
@@ -62,6 +70,11 @@ export default new Router({
         {
           path: 'supply_beer',
           component: SupplyBeer,
+          props: true
+        },
+        {
+          path: 'edit_beer',
+          component: EditBeer,
           props: true
         }
       ]

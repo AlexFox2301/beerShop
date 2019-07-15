@@ -141,6 +141,8 @@
 </template>
 
 <script>
+  // import ReportMixin from '../mixins/reportMixin'
+
     export default {
 
       data(){
@@ -148,7 +150,6 @@
           resourceSale: null,
           resourceSupply: null,
 
-          // beers: [],
           orders: [],
           supplies: [],
           general: [],
@@ -158,6 +159,10 @@
           endDate: null
         }
       },
+
+      // mixins:[
+      //   ReportMixin
+      // ],
 
       methods:{
 
@@ -244,13 +249,6 @@
         },
 
       },
-
-    watch:{
-            // general(){
-            //   this.general = this.supplies.concat(this.orders);
-            // }
-    },
-
 
       created() {
 
