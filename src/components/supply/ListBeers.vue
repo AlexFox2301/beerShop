@@ -52,13 +52,6 @@
           }
       },
 
-      // watch:{
-      //   beers: function () {
-      //     this.resource.get().then(responce => responce.json())
-      //       .then(beers => this.beers = beers)
-      //   }
-      // },
-
       methods:{
 
         setID(id){
@@ -70,8 +63,6 @@
 
               this.$http.delete('http://localhost:3000/beers/' + beer.id)
                 .then(response => {return response.json()}).then(
-                // this.resource.get().then(responce => responce.json())
-                //   .then(beers => this.beers = beers)
               )
           }
 
@@ -79,9 +70,9 @@
       },
 
       created() {
-        this.resource = this.$resource('beers'),
+        this.resource = this.$resource('beers');
           this.resource.get().then(responce => responce.json())
-            .then(beers => this.beers = beers)
+            .then(beers => this.beers = beers);
       },
 
     }

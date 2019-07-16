@@ -2,15 +2,12 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import VueRouter from 'vue-router';
 import Bottle from '../components/Bottle';
-import Sale from "../components/sale/Sale";
 import Supply from "../components/supply/Supply";
 import Report from "../components/report/Report";
 import Order from "../components/sale/Order";
-import ListBeers from "../components/supply/ListBeers";
 import AddNewSort from "../components/supply/AddNewSort";
 import SupplyBeer from "../components/supply/SupplyBeer";
 import Workers from '../components/worker/Workers';
-import Entry from "../components/Entry";
 import NewWorker from "../components/worker/NewWorker";
 import EditWorker from "../components/worker/EditWorker";
 import SupplyReport from "../components/report/SupplyReport";
@@ -40,29 +37,12 @@ export default new Router({
       name: 'Order',
       component: Order
     },
-
-    // {
-    //   path: '/sale',
-    //   name: 'Sale',
-    //   component: Sale,
-    //   children:[
-    //     {
-    //       path:'order',
-    //       component: Order,
-    //       props: true
-    //     }
-    //   ]
-    // },
     {
       path: '/supply',
       name: 'Supply',
       component: Supply,
       props: true,
       children:[
-        // {
-        //   path: 'list_beers',
-        //   component: ListBeers
-        // },
         {
           path: 'add_new_sort',
           component: AddNewSort

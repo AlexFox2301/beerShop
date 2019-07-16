@@ -142,7 +142,6 @@
 
           this.volume = null;
           this.cost = null;
-          // не срабатывает второй раз подряд
         },
 
         addToDB(){

@@ -107,7 +107,6 @@
 
 <script>
     export default {
-        // name: "Providers"
       data(){
         return{
           resource: null,

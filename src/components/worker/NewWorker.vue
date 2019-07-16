@@ -147,7 +147,6 @@
             <strong style="color: red; font-size: 14px">{{msgTotal}}</strong>
           </div>
         </div>
-{{access}}
     </div>
 </template>
 
@@ -227,31 +226,29 @@
             phone: this.phone,
             status: this.status,
             note: this.note
-          }
+          };
 
           if (this.checkedLogin & this.checkedPassword){
             this.resource = this.$resource('workers'),
-              // this.resource.get().then(responce => responce.json())
-              //   .then(workers => this.workers = workers)
 
               this.resource.save({}, worker)
 
-            this.name = '',
-              this.login = '',
-              this.password = '',
-              this.workerPosition = '',
-              this.access = false,
-              this.address = '',
-              this.phone = '',
-              this.status = '-',
-              this.note = '-',
+            this.name = '';
+              this.login = '';
+              this.password = '';
+              this.workerPosition = '';
+              this.access = false;
+              this.address = '';
+              this.phone = '';
+              this.status = '-';
+              this.note = '-';
 
 
-              this.msgTotal = '',
+              this.msgTotal = '';
 
-              this.confirmPassword = ''
+              this.confirmPassword = '';
 
-            this.$router.push('/workers')
+            this.$router.push('/workers');
           } else {
             this.msgTotal = ' Для окончания регистрации нового сотрудника необходимо исправить замечания!'
           }
@@ -264,7 +261,7 @@
 
       created() {
         this.resource = this.$resource('workers'),
-          this.resource.get().then(responce => responce.json())
+          this.resource.get().then(response => response.json())
             .then(workers => this.workers = workers)
       }
 
@@ -299,7 +296,6 @@ select {
   width: 20px;
   margin-right: 30px;
   margin-left: 30px;
-  /*align-content: center;*/
 }
 
 .bat{

@@ -148,7 +148,6 @@
         <strong style="color: red; font-size: 14px">{{msgTotal}}</strong>
       </div>
     </div>
-    {{access}}
   </div>
 </template>
 
@@ -199,7 +198,7 @@
         if (this.checkedPassword){
 
           this.$http.put('http://localhost:3000/workers/' + this.idWorker, this.worker)
-            .then(responce => responce.json())
+            .then(response => response.json())
 
           this.worker = null;
 
@@ -256,7 +255,6 @@
     width: 20px;
     margin-right: 30px;
     margin-left: 30px;
-    /*align-content: center;*/
   }
 
   .bat{

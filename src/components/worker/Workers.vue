@@ -98,7 +98,7 @@
 
       created() {
         this.resource = this.$resource('workers'),
-          this.resource.get().then(responce => responce.json())
+          this.resource.get().then(response => response.json())
             .then(workers => this.workers = workers)
       }
     }
@@ -129,12 +129,6 @@
   border-radius: 15px;
   background-color: #EEE8AA;
 }
-
-/*div {*/
-/*  border: darkgray solid 0.5px;*/
-
-/*  border-radius: 15px;*/
-/*}*/
 
 input {
   width: 95%;

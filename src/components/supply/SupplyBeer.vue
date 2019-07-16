@@ -150,7 +150,6 @@
       <hr>
       <button class="bat btn-info" style="margin: 10px" @click="addSupplyToDB">Внести в БД</button>
     </div>
-<!--{{worker.name}}-->
   </div>
 </template>
 
@@ -198,7 +197,6 @@
           const supplyPosition = {
             idSort: this.supplySort.id,
             sortName: this.supplySort.sortName,
-            // price: this.supplyPrice,
             volume: this.supplyVolume.volume,
             cost: this.supplyVolume.cost,
             quantity: this.quantity,
@@ -228,13 +226,11 @@
         },
 
         addSupplyToDB() {
-          // const user = this.user;
 
           const supplyToDB = {
             positions: this.positions,
             sale: false,
             date: Date(),
-            worker: null,
             provider: this.provider,
             sum: this.sum,
             worker: this.worker
@@ -243,23 +239,16 @@
           this.resource = this.$resource('supplies');
           this.resource.save({}, supplyToDB);
 
-          // this.sup = supplyToDB;
-          // for (let i = 0; i < this.positions.length; i++) {
-          //   // alert('передаем в метод ' + this.positions[i].sortName);
-          //  this.changeBeersDB(this.positions[i]);
-          // }
-
           this.positions = [];
         },
 
 
         changeBeersDB(pos){
             alert("вошли в метод со значением " + pos.sortName);
-            // let id = pos.idSort;
             this.$http.get('http://localhost:3000/beers/' + pos.idSort)
               .then(response => {return response.json()})
               .then(beer => this.beerEdit = beer)
-              .then(() => {alert("получили пиво из базы " + this.beerEdit.sortName);
+              .then(() => {
                 for ( let j=0; j<this.beerEdit.price.length; j++){alert("ищем бутылочку" + pos.volume)
                   if (this.beerEdit.price[j].volume === pos.volume){alert('нашли бутылочку');
                     this.beerEdit.price[j].quantity += pos.quantity;alert('добавили количество бутылок, стало ' + this.beerEdit.price[j].quantity)
@@ -276,19 +265,16 @@
         },
 
         cancelChangeBeersDB(pos){
-          alert("вошли в метод со значением " + pos.sortName);
-          // let id = pos.idSort;
           this.$http.get('http://localhost:3000/beers/' + pos.idSort)
             .then(response => {return response.json()})
             .then(beer => this.beerEdit = beer)
-            .then(() => {alert("получили пиво из базы " + this.beerEdit.sortName);
-              for ( let j=0; j<this.beerEdit.price.length; j++){alert("ищем бутылочку" + pos.volume)
-                if (this.beerEdit.price[j].volume === pos.volume){alert('нашли бутылочку');
-                  this.beerEdit.price[j].quantity -= pos.quantity;alert('отняли количество бутылок, стало ' + this.beerEdit.price[j].quantity)
+            .then(() => {
+              for ( let j=0; j<this.beerEdit.price.length; j++){
+                if (this.beerEdit.price[j].volume === pos.volume){
+                  this.beerEdit.price[j].quantity -= pos.quantity;
                   this.$http.put('http://localhost:3000/beers/' + pos.idSort, this.beerEdit)
                     .then(response => response.json())
                     .then(() => this.beerEdit = {});
-                  alert("вернули пиво в базу")
                   break;
                 }
               }
@@ -300,11 +286,8 @@
       },
 
       created() {
-        // this.resource = this.$resource('beers'),
         this.resource = this.$resource('supplies'),
         this.resourceProvider = this.$resource('providers'),
-          // this.resource.get().then(responce => responce.json())
-          //   .then(beers => this.beers = beers);
 
           this.resource.get().then(responce => responce.json())
             .then(supplies => this.supplies = supplies)
@@ -312,12 +295,9 @@
         this.resourceProvider.get().then(responce => responce.json())
             .then(providers => this.providers = providers)
 
-        // this.$http.get('http://localhost:3000/supplies')
-        //   .then(response => {return response.json()}).then(supplies => this.supplies = supplies)
-
         this.$http.get('http://localhost:3000/beers')
           .then(response => {return response.json()}).then(beers => this.beers = beers)
-          .then(worker => this.worker = this.$store.getters.getWorker)
+          .then(() => this.worker = this.$store.getters.getWorker)
       },
 
     }
@@ -374,6 +354,4 @@
   .bat{
     border-radius: 15px;
   }
-
-
 </style>

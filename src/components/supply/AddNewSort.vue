@@ -118,16 +118,7 @@
             cost: null,
             price: [],
             quantity: 0
-            // pricePositions: {
-            //   volume: null,
-            //   cost: null
-            // }
-
           }
-      },
-
-      watch: {
-
       },
 
       methods:{
@@ -151,7 +142,6 @@
 
               this.volume = null;
               this.cost = null;
-              // не срабатывает второй раз подряд
           },
 
         addToDB(){
@@ -160,8 +150,8 @@
               origin: this.origin,
               alcohol: this.alcohol,
               price: this.price,
-          }
-          this.resource.save({}, beer)
+          };
+          this.resource.save({}, beer);
 
             this.sortName = null;
             this.origin = null;

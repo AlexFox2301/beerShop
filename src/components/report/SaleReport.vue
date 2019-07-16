@@ -125,12 +125,10 @@
 
 <script>
     export default {
-        // name: "saleReport"
       data(){
         return{
           resource: null,
 
-          // beers: [],
           orders: [],
 
           search: '',
@@ -161,7 +159,6 @@
                     searchOrder.push(this.orders[i]);
                     continue;
                   }
-                // }
 
               for (let j=0; j<this.orders[i].positions.length; j++){
 
@@ -187,8 +184,6 @@
 
           let start = new Date(this.startDate);
           let end = new Date(this.endDate).getTime() + 24*60*60*1000;
-
-          alert(start + "-" + end)
 
           for (let i=0; i<this.orders.length; i++)
           {
@@ -229,11 +224,8 @@
 
           this.resource.get().then(responce => responce.json())
             .then(orders => this.orders = orders)
-            .then(ord => this.orders = this.orders.sort(function(a, b){
+            .then(() => this.orders = this.orders.sort(function(a, b){
             return new Date(b.date) - new Date(a.date)}));
-
-        // this.$http.get('http://localhost:3000/orders')
-        //   .then(response => {return response.json()}).then(orders => this.orders = orders)
       }
     }
 </script>

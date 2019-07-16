@@ -86,7 +86,6 @@
 
 <script>
     export default {
-        // name: "AddNewProvider"
 
       data(){
         return{
@@ -158,13 +157,7 @@
 
       created() {
 
-        this.resource = this.$resource('providers')
-
-          // this.resource.get().then(responce => responce.json())
-          //   .then(providers => this.providers = providers)
-
-        // this.$http.get('http://localhost:3000/orders')
-        //   .then(response => {return response.json()}).then(orders => this.orders = orders)
+        this.resource = this.$resource('providers');
       }
     }
 </script>
@@ -186,14 +179,7 @@
     background-color: #ECE0F8;
   }
 
-  /*div {*/
-  /*  border: darkgray solid 0.5px;*/
-
-  /*  border-radius: 15px;*/
-  /*}*/
-
   input {
-    /*width: 90%;*/
     border-radius: 10px;
     padding-left: 20px;
   }
@@ -202,7 +188,6 @@
     width: 95%;
     border-radius: 10px;
     padding: 2%;
-
   }
 
   label {
@@ -211,6 +196,5 @@
 
   .bat{
     border-radius: 15px;
-
   }
 </style>

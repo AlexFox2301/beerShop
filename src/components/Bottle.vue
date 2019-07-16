@@ -15,12 +15,6 @@
           }
       },
 
-      // computed:{
-      //     worker(){
-      //       return this.$store.getters.getWorker;
-      //     }
-      // },
-
       created() {
           this.worker = this.$store.getters.getWorker;
       }

@@ -128,13 +128,12 @@
 </template>
 
 <script>
+
     export default {
-        // name: "supplyReport"
       data(){
         return{
           resource: null,
 
-          // beers: [],
           supplies: [],
 
           search: '',
@@ -164,11 +163,11 @@
                 this.supplies[i].worker.name.toLowerCase() === this.search.toLowerCase()) {
                 searchThing.push(this.supplies[i]);
                 continue;
-              }///Работает
+              }
 
               const pos = this.supplies[i].positions;
 
-              for (let j=0; j<pos.length; j++){//Что-то с этим циклом
+              for (let j=0; j<pos.length; j++){
 
                 if (this.supplies[i].positions[j].sortName.toLowerCase() === this.search.toLowerCase() ||
                   this.supplies[i].positions[j].volume.toString().toLowerCase() === this.search.toLowerCase() ||
@@ -190,8 +189,6 @@
 
           let start = new Date(this.startDate);
           let end = new Date(this.endDate).getTime() + 24*60*60*1000;
-
-          alert(start + "-" + end)
 
           for (let i=0; i<this.supplies.length; i++)
           {
@@ -231,11 +228,8 @@
 
           this.resource.get().then(responce => responce.json())
             .then(supplies => this.supplies = supplies)
-            .then(sup => this.supplies = this.supplies.sort(function(a, b){
+            .then(() => this.supplies = this.supplies.sort(function(a, b){
               return new Date(b.date) - new Date(a.date)}));
-
-        // this.$http.get('http://localhost:3000/supplies')
-        //   .then(response => {return response.json()}).then(supplies => this.supplies = supplies)
       },
     }
 </script>

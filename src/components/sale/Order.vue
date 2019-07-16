@@ -115,8 +115,6 @@
 <script>
   export default {
 
-    // props:[user],
-
     data() {
       return {
         resource: null,
@@ -145,14 +143,6 @@
       }
     },
 
-    watch: {
-      // quantity(){
-      //   if (this.quantity <= )
-      //   this.sumPosition = this.volumeSelected.cost * this.quantity;
-      // },
-
-    },
-
     methods: {
 
       quantitys(quant){
@@ -165,13 +155,6 @@
           this.msg = 'На складе имеется в наличии только ' + quant + 'шт.';
           this.quantity = quant;
         }
-      // checkQuantity(sort){
-      //   this.$http.get('http://localhost:3000/beers/' + sort.id)
-      //     .then(response =>  {return response.json()})
-      //     .then(() => this.beer = beer)
-      //     .then(() => {
-      //       if (this.quantity <= this.beer.price.)
-      //     })
       },
 
       addPosition() {
@@ -182,7 +165,7 @@
           cost: this.volumeSelected.cost,
           quantity: this.quantity,
           sumPosition: this.sumPosition
-        }
+        };
         this.positions.push(orderPosition);
 
         this.changeBeersDB(orderPosition);
@@ -269,12 +252,7 @@
 
       },
 
-      closeOrder() {
-
-        // for (let i=0; i<this.positions.length; i++) {
-        //   this.cancelChangeBeersDB(this.positions[i]);
-        // }
-
+      closeOrder() {// не доделан, не удаляет изменения в базе
         this.positions = [];
         this.sum = 0;
       }
@@ -315,23 +293,6 @@
     padding: 5px;
     border-radius: 15px;
     background-color: #FFFF66;
-  }
-
-  .col-1 {
-    border-right: solid grey 1px;
-  }
-  .col-2 {
-    border-right: solid grey 1px;
-  }
-  .col-3 {
-    border-right: solid grey 1px;
-  }
-  .col-4 {
-    border-right: solid grey 1px;
-  }
-
-  .pr {
-    border-bottom: solid grey 1px;
   }
 
   input {

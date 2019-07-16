@@ -141,10 +141,8 @@
 </template>
 
 <script>
-  // import ReportMixin from '../mixins/reportMixin'
 
     export default {
-
       data(){
         return{
           resourceSale: null,
@@ -159,10 +157,6 @@
           endDate: null
         }
       },
-
-      // mixins:[
-      //   ReportMixin
-      // ],
 
       methods:{
 
@@ -185,7 +179,6 @@
           try {
             for (let i=0; i<this.general.length; i++){
 
-              // if (this.general[i].sum.toString() === this.search) {
                 if (this.general[i].worker.name.toLowerCase() === this.search.toLowerCase() ||
                     this.general[i].sum.toString() === this.search) {
                 searches.push(this.general[i]);
@@ -261,8 +254,8 @@
 
           this.resourceSupply.get().then(responce => responce.json())
             .then(supplies => this.supplies = supplies)
-            .then(general => this.general = this.orders.concat(this.supplies))
-            .then(general => this.general = this.general.sort(function(a, b){
+            .then(() => this.general = this.orders.concat(this.supplies))
+            .then(() => this.general = this.general.sort(function(a, b){
               return new Date(b.date) - new Date(a.date)}));
       },
     }
