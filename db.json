@@ -13,7 +13,7 @@
         {
           "volume": 0.33,
           "cost": 75,
-          "quantity": 500
+          "quantity": 495
         }
       ],
       "id": 1
@@ -105,7 +105,7 @@
         {
           "volume": 0.33,
           "cost": 75,
-          "quantity": 100
+          "quantity": 90
         },
         {
           "volume": 0.5,
@@ -780,6 +780,73 @@
         "id": 6
       },
       "id": 16
+    },
+    {
+      "positions": [],
+      "sale": true,
+      "sum": 0,
+      "date": "Sat Jul 27 2019 16:49:25 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": {
+        "name": "Artem Talanov",
+        "login": "Sheff",
+        "password": "qaz",
+        "workerPosition": "Директор",
+        "access": [
+          "sale",
+          "workers",
+          "providers",
+          "supply",
+          "report"
+        ],
+        "address": "Аруба",
+        "phone": "+380 93 354 0206",
+        "status": "Работает",
+        "note": "-",
+        "id": 6
+      },
+      "id": 17
+    },
+    {
+      "positions": [
+        {
+          "idSort": 5,
+          "sortName": "Nøgne Ø Porter",
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": 10,
+          "sumPosition": 750
+        },
+        {
+          "idSort": 1,
+          "sortName": "Papaya Rye",
+          "volume": 0.33,
+          "cost": 75,
+          "quantity": 5,
+          "sumPosition": 375
+        }
+      ],
+      "sale": true,
+      "sum": 1125,
+      "date": "Sat Jul 27 2019 16:50:54 GMT+0300 (Восточная Европа, летнее время)",
+      "worker": {
+        "name": "Artem Talanov",
+        "login": "Sheff",
+        "password": "qaz",
+        "workerPosition": "Директор",
+        "access": [
+          "sale",
+          "workers",
+          "providers",
+          "supply",
+          "report"
+        ],
+        "address": "Аруба",
+        "phone": "+380 93 354 0206",
+        "status": "Работает",
+        "note": "-",
+        "id": 6
+      },
+      "id": 18
     }
   ],
   "supplies": [

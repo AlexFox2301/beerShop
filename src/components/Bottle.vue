@@ -1,7 +1,7 @@
 <template>
-    <div class="container">
+    <div class="container-fluid">
       <h1>Welcom to Bottle Beer {{worker.name}}</h1>
-      <img src="../image/beer.jpg">
+      <img id="foto" src="../image/beer.jpg">
     </div>
 </template>
 
@@ -23,5 +23,8 @@
 </script>
 
 <style scoped>
-
+  #foto {
+    width: 100%;
+    height: 100%;
+  }
 </style>

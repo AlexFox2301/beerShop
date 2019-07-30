@@ -1,41 +1,34 @@
 <template>
   <div id="app">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-light " v-if="!activeNav">
 
-    <div class="row float-right">
-      <div class="col-sm-5 mr-5" style="color: darkgray">{{user.name}}</div>
-<!--      <div class="col-sm-5 mr-5" style="color: darkgray">{{user}}</div>-->
-    </div>
+        <router-link
+          class="nav-link"
+          tag="li"
+          exact
+          active-class="active"
+          to="/bottle"
+        >
+          <img src="image/beer1.png" alt="Logotip" title="На главную">
+          Бутыль
+          <span class="sr-only">(current)</span>
+        </router-link>
 
-    <h1>Бутыль пива</h1>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" v-if="!activeNav">
-
-      <router-link
-        class="nav-link"
-        tag="li"
-        exact
-        active-class="active"
-        to="/bottle"
-      >
-        Бутыль
-        <span class="sr-only">(current)</span>
-      </router-link>
-
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
 
             <router-link
               class="nav-link"
@@ -65,46 +58,56 @@
               <span class="sr-only">(current)</span>
             </router-link>
 
-          <router-link
-            class="nav-link"
-            tag="li"
-            exact
-            v-if="reportLink"
-            active-class="active"
-            to="/report"
-          >
-            Отчет
-            <span class="sr-only">(current)</span>
-          </router-link>
+            <router-link
+              class="nav-link"
+              tag="li"
+              exact
+              v-if="reportLink"
+              active-class="active"
+              to="/report"
+            >
+              Отчет
+              <span class="sr-only">(current)</span>
+            </router-link>
 
-          <router-link
-            class="nav-link"
-            tag="li"
-            exact
-            v-if="workersLink"
-            active-class="active"
-            to="/workers"
-          >
-            Сотрудники
-            <span class="sr-only">(current)</span>
-          </router-link>
+            <router-link
+              class="nav-link"
+              tag="li"
+              exact
+              v-if="workersLink"
+              active-class="active"
+              to="/workers"
+            >
+              Сотрудники
+              <span class="sr-only">(current)</span>
+            </router-link>
 
-          <router-link
-            class="nav-link"
-            tag="li"
-            exact
-            v-if="providersLink"
-            active-class="active"
-            to="/providers"
-          >
-            Поставщики
-            <span class="sr-only">(current)</span>
-          </router-link>
+            <router-link
+              class="nav-link"
+              tag="li"
+              exact
+              v-if="providersLink"
+              active-class="active"
+              to="/providers"
+            >
+              Поставщики
+              <span class="sr-only">(current)</span>
+            </router-link>
 
-        </ul>
-      </div>
-    </nav>
-    <hr>
+          </ul>
+        </div>
+      </nav>
+
+    </div>
+    <div class="row float-right">
+      <div class="col-sm-5 mr-5" style="color: darkgray">{{user.name}}</div>
+<!--      <div class="col-sm-5 mr-5" style="color: darkgray">{{user}}</div>-->
+    </div>
+
+    <h1>Бутыль пива</h1>
+
+
+
 
     <div id="loginPassword" class="container" v-if="activeNav">
 
@@ -228,6 +231,10 @@ export default {
 </script>
 
 <style>
+  * {
+    /*background-color: #d8d8d8;*/
+  }
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -242,5 +249,18 @@ export default {
     font-size: 12px;
     margin: 5px;
 
+  }
+
+  img {
+    height: 16px;
+  }
+
+  .container-fluid, .navbar {
+    background-color: #424242;
+    color: #f2f2f2;
+  }
+
+  router-link {
+    color: #f2f2f2;
   }
 </style>
