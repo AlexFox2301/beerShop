@@ -7,6 +7,7 @@ export default new Vuex.Store({
 
   state: {
     user: {},
+    activeNav: true,
     idWorker: null,
     idProvider: null,
     idBeer: null,
@@ -27,6 +28,10 @@ export default new Vuex.Store({
 
     getProviderID(state){
       return state.idProvider;
+    },
+
+    getActiveNav(state){
+      return state.activeNav;
     }
   },
 
@@ -45,6 +50,10 @@ export default new Vuex.Store({
 
     setProviderID(state, payload){
       state.idProvider = payload;
+    },
+
+    setActiveNav(state, payload){
+      state.activeNav = payload;
     }
   },
 
