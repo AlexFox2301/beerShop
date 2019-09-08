@@ -23,6 +23,11 @@
 </script>
 
 <style scoped>
+
+  h1 {
+    margin-bottom: 25px;
+  }
+
   #foto {
     width: 100%;
     height: 100%;

@@ -4,13 +4,13 @@
       <hr>
 
       <router-link
-        class="nav-link ml-2 mr-2"
+        class="nav-link ml-2 mr-2 buttonNav"
         tag="button"
         exact
         active-class="active"
         to="/providers/add_new_provider"
       >
-        Создать запись
+        Добавить
         <span class="sr-only">(current)</span>
       </router-link>
 
@@ -152,6 +152,23 @@
 </script>
 
 <style scoped>
+
+  nav {
+    background-color: #eaeaea;
+  }
+
+  .buttonNav {
+    border-radius: 15px;
+    background-color: #ccc;
+    width: 150px;
+  }
+
+  button:hover {
+    color: black;
+    font-weight: bold;
+    box-shadow: 0 0 15px grey;
+  }
+
   .position {
     border: darkgray solid 0.5px;
     padding: 5px;

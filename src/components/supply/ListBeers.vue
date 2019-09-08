@@ -3,15 +3,15 @@
 
     <div id="head" class="row position">
 
-    <div class="col-0.5 pl-2">ID</div>
-    <div class="col-3">Сорт Пива</div>
-    <div class="col-2">Происхождение</div>
-    <div class="col-1">Крепость</div>
-    <div class="col-4">
+    <div class="col-md-0.5 pl-2">ID</div>
+    <div class="col-md-3">Сорт Пива</div>
+    <div class="col-md-2">Происхождение</div>
+    <div class="col-md-1">Крепость</div>
+    <div class="col-md-4">
       <div class="row">
-        <div class="col-4">Объем</div>
-        <div class="col-4">Стоимость</div>
-        <div class="col-4">Количество</div>
+        <div class="col-md-4">Объем</div>
+        <div class="col-md-4">Стоимость</div>
+        <div class="col-md-4">Количество</div>
       </div>
     </div>
 

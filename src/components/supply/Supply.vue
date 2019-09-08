@@ -3,7 +3,7 @@
       <h1>ПОСТАВКА</h1>
       <hr>
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-light">
 
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
@@ -62,5 +62,25 @@
 </script>
 
 <style scoped>
+
+  .container {
+    min-width: 576px;
+  }
+
+  nav {
+    background-color: #eaeaea;
+  }
+
+ button {
+   border-radius: 15px;
+   background-color: #ccc;
+   width: 150px;
+ }
+
+  button:hover {
+    color: black;
+    font-weight: bold;
+    box-shadow: 0 0 15px grey;
+  }
 
 </style>
